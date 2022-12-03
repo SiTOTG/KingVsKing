@@ -1,13 +1,15 @@
-[gd_scene load_steps=4 format=3 uid="uid://co713pq5wwm73"]
+[gd_scene load_steps=5 format=3 uid="uid://co713pq5wwm73"]
 
 [ext_resource type="Texture2D" uid="uid://c3bjjubcocilf" path="res://assets/placeholder/sprites/medieval-tavern_10000.png" id="1_3vc4b"]
 [ext_resource type="Script" path="res://player/spawner.gd" id="1_li363"]
+[ext_resource type="PackedScene" uid="uid://ccgdfolvkxehl" path="res://creatures/footman.tscn" id="2_xyipj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2w1w"]
 size = Vector2(158, 140)
 
 [node name="Spawner" type="StaticBody2D"]
 script = ExtResource("1_li363")
+creature_scene = ExtResource("2_xyipj")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
@@ -16,3 +18,18 @@ texture = ExtResource("1_3vc4b")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_y2w1w")
+
+[node name="SpawnPosition" type="Marker2D" parent="."]
+position = Vector2(-56, 48)
+
+[node name="SpawnTimer" type="Timer" parent="."]
+wait_time = 3.0
+autostart = true
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+offset_left = -84.0
+offset_top = -88.0
+offset_right = 88.0
+offset_bottom = -61.0
+
+[connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

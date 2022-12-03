@@ -16,10 +16,6 @@ run/main_scene="res://world/world.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
-[debug]
-
-gdscript/warnings/return_value_discarded=0
-
 [display]
 
 window/size/viewport_width=600

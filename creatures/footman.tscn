@@ -4,7 +4,7 @@
 [ext_resource type="Script" path="res://creatures/footman.gd" id="1_6a46t"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_sr3st"]
-size = Vector2(8, 2)
+size = Vector2(9, 5)
 
 [sub_resource type="Animation" id="Animation_ooc3j"]
 resource_name = "IdleDown"
@@ -180,23 +180,6 @@ tracks/2/keys = {
 "values": [Vector2(0.5, 0)]
 }
 
-[sub_resource type="Animation" id="Animation_y7skb"]
-resource_name = "MoveUp"
-length = 0.6
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite2D:frame_coords")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
-"update": 1,
-"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5)]
-}
-
 [sub_resource type="Animation" id="Animation_prncp"]
 resource_name = "MoveRight"
 length = 0.6
@@ -236,6 +219,23 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 0,
 "values": [Vector2(-0.5, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_y7skb"]
+resource_name = "MoveUp"
+length = 0.6
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite2D:frame_coords")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.1, 0.2, 0.3, 0.4, 0.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [Vector2i(0, 5), Vector2i(1, 5), Vector2i(2, 5), Vector2i(3, 5), Vector2i(4, 5), Vector2i(5, 5)]
 }
 
 [sub_resource type="Animation" id="Animation_86atk"]
@@ -345,7 +345,7 @@ input_1/name = "Moving"
 input_1/auto_advance = false
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_us4em"]
-graph_offset = Vector2(-843.912, 10.236)
+graph_offset = Vector2(-909.949, -54.4675)
 nodes/IdleDirection/node = SubResource("AnimationNodeBlendSpace2D_ah07r")
 nodes/IdleDirection/position = Vector2(-240, 0)
 nodes/MoveDirection/node = SubResource("AnimationNodeBlendSpace2D_hebgc")
@@ -366,6 +366,7 @@ hframes = 6
 vframes = 10
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(0.5, -1.5)
 shape = SubResource("RectangleShape2D_sr3st")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
