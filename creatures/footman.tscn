@@ -536,6 +536,9 @@ parameters/Movement/current = 1
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+neighbor_distance = 100.0
+max_neighbors = 4
+max_speed = 110.0
 
 [node name="EnemyDetector" type="Area2D" parent="."]
 collision_layer = 0

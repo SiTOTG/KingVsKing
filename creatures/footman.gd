@@ -35,9 +35,9 @@ func _ready():
 	agent.velocity_computed.connect(on_velocity_computed)
 	agent.target_location = destination
 
-func _physics_process(_delta):
+func _physics_process(delta):
 	if global_position.distance_to(destination) > 10:
-		move()
+		move(delta)
 	else:
 		animation_tree.set("parameters/Movement/current", IDLE)
 
@@ -48,18 +48,17 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		animation_tree.set("parameters/Attack/active", true)
 
-func move():
+func move(delta):
 	var direction = global_position.direction_to(agent.get_next_location())
 	animation_tree.set("parameters/IdleDirection/blend_position", direction)
 	animation_tree.set("parameters/MoveDirection/blend_position", direction)
 	animation_tree.set("parameters/AttackDirection/blend_position", direction)
 	animation_tree.set("parameters/Movement/current", MOVING)
 
-	velocity = direction * 120
-	move_and_slide()
+	agent.set_velocity(direction * 120)
 
 func on_velocity_computed(safe_velocity: Vector2):
-	velocity = safe_velocity*120
+	velocity = safe_velocity
 	move_and_slide()
 
 func _on_enemy_detector_area_entered(area):
