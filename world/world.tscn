@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://dy2qpxg1tslfv"]
+[gd_scene load_steps=4 format=3 uid="uid://dy2qpxg1tslfv"]
 
 [ext_resource type="PackedScene" uid="uid://hftwolwo1hyb" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
 [ext_resource type="Script" path="res://world/player_camera.gd" id="2_2qahm"]
+[ext_resource type="PackedScene" uid="uid://md5yvcv0lqjr" path="res://world/tiles/grass_background.tscn" id="3_5pghe"]
 
 [node name="World" type="Node2D"]
 
@@ -17,3 +18,5 @@ limit_smoothed = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("2_2qahm")
+
+[node name="GrassBackground" parent="." instance=ExtResource("3_5pghe")]

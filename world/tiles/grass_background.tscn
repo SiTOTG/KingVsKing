@@ -1,0 +1,19 @@
+[gd_scene load_steps=2 format=3 uid="uid://md5yvcv0lqjr"]
+
+[ext_resource type="Texture2D" uid="uid://6ohyk73a3fc3" path="res://assets/placeholder/sprites/tilesets/grass_bg.png" id="1_2runa"]
+
+[node name="GrassBackground" type="ParallaxBackground"]
+
+[node name="ParallaxLayer" type="ParallaxLayer" parent="."]
+motion_mirroring = Vector2(4000, 3000)
+metadata/_edit_lock_ = true
+metadata/_edit_group_ = true
+
+[node name="TextureRect" type="TextureRect" parent="ParallaxLayer"]
+custom_minimum_size = Vector2(4000, 3000)
+offset_right = 600.0
+offset_bottom = 400.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_2runa")
+stretch_mode = 1
