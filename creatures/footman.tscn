@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ccgdfolvkxehl"]
+[gd_scene load_steps=37 format=3 uid="uid://ccgdfolvkxehl"]
 
 [ext_resource type="Texture2D" uid="uid://bs3xxoeb4j5ol" path="res://assets/placeholder/sprites/characters/player.png" id="1_1tvlm"]
 [ext_resource type="Script" path="res://creatures/footman.gd" id="1_6a46t"]
@@ -499,9 +499,14 @@ nodes/Movement/position = Vector2(100, 60)
 nodes/output/position = Vector2(500, 140)
 node_connections = [&"output", 0, &"Attack", &"Movement", 0, &"IdleDirection", &"Movement", 1, &"MoveDirection", &"Attack", 0, &"Movement", &"Attack", 1, &"AttackDirection"]
 
+[sub_resource type="CircleShape2D" id="CircleShape2D_uh4bn"]
+radius = 23.0217
+
 [node name="Footman" type="CharacterBody2D"]
 y_sort_enabled = true
 script = ExtResource("1_6a46t")
+enemy_layer = 4
+friendly_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(0, -16)
@@ -531,3 +536,16 @@ parameters/Movement/current = 1
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 avoidance_enabled = true
+
+[node name="EnemyDetector" type="Area2D" parent="."]
+collision_layer = 0
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
+shape = SubResource("CircleShape2D_uh4bn")
+
+[node name="AttackTimer" type="Timer" parent="."]
+
+[connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
+[connection signal="area_exited" from="EnemyDetector" to="." method="_on_enemy_detector_area_exited"]
+[connection signal="timeout" from="AttackTimer" to="." method="_on_attack_timer_timeout"]

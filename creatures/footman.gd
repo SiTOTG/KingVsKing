@@ -6,12 +6,30 @@ extends CharacterBody2D
 		destination = value
 		if agent:
 			agent.target_location = destination
+
+@export_flags_2d_physics var enemy_layer = 0:
+	set(value):
+		enemy_layer = value
+		update_layer.call_deferred()
+@export_flags_2d_physics var friendly_layer = 0:
+	set(value):
+		friendly_layer = value
+		update_layer.call_deferred()
+
 @onready var animation_tree: AnimationTree = $AnimationTree
 @onready var agent: NavigationAgent2D = $NavigationAgent2D
+@onready var enemy_detector: Area2D = $EnemyDetector
+@onready var attack_timer: Timer = $AttackTimer
+
+var target = null
 
 enum {
 	IDLE, MOVING
 }
+
+func update_layer():
+	enemy_detector.collision_mask = enemy_layer
+	enemy_detector.collision_layer = friendly_layer
 
 func _ready():
 	agent.velocity_computed.connect(on_velocity_computed)
@@ -43,3 +61,16 @@ func move():
 func on_velocity_computed(safe_velocity: Vector2):
 	velocity = safe_velocity*120
 	move_and_slide()
+
+func _on_enemy_detector_area_entered(area):
+	if not is_instance_valid(area): return
+	target = area
+	destination = target.global_position
+	attack_timer.start()
+
+func _on_enemy_detector_area_exited(area):
+	print("Enemy left area")
+
+
+func _on_attack_timer_timeout():
+	animation_tree.set("parameters/Attack/active", true)

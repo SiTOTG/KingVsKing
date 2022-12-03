@@ -4,6 +4,9 @@ extends StaticBody2D
 @export var spawn_capacity := 100
 @export_node_path(Node2D) var target_position
 
+@export_flags_2d_physics var enemy_layer = 0
+@export_flags_2d_physics var friendly_layer = 0
+
 @onready var spawn_position = $SpawnPosition
 @onready var progress_bar = $ProgressBar
 @onready var spawn_timer = $SpawnTimer
@@ -27,6 +30,8 @@ func spawn():
 		if target_position_node:
 			creature.destination = target_position_node.global_position
 	creature.global_position = spawn_position.global_position
+	creature.enemy_layer = enemy_layer
+	creature.friendly_layer = friendly_layer
 
 	creature.tree_exited.connect(decrease_spawned)
 	get_tree().root.add_child(creature)

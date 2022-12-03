@@ -10,6 +10,8 @@ size = Vector2(158, 140)
 [node name="Spawner" type="StaticBody2D"]
 script = ExtResource("1_li363")
 creature_scene = ExtResource("2_xyipj")
+enemy_layer = 4
+friendly_layer = 2
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 position = Vector2(8, 0)
