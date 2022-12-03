@@ -12,6 +12,7 @@ config_version=5
 
 config/name="King Vs King"
 config/description="The Demon Lord can only be defeated by the mighty hero, or so the legend says. However, until the demon lord is defeated, the free people must survive by any means necessary! On this strategy game, you play as the king defending an alliance of the free races to fight against the demons who are trying to wipe them out."
+run/main_scene="res://world/world.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
