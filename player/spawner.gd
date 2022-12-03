@@ -27,7 +27,7 @@ func spawn():
 		if target_position_node:
 			creature.destination = target_position_node.global_position
 	creature.global_position = spawn_position.global_position
-	
+
 	creature.tree_exited.connect(decrease_spawned)
 	get_tree().root.add_child(creature)
 	spawned += 1

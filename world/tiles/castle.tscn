@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://hftwolwo1hyb"]
+[gd_scene load_steps=10 format=3 uid="uid://hftwolwo1hyb"]
 
 [ext_resource type="Texture2D" uid="uid://cqs4gck8reo6g" path="res://assets/placeholder/sprites/tilesets/floors/flooring.png" id="1_iul6e"]
 [ext_resource type="Texture2D" uid="uid://i7sj1brhtels" path="res://assets/placeholder/sprites/tilesets/floors/carpet.png" id="2_6qowu"]
@@ -113,6 +113,10 @@ texture = ExtResource("1_iul6e")
 2:2/0/terrains_peering_bit/left_side = 0
 2:2/0/terrains_peering_bit/top_left_corner = 0
 2:2/0/terrains_peering_bit/top_side = 0
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_h5m1w"]
+texture = ExtResource("3_mcm8g")
+0:0/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_xcdej"]
 texture = ExtResource("2_6qowu")
@@ -425,9 +429,15 @@ texture = ExtResource("2_6qowu")
 3:7/0/terrain = 2
 3:7/0/terrains_peering_bit/left_side = 2
 
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_22e0w"]
+vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+polygons = [PackedInt32Array(0, 1, 2, 3)]
+outlines = [PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)]
+
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jclsv"]
 texture = ExtResource("3_mcm8g")
 0:0/0 = 0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_22e0w")
 
 [sub_resource type="TileSet" id="TileSet_4yynb"]
 terrain_set_0/mode = 0
@@ -437,9 +447,11 @@ terrain_set_0/terrain_1/name = "Carpet 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_0/terrain_2/name = "Carpet 2"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
+navigation_layer_0/layers = 1
 sources/0 = SubResource("TileSetAtlasSource_np3xr")
 sources/2 = SubResource("TileSetAtlasSource_xcdej")
 sources/3 = SubResource("TileSetAtlasSource_jclsv")
+sources/1 = SubResource("TileSetAtlasSource_h5m1w")
 
 [node name="Castle" type="TileMap"]
 tile_set = SubResource("TileSet_4yynb")
