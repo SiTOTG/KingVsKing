@@ -1,0 +1,10 @@
+[gd_resource type="Resource" load_steps=4 format=3 uid="uid://ddebe0gk76ugu"]
+
+[ext_resource type="Texture2D" uid="uid://cpvhr8ji6tuvm" path="res://assets/placeholder/CardPlaceholder1.jpg" id="1_g7mx8"]
+[ext_resource type="Script" path="res://player/cards/card.gd" id="1_rf1ya"]
+[ext_resource type="Texture2D" uid="uid://b8seri4nvbc8s" path="res://assets/placeholder/CardPlaceholder2.jpg" id="2_6f1kc"]
+
+[resource]
+script = ExtResource("1_rf1ya")
+hud_normal = ExtResource("1_g7mx8")
+hud_select = ExtResource("2_6f1kc")

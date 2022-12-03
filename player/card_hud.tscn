@@ -1,49 +1,63 @@
-[gd_scene load_steps=3 format=3 uid="uid://du2jyiqvrkm1d"]
+[gd_scene load_steps=5 format=3 uid="uid://du2jyiqvrkm1d"]
 
 [ext_resource type="Script" path="res://player/card_hud.gd" id="1_6rk6x"]
-[ext_resource type="Texture2D" uid="uid://cdw7iopnchhh0" path="res://icon.svg" id="1_lkgs5"]
+[ext_resource type="PackedScene" uid="uid://dap54pgtkssa4" path="res://player/cards/card_button.tscn" id="2_6ftqy"]
+[ext_resource type="Resource" uid="uid://ddebe0gk76ugu" path="res://player/cards/placeholder_card.tres" id="3_a18du"]
+[ext_resource type="Texture2D" uid="uid://b8seri4nvbc8s" path="res://assets/placeholder/CardPlaceholder2.jpg" id="3_eqh1w"]
 
 [node name="CardHUD" type="CanvasLayer"]
 script = ExtResource("1_6rk6x")
 
-[node name="HBoxContainer" type="HBoxContainer" parent="."]
-anchors_preset = -1
-anchor_top = 0.66
-anchor_right = 1.0
+[node name="CardsPanel" type="PanelContainer" parent="."]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
 anchor_bottom = 1.0
-offset_top = 66.0
+offset_left = -148.0
+offset_top = -136.0
+offset_right = 148.0
 grow_horizontal = 2
 grow_vertical = 0
-size_flags_horizontal = 3
-size_flags_vertical = 8
+
+[node name="Cards" type="HBoxContainer" parent="CardsPanel"]
+unique_name_in_owner = true
+offset_top = 13.0
+offset_right = 296.0
+offset_bottom = 123.0
+size_flags_vertical = 4
 theme_override_constants/separation = 10
+alignment = 1
 
-[node name="Button" type="Button" parent="HBoxContainer"]
-offset_right = 136.0
-offset_bottom = 136.0
-icon = ExtResource("1_lkgs5")
+[node name="CardButton" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 13.0
+offset_right = 73.0
+offset_bottom = 110.0
+texture_disabled = ExtResource("3_eqh1w")
+card = ExtResource("3_a18du")
 
-[node name="Button2" type="Button" parent="HBoxContainer"]
-offset_left = 146.0
-offset_right = 282.0
-offset_bottom = 136.0
-icon = ExtResource("1_lkgs5")
+[node name="CardButton2" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 83.0
+offset_right = 143.0
+offset_bottom = 110.0
+texture_disabled = ExtResource("3_eqh1w")
+card = ExtResource("3_a18du")
 
-[node name="Button3" type="Button" parent="HBoxContainer"]
-offset_left = 292.0
-offset_right = 428.0
-offset_bottom = 136.0
-icon = ExtResource("1_lkgs5")
+[node name="CardButton3" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 153.0
+offset_right = 213.0
+offset_bottom = 110.0
+texture_disabled = ExtResource("3_eqh1w")
+card = ExtResource("3_a18du")
 
-[node name="Button4" type="Button" parent="HBoxContainer"]
-offset_left = 438.0
-offset_right = 574.0
-offset_bottom = 136.0
-icon = ExtResource("1_lkgs5")
+[node name="CardButton4" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 223.0
+offset_right = 283.0
+offset_bottom = 110.0
+texture_disabled = ExtResource("3_eqh1w")
+card = ExtResource("3_a18du")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="."]
-
-[node name="Expand" type="Button" parent="CanvasLayer"]
+[node name="Expand" type="Button" parent="."]
 anchors_preset = -1
 anchor_top = 0.922
 anchor_right = 1.0
@@ -53,15 +67,8 @@ grow_horizontal = 2
 grow_vertical = 0
 size_flags_horizontal = 3
 size_flags_vertical = 8
+mouse_filter = 1
 text = "Cards"
-
-[node name="Expandable" type="Control" parent="CanvasLayer/Expand"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
 
 [node name="Close" type="Control" parent="."]
 layout_mode = 3
@@ -72,8 +79,7 @@ offset_left = -0.2
 offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 1
 
-[connection signal="mouse_exited" from="HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
-[connection signal="mouse_entered" from="CanvasLayer/Expand" to="." method="_on_expand_mouse_entered"]
-[connection signal="mouse_entered" from="CanvasLayer/Expand/Expandable" to="." method="_on_expandable_mouse_entered"]
+[connection signal="mouse_entered" from="Expand" to="." method="_on_expand_mouse_entered"]
 [connection signal="mouse_entered" from="Close" to="." method="_on_close_mouse_entered"]

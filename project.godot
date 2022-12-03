@@ -9,12 +9,18 @@
 config_version=5
 
 _global_script_classes=[{
+"base": "Resource",
+"class": &"Card",
+"language": &"GDScript",
+"path": "res://player/cards/card.gd"
+}, {
 "base": "CharacterBody2D",
 "class": &"Footman",
 "language": &"GDScript",
 "path": "res://creatures/footman.gd"
 }]
 _global_script_class_icons={
+"Card": "",
 "Footman": ""
 }
 

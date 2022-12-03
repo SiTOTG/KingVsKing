@@ -27,8 +27,6 @@ editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("2_2qahm")
 
-[node name="card_hud" parent="PlayerCamera" instance=ExtResource("4_j856n")]
-
 [node name="GrassBackground" parent="." instance=ExtResource("3_5pghe")]
 
 [node name="Spawner" parent="." instance=ExtResource("4_vwoog")]
@@ -42,3 +40,5 @@ position = Vector2(-793.638, 161.18)
 position = Vector2(-430.356, 111.181)
 enemy_layer = 2
 friendly_layer = 4
+
+[node name="card_hud" parent="." instance=ExtResource("4_j856n")]
