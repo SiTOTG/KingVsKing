@@ -356,6 +356,7 @@ nodes/output/position = Vector2(300, 160)
 node_connections = [&"output", 0, &"Movement", &"Movement", 0, &"IdleDirection", &"Movement", 1, &"MoveDirection"]
 
 [node name="Footman" type="CharacterBody2D"]
+y_sort_enabled = true
 script = ExtResource("1_6a46t")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
