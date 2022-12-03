@@ -5,7 +5,11 @@
 [ext_resource type="PackedScene" uid="uid://bft27p6lrpn8r" path="res://world/tiles/grass.tscn" id="2_s4sx3"]
 [ext_resource type="PackedScene" uid="uid://md5yvcv0lqjr" path="res://world/tiles/grass_background.tscn" id="3_5pghe"]
 [ext_resource type="PackedScene" uid="uid://co713pq5wwm73" path="res://player/spawner.tscn" id="4_vwoog"]
-[ext_resource type="PackedScene" uid="uid://ccgdfolvkxehl" path="res://creatures/footman.tscn" id="5_m8mce"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_r7k4o"]
+vertices = PackedVector2Array(208, 16, 616, 16, 608, 272, 208, 136, -592, 264, 168, 136, -597.413, 286.81, -808, 288, -808, 24, -640, 24, -408, 8, -408, -8, -120, -8, 8, 24, 168, 104, -120, -24, 8, -24, 184, 24, 184, 80, -640, 8)
+polygons = [PackedInt32Array(0, 1, 2, 3), PackedInt32Array(3, 2, 4, 5), PackedInt32Array(6, 7, 8, 9, 4), PackedInt32Array(5, 10, 11, 12, 13, 14), PackedInt32Array(12, 15, 16, 13), PackedInt32Array(13, 17, 18, 14), PackedInt32Array(4, 9, 19, 10, 5)]
+outlines = [PackedVector2Array(-408, -8, -120, -8, -120, -24, 8, -24, 8, 24, 184, 24, 184, 80, 168, 104, 168, 136, 208, 136, 208, 16, 616, 16, 608, 272, -592, 264, -597.413, 286.81, -808, 288, -808, 24, -640, 24, -640, 8, -408, 8)]
 
 [node name="World" type="Node2D"]
 
@@ -29,6 +33,10 @@ script = ExtResource("2_2qahm")
 
 [node name="Spawner" parent="." instance=ExtResource("4_vwoog")]
 position = Vector2(584, 56)
+target_position = NodePath("../DestinationLane1")
 
-[node name="Footman" parent="." instance=ExtResource("5_m8mce")]
-position = Vector2(0, 8)
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navpoly = SubResource("NavigationPolygon_r7k4o")
+
+[node name="DestinationLane1" type="Marker2D" parent="."]
+position = Vector2(-793.638, 161.18)

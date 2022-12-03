@@ -2,6 +2,7 @@ extends StaticBody2D
 
 @export var creature_scene: PackedScene
 @export var spawn_capacity := 100
+@export_node_path(Node2D) var target_position
 
 @onready var spawn_position = $SpawnPosition
 @onready var progress_bar = $ProgressBar
@@ -18,8 +19,15 @@ func spawn():
 	if not creature_scene:
 		printerr("No creature to spawn")
 		return
-	var creature: CharacterBody2D = creature_scene.instantiate() as CharacterBody2D
+	var creature: Footman = creature_scene.instantiate() as Footman
+	if not creature:
+		return
+	if target_position:
+		var target_position_node: Node2D = get_node_or_null(target_position) as Node2D
+		if target_position_node:
+			creature.destination = target_position_node.global_position
 	creature.global_position = spawn_position.global_position
+	
 	creature.tree_exited.connect(decrease_spawned)
 	get_tree().root.add_child(creature)
 	spawned += 1

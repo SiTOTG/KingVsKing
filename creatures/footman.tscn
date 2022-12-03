@@ -382,3 +382,6 @@ active = true
 parameters/IdleDirection/blend_position = Vector2(0.5, -1)
 parameters/MoveDirection/blend_position = Vector2(0.5, -1)
 parameters/Movement/current = 1
+
+[node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
+avoidance_enabled = true
