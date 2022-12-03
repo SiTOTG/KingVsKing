@@ -13,6 +13,7 @@ layer_1/tile_data = PackedInt32Array(1310768, 196610, 2, 1245232, 196610, 1, 117
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 current = true
+limit_smoothed = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("2_2qahm")
