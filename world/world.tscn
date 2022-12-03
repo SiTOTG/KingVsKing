@@ -42,3 +42,4 @@ enemy_layer = 2
 friendly_layer = 4
 
 [node name="card_hud" parent="." instance=ExtResource("4_j856n")]
+visible = false

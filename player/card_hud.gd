@@ -1,18 +1,19 @@
 extends CanvasLayer
 
-@onready var cards = $CardsPanel
+@onready var cardsPanel = $CardsPanel
 @onready var expand = $Expand
 
 
 func _ready():
-	cards.hide()
+	show()
+	cardsPanel.hide()
 	expand.show()
 
 func _on_expand_mouse_entered():
-	cards.show()
+	cardsPanel.show()
 	expand.hide()
 
 
 func _on_close_mouse_entered():
-	cards.hide()
+	cardsPanel.hide()
 	expand.show()
