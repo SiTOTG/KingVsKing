@@ -1,0 +1,79 @@
+[gd_scene load_steps=3 format=3 uid="uid://du2jyiqvrkm1d"]
+
+[ext_resource type="Script" path="res://player/card_hud.gd" id="1_6rk6x"]
+[ext_resource type="Texture2D" uid="uid://cdw7iopnchhh0" path="res://icon.svg" id="1_lkgs5"]
+
+[node name="CardHUD" type="CanvasLayer"]
+script = ExtResource("1_6rk6x")
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+anchors_preset = -1
+anchor_top = 0.66
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 66.0
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+theme_override_constants/separation = 10
+
+[node name="Button" type="Button" parent="HBoxContainer"]
+offset_right = 136.0
+offset_bottom = 136.0
+icon = ExtResource("1_lkgs5")
+
+[node name="Button2" type="Button" parent="HBoxContainer"]
+offset_left = 146.0
+offset_right = 282.0
+offset_bottom = 136.0
+icon = ExtResource("1_lkgs5")
+
+[node name="Button3" type="Button" parent="HBoxContainer"]
+offset_left = 292.0
+offset_right = 428.0
+offset_bottom = 136.0
+icon = ExtResource("1_lkgs5")
+
+[node name="Button4" type="Button" parent="HBoxContainer"]
+offset_left = 438.0
+offset_right = 574.0
+offset_bottom = 136.0
+icon = ExtResource("1_lkgs5")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="."]
+
+[node name="Expand" type="Button" parent="CanvasLayer"]
+anchors_preset = -1
+anchor_top = 0.922
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = 0.199982
+grow_horizontal = 2
+grow_vertical = 0
+size_flags_horizontal = 3
+size_flags_vertical = 8
+text = "Cards"
+
+[node name="Expandable" type="Control" parent="CanvasLayer/Expand"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Close" type="Control" parent="."]
+layout_mode = 3
+anchor_left = 0.002
+anchor_right = 1.0
+anchor_bottom = 0.605
+offset_left = -0.2
+offset_right = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[connection signal="mouse_exited" from="HBoxContainer" to="." method="_on_h_box_container_mouse_exited"]
+[connection signal="mouse_entered" from="CanvasLayer/Expand" to="." method="_on_expand_mouse_entered"]
+[connection signal="mouse_entered" from="CanvasLayer/Expand/Expandable" to="." method="_on_expandable_mouse_entered"]
+[connection signal="mouse_entered" from="Close" to="." method="_on_close_mouse_entered"]

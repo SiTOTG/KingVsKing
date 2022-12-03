@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://dy2qpxg1tslfv"]
+[gd_scene load_steps=8 format=3 uid="uid://dy2qpxg1tslfv"]
 
 [ext_resource type="PackedScene" uid="uid://hftwolwo1hyb" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
 [ext_resource type="Script" path="res://world/player_camera.gd" id="2_2qahm"]
 [ext_resource type="PackedScene" uid="uid://bft27p6lrpn8r" path="res://world/tiles/grass.tscn" id="2_s4sx3"]
 [ext_resource type="PackedScene" uid="uid://md5yvcv0lqjr" path="res://world/tiles/grass_background.tscn" id="3_5pghe"]
+[ext_resource type="PackedScene" uid="uid://du2jyiqvrkm1d" path="res://player/card_hud.tscn" id="4_j856n"]
 [ext_resource type="PackedScene" uid="uid://co713pq5wwm73" path="res://player/spawner.tscn" id="4_vwoog"]
 [ext_resource type="PackedScene" uid="uid://ccgdfolvkxehl" path="res://creatures/footman.tscn" id="6_tlt63"]
 
@@ -25,6 +26,8 @@ limit_smoothed = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
 script = ExtResource("2_2qahm")
+
+[node name="card_hud" parent="PlayerCamera" instance=ExtResource("4_j856n")]
 
 [node name="GrassBackground" parent="." instance=ExtResource("3_5pghe")]
 
