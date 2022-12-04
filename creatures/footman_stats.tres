@@ -1,0 +1,8 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://uv8qy6cdvk4b"]
+
+[ext_resource type="Script" path="res://creatures/creature_stats.gd" id="1_wde5s"]
+
+[resource]
+script = ExtResource("1_wde5s")
+hp = 100
+max_hp = 100
