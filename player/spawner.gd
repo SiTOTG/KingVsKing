@@ -13,7 +13,7 @@ extends StaticBody2D
 
 var spawned = 0
 
-func _process(delta):
+func _process(_delta):
 	progress_bar.value = (1 - (spawn_timer.time_left / spawn_timer.wait_time))*100
 
 func spawn():

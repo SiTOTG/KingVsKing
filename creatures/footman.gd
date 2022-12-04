@@ -35,9 +35,9 @@ func _ready():
 	agent.velocity_computed.connect(on_velocity_computed)
 	agent.target_location = destination
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if global_position.distance_to(destination) > 10:
-		move(delta)
+		move()
 	else:
 		animation_tree.set("parameters/Movement/current", IDLE)
 
@@ -48,7 +48,7 @@ func _unhandled_input(event):
 	if event.is_action_pressed("ui_accept"):
 		animation_tree.set("parameters/Attack/active", true)
 
-func move(delta):
+func move():
 	var direction = global_position.direction_to(agent.get_next_location())
 	animation_tree.set("parameters/IdleDirection/blend_position", direction)
 	animation_tree.set("parameters/MoveDirection/blend_position", direction)
@@ -62,14 +62,20 @@ func on_velocity_computed(safe_velocity: Vector2):
 	move_and_slide()
 
 func _on_enemy_detector_area_entered(area):
-	if not is_instance_valid(area): return
-	target = area
+	if is_instance_valid(target): return
+	retarget(area)
+
+func retarget(new_target):
+	if not is_instance_valid(new_target): return
+	target = new_target
 	destination = target.global_position
 	attack_timer.start()
 
 func _on_enemy_detector_area_exited(area):
-	print("Enemy left area")
-
+	if area == target:
+		var enemies = enemy_detector.get_overlapping_areas()
+		if len(enemies) > 0:
+			retarget(enemies[0])
 
 func _on_attack_timer_timeout():
 	animation_tree.set("parameters/Attack/active", true)
