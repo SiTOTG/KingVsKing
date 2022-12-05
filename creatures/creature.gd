@@ -40,6 +40,8 @@ func _ready():
 	stats.hp_updated.connect(
 		func(previous_hp: int, new_hp: int, max_hp: int):
 			value_bar.animate_bar(new_hp, max_hp)
+			if new_hp == 0:
+				queue_free()
 	)
 	value_bar.set_bar(stats.hp, stats.max_hp)
 	value_bar.visible = GlobalSettings.show_creature_ui
@@ -92,7 +94,16 @@ func _on_enemy_detector_area_exited(area):
 		if len(enemies) > 0:
 			retarget(enemies[0])
 
+func retarget_find_target() -> bool:
+	var enemies = enemy_detector.get_overlapping_areas()
+	if len(enemies) > 0:
+		retarget(enemies[0])
+		return true
+	return false
+
 func _on_attack_timer_timeout():
+	if not is_instance_valid(target):
+		if not retarget_find_target(): return
 	direction = global_position.direction_to(target.global_position)
 	damage_target()
 	_attack()

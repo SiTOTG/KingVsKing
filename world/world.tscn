@@ -39,8 +39,19 @@ move_position = NodePath("../DestinationLane1")
 [node name="DestinationLane1" type="Marker2D" parent="."]
 position = Vector2(-793.638, 161.18)
 
+[node name="EvilSpawner" parent="." instance=ExtResource("4_vwoog")]
+position = Vector2(-896, 88)
+rotation = 3.14159
+scale = Vector2(1, -1)
+creature_scene = ExtResource("9_yn5ae")
+move_position = NodePath("../Spawner")
+enemy_layer = 2
+friendly_layer = 4
+
+[node name="ProgressBar" parent="EvilSpawner" index="4"]
+visible = false
+
 [node name="card_hud" parent="." instance=ExtResource("4_j856n")]
 visible = false
 
-[node name="Skeleton" parent="." instance=ExtResource("9_yn5ae")]
-position = Vector2(-136.511, 70.247)
+[editable path="EvilSpawner"]
