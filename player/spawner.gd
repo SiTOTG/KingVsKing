@@ -22,7 +22,7 @@ func spawn():
 	if not creature_scene:
 		printerr("No creature to spawn")
 		return
-	var creature: Footman = creature_scene.instantiate() as Footman
+	var creature: Creature = creature_scene.instantiate() as Creature
 	if not creature:
 		return
 	if move_position:

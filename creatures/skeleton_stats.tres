@@ -1,0 +1,9 @@
+[gd_resource type="Resource" load_steps=2 format=3 uid="uid://biumvnw48htm3"]
+
+[ext_resource type="Script" path="res://creatures/creature_stats.gd" id="1_1tqm5"]
+
+[resource]
+script = ExtResource("1_1tqm5")
+hp = 100
+max_hp = 100
+speed = 120

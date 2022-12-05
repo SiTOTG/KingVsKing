@@ -14,15 +14,15 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://player/cards/card.gd"
 }, {
+"base": "CharacterBody2D",
+"class": &"Creature",
+"language": &"GDScript",
+"path": "res://creatures/creature.gd"
+}, {
 "base": "Resource",
 "class": &"CreatureStats",
 "language": &"GDScript",
 "path": "res://creatures/creature_stats.gd"
-}, {
-"base": "CharacterBody2D",
-"class": &"Footman",
-"language": &"GDScript",
-"path": "res://creatures/footman.gd"
 }, {
 "base": "TextureRect",
 "class": &"ValueBar",
@@ -31,8 +31,8 @@ _global_script_classes=[{
 }]
 _global_script_class_icons={
 "Card": "",
+"Creature": "",
 "CreatureStats": "",
-"Footman": "",
 "ValueBar": ""
 }
 

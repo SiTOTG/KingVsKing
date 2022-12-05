@@ -1,15 +1,15 @@
-[gd_scene load_steps=5 format=3 uid="uid://co713pq5wwm73"]
+[gd_scene load_steps=5 format=3 uid="uid://c3q6txdt1k5m8"]
 
 [ext_resource type="Texture2D" uid="uid://c3bjjubcocilf" path="res://assets/placeholder/sprites/medieval-tavern_10000.png" id="1_3vc4b"]
 [ext_resource type="Script" path="res://player/spawner.gd" id="1_li363"]
-[ext_resource type="PackedScene" uid="uid://ccgdfolvkxehl" path="res://creatures/footman.tscn" id="2_xyipj"]
+[ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="2_jd72l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2w1w"]
 size = Vector2(158, 140)
 
 [node name="Spawner" type="StaticBody2D"]
 script = ExtResource("1_li363")
-creature_scene = ExtResource("2_xyipj")
+creature_scene = ExtResource("2_jd72l")
 enemy_layer = 4
 friendly_layer = 2
 

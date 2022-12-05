@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://dy2qpxg1tslfv"]
+[gd_scene load_steps=10 format=3 uid="uid://wpab2fu542bd"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://hftwolwo1hyb" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -6,8 +6,9 @@
 [ext_resource type="PackedScene" uid="uid://bft27p6lrpn8r" path="res://world/tiles/grass.tscn" id="2_s4sx3"]
 [ext_resource type="PackedScene" uid="uid://md5yvcv0lqjr" path="res://world/tiles/grass_background.tscn" id="3_5pghe"]
 [ext_resource type="PackedScene" uid="uid://du2jyiqvrkm1d" path="res://player/card_hud.tscn" id="4_j856n"]
-[ext_resource type="PackedScene" uid="uid://co713pq5wwm73" path="res://player/spawner.tscn" id="4_vwoog"]
-[ext_resource type="PackedScene" uid="uid://ccgdfolvkxehl" path="res://creatures/footman.tscn" id="6_tlt63"]
+[ext_resource type="PackedScene" uid="uid://c3q6txdt1k5m8" path="res://player/spawner.tscn" id="4_vwoog"]
+[ext_resource type="PackedScene" uid="uid://ywlcclxvc1hc" path="res://creatures/footman.tscn" id="8_x4gb2"]
+[ext_resource type="PackedScene" uid="uid://b77yrfd22bqbp" path="res://creatures/skeleton.tscn" id="9_yn5ae"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_61105")
@@ -32,15 +33,14 @@ script = ExtResource("2_2qahm")
 
 [node name="Spawner" parent="." instance=ExtResource("4_vwoog")]
 position = Vector2(584, 56)
+creature_scene = ExtResource("8_x4gb2")
 move_position = NodePath("../DestinationLane1")
 
 [node name="DestinationLane1" type="Marker2D" parent="."]
 position = Vector2(-793.638, 161.18)
 
-[node name="Footman" parent="." instance=ExtResource("6_tlt63")]
-position = Vector2(-430.356, 111.181)
-enemy_layer = 2
-friendly_layer = 4
-
 [node name="card_hud" parent="." instance=ExtResource("4_j856n")]
 visible = false
+
+[node name="Skeleton" parent="." instance=ExtResource("9_yn5ae")]
+position = Vector2(-136.511, 70.247)
