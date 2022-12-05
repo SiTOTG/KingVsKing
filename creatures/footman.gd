@@ -43,6 +43,11 @@ func _ready():
 			value_bar.animate_bar(new_hp, max_hp)
 	)
 	value_bar.set_bar(stats.hp, stats.max_hp)
+	value_bar.visible = GlobalSettings.show_creature_ui
+	GlobalSettings.creature_ui_visibility_changed.connect(
+		func(value):
+			value_bar.visible = value
+	)
 
 func _physics_process(_delta):
 	if global_position.distance_to(destination) > 10:

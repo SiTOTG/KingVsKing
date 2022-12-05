@@ -1,5 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://dy2qpxg1tslfv"]
+[gd_scene load_steps=9 format=3 uid="uid://dy2qpxg1tslfv"]
 
+[ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://hftwolwo1hyb" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
 [ext_resource type="Script" path="res://world/player_camera.gd" id="2_2qahm"]
 [ext_resource type="PackedScene" uid="uid://bft27p6lrpn8r" path="res://world/tiles/grass.tscn" id="2_s4sx3"]
@@ -9,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://ccgdfolvkxehl" path="res://creatures/footman.tscn" id="6_tlt63"]
 
 [node name="World" type="Node2D"]
+script = ExtResource("1_61105")
 
 [node name="Tiles" type="Node2D" parent="."]
 
