@@ -9,3 +9,5 @@ extends Resource
 @export var mouse_empty: Texture2D
 @export var mouse_cast: Texture2D
 @export var mouse_upgrade: Texture2D
+@export_group("Stats")
+@export var title: String = ""

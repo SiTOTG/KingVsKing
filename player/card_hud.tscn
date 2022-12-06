@@ -71,5 +71,8 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="HeldCard" type="Sprite2D" parent="."]
+scale = Vector2(0.35, 0.35)
+
 [connection signal="mouse_entered" from="Expand" to="." method="_on_expand_mouse_entered"]
 [connection signal="mouse_entered" from="Close" to="." method="_on_close_mouse_entered"]

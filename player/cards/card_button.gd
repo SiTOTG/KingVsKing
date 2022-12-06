@@ -1,5 +1,8 @@
 @tool
+class_name CardButton
 extends TextureButton
+
+signal card_pressed(card: Card)
 
 @export var card: Card:
 	set(value):
@@ -14,3 +17,7 @@ extends TextureButton
 			texture_pressed = null
 			texture_hover = null
 			texture_disabled = null
+
+
+func _on_pressed():
+	card_pressed.emit(card)
