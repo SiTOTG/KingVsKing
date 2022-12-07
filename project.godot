@@ -29,6 +29,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://creatures/creature_stats.gd"
 }, {
+"base": "TileMap",
+"class": &"CustomTileMap",
+"language": &"GDScript",
+"path": "res://world/tiles/custom_tile_map.gd"
+}, {
 "base": "TextureRect",
 "class": &"ValueBar",
 "language": &"GDScript",
@@ -39,6 +44,7 @@ _global_script_class_icons={
 "CardButton": "",
 "Creature": "",
 "CreatureStats": "",
+"CustomTileMap": "",
 "ValueBar": ""
 }
 

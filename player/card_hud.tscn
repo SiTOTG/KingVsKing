@@ -22,28 +22,23 @@ grow_vertical = 0
 
 [node name="Cards" type="HBoxContainer" parent="CardsPanel"]
 unique_name_in_owner = true
-layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="CardButton" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton2" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton3" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton4" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
