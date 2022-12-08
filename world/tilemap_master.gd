@@ -8,6 +8,8 @@ var is_showing_buidable_tiles: bool = false
 var origin: Vector2i = Vector2i.ZERO
 var size: Vector2i = Vector2i.ONE
 
+var occupied_cells: Array[Vector2i] = []
+
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and is_showing_buidable_tiles:
 		var cell_position = local_to_map(get_local_mouse_position())
@@ -23,6 +25,10 @@ func _unhandled_input(event):
 
 func get_origin_position() -> Vector2:
 	return map_to_local(origin)
+
+func set_tiles_as_blocked():
+	var buildable_tiles = get_buildable_cells()
+	occupied_cells.append_array(buildable_tiles)
 
 func show_buildable_tiles(size: Vector2i):
 	self.origin = local_to_map(get_local_mouse_position())
@@ -67,6 +73,6 @@ func get_buildable_cells() -> Array[Vector2i]:
 			continue
 		var buildable_cells_child = custom_tile_map.get_buildable_cells(origin, size)
 		for cell in buildable_cells_child:
-			if not buildable_cells.has(cell):
+			if not buildable_cells.has(cell) and not occupied_cells.has(cell):
 				buildable_cells.append(cell)
 	return buildable_cells

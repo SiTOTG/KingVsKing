@@ -345,7 +345,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_pqeee")
 blend_point_1/pos = -1.0
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xavfb"]
-graph_offset = Vector2(-623.314, 37.7129)
+graph_offset = Vector2(-510.372, 169.147)
 nodes/AttackDirection/node = SubResource("AnimationNodeBlendSpace1D_6ocwi")
 nodes/AttackDirection/position = Vector2(60, 380)
 nodes/AttackTrigger/node = SubResource("AnimationNodeOneShot_sle6k")

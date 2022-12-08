@@ -34,4 +34,7 @@ offset_top = -88.0
 offset_right = 88.0
 offset_bottom = -61.0
 
+[node name="MovePosition" type="Marker2D" parent="."]
+position = Vector2(-360, 16)
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

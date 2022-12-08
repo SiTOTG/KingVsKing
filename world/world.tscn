@@ -49,7 +49,9 @@ script = ExtResource("2_2qahm")
 [node name="Spawner" parent="." instance=ExtResource("4_vwoog")]
 position = Vector2(584, 56)
 creature_scene = ExtResource("8_x4gb2")
-move_position = NodePath("../DestinationLane1")
+
+[node name="MovePosition" parent="Spawner" index="5"]
+position = Vector2(-1384, 105)
 
 [node name="DestinationLane1" type="Marker2D" parent="."]
 position = Vector2(-793.638, 161.18)
@@ -59,12 +61,14 @@ position = Vector2(-896, 88)
 rotation = 3.14159
 scale = Vector2(1, -1)
 creature_scene = ExtResource("9_yn5ae")
-move_position = NodePath("../Spawner")
 enemy_layer = 2
 friendly_layer = 4
 
 [node name="ProgressBar" parent="EvilSpawner" index="4"]
 visible = false
+
+[node name="MovePosition" parent="EvilSpawner" index="5"]
+position = Vector2(-1424, 16.0036)
 
 [node name="card_hud" parent="." instance=ExtResource("4_j856n")]
 visible = false
@@ -72,4 +76,5 @@ tilemap_master = NodePath("../TilemapMaster")
 
 [connection signal="create_spawner" from="card_hud" to="." method="_on_card_hud_create_spawner"]
 
+[editable path="Spawner"]
 [editable path="EvilSpawner"]

@@ -6,7 +6,7 @@ func get_buildable_cells(origin: Vector2i, size: Vector2i) -> Array[Vector2i]:
 	var available_cells := get_available_cells(origin, size)
 	for cell in available_cells:
 		var cell_data: TileData = get_cell_tile_data(0, cell)
-		if cell_data.get_custom_data("Buildable") == true and cell_data.get_custom_data("Occupied") == false:
+		if cell_data.get_custom_data("Buildable") == true:
 			buildable_cells.append(cell)
 	return buildable_cells
 

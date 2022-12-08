@@ -8,7 +8,7 @@ func _unhandled_input(event):
 
 
 func _on_card_hud_create_spawner(position: Vector2, spawner_scene: PackedScene):
-	var spawner = spawner_scene.instantiate() as StaticBody2D
+	var spawner = spawner_scene.instantiate() as Spawner
 	spawner.global_position = position
-	spawner.move_position = spawner.get_path_to(destination_lane_1, true)
+	spawner.starting_move_position = destination_lane_1.global_position
 	add_child(spawner)

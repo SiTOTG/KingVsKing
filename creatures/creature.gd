@@ -51,7 +51,9 @@ func _ready():
 	)
 
 func _physics_process(_delta):
-	if global_position.distance_to(destination) > 10:
+	if not is_instance_valid(target) and agent.target_location != destination:
+		agent.target_location = destination
+	if global_position.distance_to(agent.target_location) > 10:
 		move()
 	else:
 		_idle()

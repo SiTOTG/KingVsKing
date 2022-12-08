@@ -35,6 +35,7 @@ func _unhandled_input(event):
 		if held_card and ctx == SPAWNER and _tilemap_master.can_build_there():
 			var spawner = load(held_card.spawner_scene) as PackedScene
 			create_spawner.emit(_tilemap_master.get_origin_position(), spawner)
+			_tilemap_master.set_tiles_as_blocked()
 
 func _physics_process(delta):
 	if held_card_sprite:
