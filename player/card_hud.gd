@@ -1,16 +1,21 @@
 extends CanvasLayer
 
+@export_node_path("TileMap") var tilemap_master
+
 @onready var cardsPanel = $CardsPanel
 @onready var expand = $Expand
 @onready var cards = %Cards
 @onready var held_card_sprite = $HeldCard
 
+
 var held_card: Card = null
+var _tilemap_master: TilemapMaster
 
 func _ready():
 	show()
 	cardsPanel.hide()
 	expand.show()
+	_tilemap_master = get_node(tilemap_master)
 
 	connect_signals()
 
@@ -25,6 +30,7 @@ func connect_signals():
 
 func hold_card(card: Card):
 	held_card_sprite.texture = card.mouse_empty
+	_tilemap_master.show_buildable_tiles(Vector2i(2, 3))
 	held_card = card
 	print("Holding card ", card.title)
 

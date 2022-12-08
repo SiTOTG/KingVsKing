@@ -59,13 +59,6 @@ func _physics_process(_delta):
 func _idle():
 	pass
 
-func _unhandled_input(event):
-	# TODO: Used only for debugging, remove later, when we have proper gameplay
-	if event is InputEventMouseButton and event.button_index == 1 and event.is_pressed():
-		destination = get_global_mouse_position()
-		if not is_instance_valid(target):
-			agent.target_location = destination
-
 func move():
 	_move()
 	direction = global_position.direction_to(agent.get_next_location())
