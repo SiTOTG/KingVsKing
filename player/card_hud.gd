@@ -14,11 +14,12 @@ var held_card_sprite: Sprite2D
 signal create_spawner(position: Vector2, spawner_scene: PackedScene)
 
 enum {
+	RESET,
 	NO_TARGET,
 	SPAWNER
 }
 
-var ctx: int = NO_TARGET
+var ctx: int = RESET
 
 func _ready():
 	show()
@@ -30,19 +31,24 @@ func _ready():
 
 func _unhandled_input(event):
 	
-	if event is InputEventMouseButton and event.pressed and event.button_index == 1:
-		event = event as InputEventMouseButton
-		if held_card and ctx == SPAWNER and _tilemap_master.can_build_there():
-			var spawner = load(held_card.spawner_scene) as PackedScene
-			create_spawner.emit(_tilemap_master.get_origin_position(), spawner)
-			_tilemap_master.set_tiles_as_blocked()
+	if event is InputEventMouseButton and event.pressed:
+		if event.button_index == MOUSE_BUTTON_LEFT:
+			if held_card and ctx == SPAWNER and _tilemap_master.can_build_there():
+				var spawner = load(held_card.spawner_scene) as PackedScene
+				create_spawner.emit(_tilemap_master.get_origin_position(), spawner)
+				_tilemap_master.set_tiles_as_blocked()
+		elif event.button_index == MOUSE_BUTTON_RIGHT and held_card:
+			release_card()
 
 func _physics_process(delta):
-	if held_card_sprite:
+	if held_card and held_card_sprite:
 		held_card_sprite.global_position = held_card_sprite.get_global_mouse_position()
 		update_ctx()
 
 func update_ctx():
+	if not held_card:
+		ctx = RESET
+		return
 	if _tilemap_master.is_over_tile():
 		if ctx != SPAWNER:
 			ctx = SPAWNER
@@ -75,6 +81,9 @@ func hold_card(card: Card):
 func release_card():
 	held_card = null
 	held_card_sprite.queue_free()
+	held_card_sprite = null
+	_tilemap_master.hide_buildable_tiles()
+	update_ctx()
 
 func _on_expand_mouse_entered():
 	cardsPanel.show()

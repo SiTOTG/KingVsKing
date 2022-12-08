@@ -10,9 +10,6 @@ var mouse_start_pos
 var screen_start_position
 
 var dragging = false
-#
-#func _ready():
-#	Input.mouse_mode = Input.MOUSE_MODE_CONFINED
 
 func _unhandled_input(event):
 	if event.is_action("drag"):
