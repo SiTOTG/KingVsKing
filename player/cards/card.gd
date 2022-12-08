@@ -11,3 +11,6 @@ extends Resource
 @export var mouse_upgrade: Texture2D
 @export_group("Stats")
 @export var title: String = ""
+
+@export_group("Effect")
+@export_file("*.tscn") var spawner_scene

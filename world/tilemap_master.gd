@@ -16,18 +16,31 @@ func _unhandled_input(event):
 
 		origin = cell_position
 
-		var size = Vector2i(1, 2)
-
 		var buildable_cells = get_buildable_cells()
 
 		clear()
 		color_cells(buildable_cells)
 
+func get_origin_position() -> Vector2:
+	return map_to_local(origin)
+
 func show_buildable_tiles(size: Vector2i):
 	self.origin = local_to_map(get_local_mouse_position())
 	self.size = size
 	is_showing_buidable_tiles = true
-	
+
+func hide_buildable_tiles():
+	is_showing_buidable_tiles = false
+	clear()
+
+func can_build_there() -> bool:
+	var buildable_cells = get_buildable_cells()
+	for i in range(origin.x-size.x, origin.x+size.x+1):
+		for j in range(origin.y-size.y, origin.y+size.y+1):
+			var cell = Vector2i(i, j)
+			if not cell in buildable_cells:
+				return false
+	return true
 
 func is_over_tile() -> bool:
 	var cell_position: Vector2i = local_to_map(get_local_mouse_position())

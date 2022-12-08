@@ -22,23 +22,38 @@ grow_vertical = 0
 
 [node name="Cards" type="HBoxContainer" parent="CardsPanel"]
 unique_name_in_owner = true
+offset_top = 13.0
+offset_right = 296.0
+offset_bottom = 123.0
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="CardButton" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 13.0
+offset_right = 73.0
+offset_bottom = 110.0
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton2" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 83.0
+offset_right = 143.0
+offset_bottom = 110.0
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton3" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 153.0
+offset_right = 213.0
+offset_bottom = 110.0
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton4" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
+offset_left = 223.0
+offset_right = 283.0
+offset_bottom = 110.0
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
@@ -65,9 +80,6 @@ offset_right = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
-
-[node name="HeldCard" type="Sprite2D" parent="."]
-scale = Vector2(0.35, 0.35)
 
 [connection signal="mouse_entered" from="Expand" to="." method="_on_expand_mouse_entered"]
 [connection signal="mouse_entered" from="Close" to="." method="_on_close_mouse_entered"]

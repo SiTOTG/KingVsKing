@@ -70,4 +70,6 @@ visible = false
 visible = false
 tilemap_master = NodePath("../TilemapMaster")
 
+[connection signal="create_spawner" from="card_hud" to="." method="_on_card_hud_create_spawner"]
+
 [editable path="EvilSpawner"]
