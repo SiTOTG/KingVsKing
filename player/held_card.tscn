@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://byjd8oh50g21m"]
+
+[ext_resource type="Script" path="res://player/held_card.gd" id="1_sne8w"]
+
+[node name="HeldCard" type="Sprite2D"]
+script = ExtResource("1_sne8w")

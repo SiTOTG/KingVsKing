@@ -1,0 +1,7 @@
+[gd_scene load_steps=3 format=3 uid="uid://b1jxtejto2egx"]
+
+[ext_resource type="PackedScene" uid="uid://c3q6txdt1k5m8" path="res://player/spawner.tscn" id="1_1awy2"]
+[ext_resource type="PackedScene" uid="uid://ywlcclxvc1hc" path="res://creatures/footman.tscn" id="2_foqw2"]
+
+[node name="FootmanSpawner" instance=ExtResource("1_1awy2")]
+creature_scene = ExtResource("2_foqw2")

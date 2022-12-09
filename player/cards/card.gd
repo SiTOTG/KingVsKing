@@ -25,10 +25,16 @@ enum {
 
 signal context_changed(old_context: int, new_context: int)
 
-var active = false:
+var active: bool = false:
 	set(value):
-		active = value
-		update_ctx()
+		if active != value:
+			active = value
+			if active:
+				Events.start_card_activation.emit(self)
+			else:
+				Events.finish_card_activation.emit()
+			update_ctx()
+
 var hovering_tiles = false:
 	set(value):
 		hovering_tiles = value

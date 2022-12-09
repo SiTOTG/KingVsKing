@@ -10,12 +10,13 @@ var size: Vector2i = Vector2i.ONE
 
 var occupied_cells: Array[Vector2i] = []
 
-var active_card: Card
+var active_card: Card:
+	set(value):
+		active_card = value
 
 func _ready():
 	Events.start_card_activation.connect(_on_card_activate)
 	Events.finish_card_activation.connect(_on_card_deactivate)
-	Events.cancel_card_activation.connect(_on_card_deactivate)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and active_card:
@@ -96,6 +97,7 @@ func _on_card_activate(card: Card):
 func _on_card_deactivate():
 	active_card.context_changed.disconnect(_on_card_context_changed)
 	active_card = null
+	hide_buildable_tiles()
 
 func _on_card_context_changed(old_context: int, new_context: int):
 	if new_context == Card.SPAWNER:

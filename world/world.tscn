@@ -1,4 +1,4 @@
-[gd_scene load_steps=15 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=16 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -12,6 +12,7 @@
 [ext_resource type="Script" path="res://world/tiles/custom_tile_map.gd" id="5_ahjhf"]
 [ext_resource type="PackedScene" uid="uid://ywlcclxvc1hc" path="res://creatures/footman.tscn" id="8_x4gb2"]
 [ext_resource type="PackedScene" uid="uid://b77yrfd22bqbp" path="res://creatures/skeleton.tscn" id="9_yn5ae"]
+[ext_resource type="PackedScene" uid="uid://byjd8oh50g21m" path="res://player/held_card.tscn" id="13_1776e"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nujo8"]
 texture = ExtResource("2_b5ipp")
@@ -74,7 +75,7 @@ position = Vector2(-1424, 16.0036)
 visible = false
 tilemap_master = NodePath("../TilemapMaster")
 
-[connection signal="create_spawner" from="card_hud" to="." method="_on_card_hud_create_spawner"]
+[node name="HeldCard" parent="." instance=ExtResource("13_1776e")]
 
 [editable path="Spawner"]
 [editable path="EvilSpawner"]
