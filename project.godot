@@ -72,6 +72,7 @@ config/icon="res://icon.svg"
 
 GlobalSettings="*res://global_settings.gd"
 DebugCamera="*res://debug/debug_camera.tscn"
+Events="*res://events.gd"
 
 [display]
 

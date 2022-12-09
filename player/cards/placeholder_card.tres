@@ -14,3 +14,4 @@ mouse_build = ExtResource("3_56kvu")
 mouse_empty = ExtResource("3_4tcfl")
 title = "Placeholder"
 spawner_scene = "res://player/spawner.tscn"
+spawner_size = Vector2i(3, 2)

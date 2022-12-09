@@ -10,7 +10,19 @@ var size: Vector2i = Vector2i.ONE
 
 var occupied_cells: Array[Vector2i] = []
 
+var active_card: Card
+
+func _ready():
+	Events.start_card_activation.connect(_on_card_activate)
+	Events.finish_card_activation.connect(_on_card_deactivate)
+	Events.cancel_card_activation.connect(_on_card_deactivate)
+
 func _unhandled_input(event):
+	if event is InputEventMouseMotion and active_card:
+		var cell_position = local_to_map(get_local_mouse_position())
+		if cell_position != origin:
+			active_card.hovering_tiles = is_over_tile()
+
 	if event is InputEventMouseMotion and is_showing_buidable_tiles:
 		var cell_position = local_to_map(get_local_mouse_position())
 		if cell_position == origin:
@@ -76,3 +88,17 @@ func get_buildable_cells() -> Array[Vector2i]:
 			if not buildable_cells.has(cell) and not occupied_cells.has(cell):
 				buildable_cells.append(cell)
 	return buildable_cells
+
+func _on_card_activate(card: Card):
+	active_card = card
+	active_card.context_changed.connect(_on_card_context_changed)
+
+func _on_card_deactivate():
+	active_card.context_changed.disconnect(_on_card_context_changed)
+	active_card = null
+
+func _on_card_context_changed(old_context: int, new_context: int):
+	if new_context == Card.SPAWNER:
+		show_buildable_tiles(active_card.spawner_size)
+	else:
+		hide_buildable_tiles()
