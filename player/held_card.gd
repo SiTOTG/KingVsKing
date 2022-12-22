@@ -4,22 +4,23 @@ var active_card: Card
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
-	Events.start_card_activation.connect(_on_card_activation_started)
-	Events.finish_card_activation.connect(_on_card_activation_finished)
+	Events.start_card_activation_event.connect(_on_card_activation_started)
+	Events.finish_card_activation_event.connect(_on_card_activation_finished)
+	Events.hover_tile_event.connect(
+		func(hovered_tile_position: Vector2):
+			global_position = hovered_tile_position
+	)
 	hide()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
 			if active_card and active_card.ctx == Card.SPAWNER:
-				Events.confirm_card_activation.emit()
+				Events.confirm_card_activation_event.emit()
 				get_viewport().set_input_as_handled()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and active_card:
 			active_card.active = false
-			Events.cancel_card_activation.emit()
-
-func _physics_process(delta):
-	global_position = get_global_mouse_position()
+			Events.cancel_card_activation_event.emit()
 
 func _on_card_activation_started(card: Card):
 	active_card = card

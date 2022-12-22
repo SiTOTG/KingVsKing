@@ -1,5 +1,5 @@
 class_name Spawner
-extends StaticBody2D
+extends Area2D
 
 @export var creature_scene: PackedScene
 @export var spawn_capacity := 100
@@ -12,7 +12,7 @@ extends StaticBody2D
 @onready var progress_bar = $ProgressBar
 @onready var spawn_timer = $SpawnTimer
 @onready var move_position = $MovePosition
-
+@onready var collision_shape = $CollisionShape2D
 
 var starting_move_position: Vector2
 var spawned = 0
@@ -37,11 +37,16 @@ func spawn():
 	creature.global_position = spawn_position.global_position
 	creature.enemy_layer = enemy_layer
 	creature.friendly_layer = friendly_layer
-
 	creature.tree_exited.connect(decrease_spawned)
 	get_tree().root.add_child(creature)
 	spawned += 1
 
+func get_polygon() -> PackedVector2Array:
+	var shape: RectangleShape2D = collision_shape.shape as RectangleShape2D
+	var rect = shape.get_rect()
+	var pos = to_global(rect.position)
+	var vertices = PackedVector2Array([pos, pos + Vector2(rect.size.x, 0), pos + rect.size, pos + Vector2(0, rect.size.y), pos])
+	return vertices
 
 func decrease_spawned():
 	spawned = max(0, spawned - 1)

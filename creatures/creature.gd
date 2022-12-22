@@ -13,7 +13,7 @@ extends CharacterBody2D
 		friendly_layer = value
 		update_layer.call_deferred()
 
-@onready var agent: NavigationAgent2D = $NavigationAgent2D
+@onready var agent: NavigationAgent2D = %NavigationAgent2D
 @onready var enemy_detector: Area2D = $EnemyDetector
 @onready var attack_timer: Timer = $AttackTimer
 @onready var value_bar: ValueBar = $ValueBar
@@ -64,13 +64,15 @@ func _idle():
 func move():
 	_move()
 	direction = global_position.direction_to(agent.get_next_location())
-	agent.set_velocity(direction * stats.speed)
+#	agent.set_velocity(direction * stats.speed)
+	on_velocity_computed(direction * stats.speed)
 
 func _move():
 	pass
 
 func on_velocity_computed(safe_velocity: Vector2):
-	velocity = safe_velocity
+	direction = safe_velocity.normalized()
+	velocity = direction * stats.speed
 	move_and_slide()
 
 func _on_enemy_detector_area_entered(area):
@@ -80,6 +82,7 @@ func _on_enemy_detector_area_entered(area):
 func retarget(new_target):
 	if not is_instance_valid(new_target): return
 	target = new_target
+	
 	agent.target_location = target.global_position
 	attack_timer.start()
 

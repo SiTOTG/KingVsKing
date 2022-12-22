@@ -5,9 +5,9 @@
 [ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="2_jd72l"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2w1w"]
-size = Vector2(158, 140)
+size = Vector2(128, 96)
 
-[node name="Spawner" type="StaticBody2D"]
+[node name="Spawner" type="Area2D"]
 script = ExtResource("1_li363")
 creature_scene = ExtResource("2_jd72l")
 enemy_layer = 4
@@ -29,12 +29,16 @@ wait_time = 3.0
 autostart = true
 
 [node name="ProgressBar" type="ProgressBar" parent="."]
-offset_left = -84.0
-offset_top = -88.0
-offset_right = 88.0
-offset_bottom = -61.0
+custom_minimum_size = Vector2(0, 16)
+offset_left = -60.0
+offset_top = -74.0
+offset_right = 182.0
+offset_bottom = -43.0
+scale = Vector2(0.5, 0.5)
 
 [node name="MovePosition" type="Marker2D" parent="."]
 position = Vector2(-360, 16)
+
+[node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

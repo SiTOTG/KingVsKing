@@ -1,12 +1,14 @@
 class_name TilemapMaster
-extends TileMap
+extends TileMapBase
 
 const BUILDABLE_ATLAS_COORDS = Vector2i(0, 0)
 const BLOCKED_ATLAS_COORDS = Vector2i(0, 1)
+const HALF_TILE_SIZE = Vector2(8, 8)
 
 var is_showing_buidable_tiles: bool = false
 var origin: Vector2i = Vector2i.ZERO
 var size: Vector2i = Vector2i.ONE
+var rect: Rect2i = Rect2i(1, 1, 1, 1)
 
 var occupied_cells: Array[Vector2i] = []
 
@@ -15,8 +17,8 @@ var active_card: Card:
 		active_card = value
 
 func _ready():
-	Events.start_card_activation.connect(_on_card_activate)
-	Events.finish_card_activation.connect(_on_card_deactivate)
+	Events.start_card_activation_event.connect(_on_card_activate)
+	Events.finish_card_activation_event.connect(_on_card_deactivate)
 
 func _unhandled_input(event):
 	if event is InputEventMouseMotion and active_card:
@@ -30,6 +32,7 @@ func _unhandled_input(event):
 			return
 
 		origin = cell_position
+		Events.hover_tile_event.emit(to_global(map_to_local(origin)) + HALF_TILE_SIZE)
 
 		var buildable_cells = get_buildable_cells()
 
@@ -54,11 +57,9 @@ func hide_buildable_tiles():
 
 func can_build_there() -> bool:
 	var buildable_cells = get_buildable_cells()
-	for i in range(origin.x-size.x, origin.x+size.x+1):
-		for j in range(origin.y-size.y, origin.y+size.y+1):
-			var cell = Vector2i(i, j)
-			if not cell in buildable_cells:
-				return false
+	for cell in get_tiles_in_area(origin, size):
+		if not cell in buildable_cells:
+			return false
 	return true
 
 func is_over_tile() -> bool:
@@ -70,13 +71,11 @@ func is_over_tile() -> bool:
 	return false
 
 func color_cells(buildable_cells: Array[Vector2i]):
-	for i in range(origin.x-size.x, origin.x+size.x+1):
-		for j in range(origin.y-size.y, origin.y+size.y+1):
-			var cell = Vector2i(i, j)
-			if cell in buildable_cells:
-				set_cell(0, cell, 0, BUILDABLE_ATLAS_COORDS)
-			else:
-				set_cell(0, cell, 0, BLOCKED_ATLAS_COORDS)
+	for cell in get_tiles_in_area(origin, size):
+		if cell in buildable_cells:
+			set_cell(0, cell, 0, BUILDABLE_ATLAS_COORDS)
+		else:
+			set_cell(0, cell, 0, BLOCKED_ATLAS_COORDS)
 
 func get_buildable_cells() -> Array[Vector2i]:
 	var buildable_cells = []

@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://dyc8eldwe7waj"]
+[gd_scene load_steps=10 format=3 uid="uid://dyc8eldwe7waj"]
 
 [ext_resource type="Texture2D" uid="uid://cqs4gck8reo6g" path="res://assets/placeholder/sprites/tilesets/floors/flooring.png" id="1_iul6e"]
 [ext_resource type="Texture2D" uid="uid://i7sj1brhtels" path="res://assets/placeholder/sprites/tilesets/floors/carpet.png" id="2_6qowu"]
@@ -430,15 +430,9 @@ texture = ExtResource("2_6qowu")
 3:7/0/terrain = 2
 3:7/0/terrains_peering_bit/left_side = 2
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_22e0w"]
-vertices = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)]
-
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_jclsv"]
 texture = ExtResource("3_mcm8g")
 0:0/0 = 0
-0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_22e0w")
 0:0/0/custom_data_0 = true
 
 [sub_resource type="TileSet" id="TileSet_4yynb"]
@@ -449,7 +443,6 @@ terrain_set_0/terrain_1/name = "Carpet 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
 terrain_set_0/terrain_2/name = "Carpet 2"
 terrain_set_0/terrain_2/color = Color(0.46875, 0.5, 0.25, 1)
-navigation_layer_0/layers = 1
 custom_data_layer_0/name = "Buildable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_np3xr")
