@@ -1,0 +1,76 @@
+[gd_scene load_steps=5 format=3 uid="uid://dbcfx1n6p5h0m"]
+
+[ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_m7y3b"]
+
+[sub_resource type="GDScript" id="GDScript_epg62"]
+script/source = "class_name TitleLabel
+extends Label
+
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nal6i"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_0t8qw"]
+
+[node name="MainMenu" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_m7y3b")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+offset_right = 360.0
+offset_bottom = 240.0
+
+[node name="MarginContainer" type="MarginContainer" parent="MarginContainer/PanelContainer"]
+offset_left = 66.0
+offset_top = 8.0
+offset_right = 294.0
+offset_bottom = 224.0
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
+offset_right = 228.0
+offset_bottom = 216.0
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+offset_right = 228.0
+offset_bottom = 58.0
+theme_type_variation = &"TitleLabel"
+text = "King vs King"
+script = SubResource("GDScript_epg62")
+
+[node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+offset_top = 62.0
+offset_right = 228.0
+offset_bottom = 92.0
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nal6i")
+
+[node name="StartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+offset_left = 54.0
+offset_top = 96.0
+offset_right = 174.0
+offset_bottom = 119.0
+size_flags_horizontal = 4
+button_group = SubResource("ButtonGroup_0t8qw")
+text = "Start"
+
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]

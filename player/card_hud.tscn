@@ -14,50 +14,45 @@ anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -148.0
-offset_top = -136.0
-offset_right = 148.0
+offset_left = -99.0
+offset_top = -107.0
+offset_right = 97.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 0
 
-[node name="Cards" type="HBoxContainer" parent="CardsPanel"]
+[node name="CenterContainer" type="CenterContainer" parent="CardsPanel"]
+layout_mode = 2
+
+[node name="Cards" type="HBoxContainer" parent="CardsPanel/CenterContainer"]
 unique_name_in_owner = true
-offset_top = 13.0
-offset_right = 296.0
-offset_bottom = 123.0
+layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
-[node name="CardButton" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-offset_left = 13.0
-offset_right = 73.0
-offset_bottom = 110.0
+[node name="CardButton" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
+layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
-[node name="CardButton2" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-offset_left = 83.0
-offset_right = 143.0
-offset_bottom = 110.0
+[node name="CardButton2" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
+layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
-[node name="CardButton3" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-offset_left = 153.0
-offset_right = 213.0
-offset_bottom = 110.0
+[node name="CardButton3" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
+layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
-[node name="CardButton4" parent="CardsPanel/Cards" instance=ExtResource("2_6ftqy")]
-offset_left = 223.0
-offset_right = 283.0
-offset_bottom = 110.0
+[node name="CardButton4" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
+layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="Expand" type="Button" parent="."]
+visible = false
 anchors_preset = -1
 anchor_top = 0.922
 anchor_right = 1.0
@@ -77,6 +72,7 @@ anchor_right = 1.0
 anchor_bottom = 0.605
 offset_left = -0.2
 offset_right = 1.0
+offset_bottom = 26.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1

@@ -5,7 +5,9 @@
 [ext_resource type="Script" path="res://player/cards/card_button.gd" id="3_gokuu"]
 
 [node name="CardButton" type="TextureButton"]
-custom_minimum_size = Vector2(60, 110)
+custom_minimum_size = Vector2(36, 70)
+offset_right = 36.0
+offset_bottom = 70.0
 texture_normal = ExtResource("1_4an6i")
 texture_pressed = ExtResource("2_dn7q6")
 texture_hover = ExtResource("2_dn7q6")

@@ -76,7 +76,7 @@ _global_script_class_icons={
 
 config/name="King Vs King"
 config/description="The Demon Lord can only be defeated by the mighty hero, or so the legend says. However, until the demon lord is defeated, the free people must survive by any means necessary! On this strategy game, you play as the king defending an alliance of the free races to fight against the demons who are trying to wipe them out."
-run/main_scene="res://world/world.tscn"
+run/main_scene="res://main_menu/main_menu.tscn"
 config/features=PackedStringArray("4.0", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -85,6 +85,7 @@ config/icon="res://icon.svg"
 GlobalSettings="*res://global_settings.gd"
 DebugCamera="*res://debug/debug_camera.tscn"
 Events="*res://events.gd"
+ReferenceStash="*res://reference_stash.gd"
 
 [debug]
 
