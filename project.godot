@@ -10,6 +10,11 @@ config_version=5
 
 _global_script_classes=[{
 "base": "Resource",
+"class": &"BuildingStats",
+"language": &"GDScript",
+"path": "res://player/building_stats.gd"
+}, {
+"base": "Resource",
 "class": &"Card",
 "language": &"GDScript",
 "path": "res://player/cards/card.gd"
@@ -34,10 +39,20 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://world/tiles/custom_tile_map.gd"
 }, {
+"base": "Object",
+"class": &"MatchStats",
+"language": &"GDScript",
+"path": "res://lib/match_stats.gd"
+}, {
 "base": "Area2D",
 "class": &"Spawner",
 "language": &"GDScript",
 "path": "res://player/spawner.gd"
+}, {
+"base": "BuildingStats",
+"class": &"SpawnerStats",
+"language": &"GDScript",
+"path": "res://player/spawner_stats.gd"
 }, {
 "base": "TileMap",
 "class": &"TileMapBase",
@@ -60,12 +75,15 @@ _global_script_classes=[{
 "path": "res://world/world.gd"
 }]
 _global_script_class_icons={
+"BuildingStats": "",
 "Card": "",
 "CardButton": "",
 "Creature": "",
 "CreatureStats": "",
 "CustomTileMap": "",
+"MatchStats": "",
 "Spawner": "",
+"SpawnerStats": "",
 "TileMapBase": "",
 "TilemapMaster": "",
 "ValueBar": "",

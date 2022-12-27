@@ -17,6 +17,16 @@ func _ready():
 	Events.confirm_card_activation_event.connect(_on_card_confirm_activation)
 	var navpoly: NavigationPolygon = navigation_region_2d.navpoly
 	navpoly.get_mesh().agent_radius = 32
+	
+
+func _process(delta):
+	var building_units: Array[Node] = get_tree().get_nodes_in_group("Building")
+
+	# TODO: Remove temporary code
+	if Input.is_action_just_pressed("ui_accept"):
+		for building in building_units:
+			if building.is_in_group("Enemy"):
+				building.stats.hp -= 50
 
 func _on_card_confirm_activation():
 	if active_card.ctx == Card.SPAWNER and tilemap_master.can_build_there():
@@ -24,6 +34,7 @@ func _on_card_confirm_activation():
 		var position: Vector2 = tilemap_master.get_origin_position() + tilemap_master.HALF_TILE_SIZE
 		var spawner_scene: PackedScene = load(active_card.spawner_scene)
 		var spawner = spawner_scene.instantiate() as Spawner
+		spawner.add_to_group("Ally")
 		spawner.global_position = position
 		spawner.starting_move_position = destination_lane_1.global_position
 		# Provisional code, might be necessary for future navigation changes
@@ -43,3 +54,19 @@ func _on_card_confirm_activation():
 #		)
 		add_child(spawner)
 		active_card.active = false
+
+
+func _on_castle_destroyed():
+	$GameOverUI.visible = true
+	var match_stats = MatchStats.new()
+	match_stats.victory = false
+	$GameOverUI.match_stats = match_stats
+	get_tree().paused = true
+
+
+func _on_demon_commander_destroyed():
+	$GameOverUI.visible = true
+	var match_stats = MatchStats.new()
+	match_stats.victory = true
+	$GameOverUI.match_stats = match_stats
+	get_tree().paused = true

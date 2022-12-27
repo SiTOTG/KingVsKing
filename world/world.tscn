@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=26 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -13,6 +13,11 @@
 [ext_resource type="PackedScene" uid="uid://ywlcclxvc1hc" path="res://creatures/footman.tscn" id="8_x4gb2"]
 [ext_resource type="PackedScene" uid="uid://b77yrfd22bqbp" path="res://creatures/skeleton.tscn" id="9_yn5ae"]
 [ext_resource type="PackedScene" uid="uid://byjd8oh50g21m" path="res://player/held_card.tscn" id="13_1776e"]
+[ext_resource type="PackedScene" uid="uid://b1jxtejto2egx" path="res://player/footman_spawner.tscn" id="14_upysl"]
+[ext_resource type="PackedScene" uid="uid://dmqrb2560hx2h" path="res://world/base.tscn" id="15_om70m"]
+[ext_resource type="Script" path="res://world/game_over_ui.gd" id="15_opoo2"]
+[ext_resource type="Script" path="res://player/building_stats.gd" id="16_3kfl1"]
+[ext_resource type="Texture2D" uid="uid://cgh2uhiknjo1m" path="res://assets/placeholder/sprites/FlameDemon Evolved.png" id="17_hjoo1"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nujo8"]
 texture = ExtResource("2_b5ipp")
@@ -26,6 +31,20 @@ sources/0 = SubResource("TileSetAtlasSource_nujo8")
 vertices = PackedVector2Array(-600, 280, -1192, 280, -1192, 40, -808, 40, -600, 264, -808, 24, -648, 24, -648, 8, -408, 8, 24, 264, -408, -8, -120, -8, 8, 24, -120, -24, 8, -24, 184, 24, 168, 88, 184, 88, 168, 152, 200, 152, 200, 120, 216, 120, 792, 440, 216, 24, 792, 24, 24, 440)
 polygons = [PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(4, 6, 7, 8, 9), PackedInt32Array(9, 8, 10, 11, 12), PackedInt32Array(11, 13, 14, 12), PackedInt32Array(9, 12, 15, 16), PackedInt32Array(15, 17, 16), PackedInt32Array(9, 16, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(21, 23, 24, 22), PackedInt32Array(19, 22, 25, 9, 18)]
 outlines = [PackedVector2Array(-1192, 280, -1192, 40, -808, 40, -808, 24, -648, 24, -648, 8, -408, 8, -408, -8, -120, -8, -120, -24, 8, -24, 8, 24, 184, 24, 184, 88, 168, 88, 168, 152, 200, 152, 200, 120, 216, 120, 216, 24, 792, 24, 792, 440, 24, 440, 24, 264, -600, 264, -600, 280)]
+
+[sub_resource type="Resource" id="Resource_vsx6f"]
+script = ExtResource("16_3kfl1")
+max_hp = 400
+hp = 400
+
+[sub_resource type="GDScript" id="GDScript_k4be7"]
+script/source = "class_name TitleLabel
+extends Label
+"
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfc6u"]
+
+[sub_resource type="ButtonGroup" id="ButtonGroup_lek63"]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_61105")
@@ -44,6 +63,7 @@ layer_0/tile_data = PackedInt32Array(1, 65538, 2, 2, 131074, 3, 3, 131074, 3, 4,
 script = ExtResource("5_ahjhf")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
+position = Vector2(496, 232)
 current = true
 limit_smoothed = true
 editor_draw_limits = true
@@ -52,32 +72,60 @@ script = ExtResource("2_2qahm")
 
 [node name="GrassBackground" parent="." instance=ExtResource("3_5pghe")]
 
-[node name="Spawner" parent="." instance=ExtResource("4_vwoog")]
+[node name="Spawner" parent="." groups=["Ally"] instance=ExtResource("4_vwoog")]
 position = Vector2(416, 88)
 creature_scene = ExtResource("8_x4gb2")
+metadata/_edit_group_ = true
 
-[node name="MovePosition" parent="Spawner" index="5"]
-position = Vector2(-1384, 105)
+[node name="MovePosition" parent="Spawner" index="4"]
+position = Vector2(-1568, 66)
 
 [node name="DestinationLane1" type="Marker2D" parent="."]
-position = Vector2(-793.638, 161.18)
+position = Vector2(-1160, 160)
 
-[node name="EvilSpawner" parent="." instance=ExtResource("4_vwoog")]
+[node name="EvilSpawner" parent="." groups=["Enemy"] instance=ExtResource("4_vwoog")]
 position = Vector2(-896, 88)
 rotation = 3.14159
 scale = Vector2(1, -1)
 creature_scene = ExtResource("9_yn5ae")
 enemy_layer = 2
 friendly_layer = 4
+metadata/_edit_group_ = true
 
-[node name="ProgressBar" parent="EvilSpawner" index="4"]
+[node name="MovePosition" parent="EvilSpawner" index="4"]
+position = Vector2(-1584, 152.004)
+
+[node name="Area2D" parent="EvilSpawner" index="6"]
+collision_layer = 4
+
+[node name="HPBar" parent="EvilSpawner" index="7"]
 visible = false
 
-[node name="MovePosition" parent="EvilSpawner" index="5"]
-position = Vector2(-1424, 16.0036)
+[node name="ProgressBar" parent="EvilSpawner" index="8"]
+visible = false
+
+[node name="EvilSpawner2" parent="." instance=ExtResource("14_upysl")]
+position = Vector2(-968, 184)
+creature_scene = ExtResource("9_yn5ae")
+enemy_layer = 2
+friendly_layer = 4
+metadata/_edit_group_ = true
+
+[node name="MovePosition" parent="EvilSpawner2" index="4"]
+position = Vector2(1672, 40)
+
+[node name="Area2D" parent="EvilSpawner2" index="6"]
+collision_layer = 4
+
+[node name="HPBar" parent="EvilSpawner2" index="7"]
+visible = false
+
+[node name="ProgressBar" parent="EvilSpawner2" index="8"]
+visible = false
+offset_top = -74.0
+offset_bottom = -43.0
 
 [node name="card_hud" parent="." instance=ExtResource("4_j856n")]
-visible = false
 tilemap_master = NodePath("../TilemapMaster")
 
 [node name="HeldCard" parent="." instance=ExtResource("13_1776e")]
@@ -86,5 +134,77 @@ tilemap_master = NodePath("../TilemapMaster")
 navpoly = SubResource("NavigationPolygon_hpv21")
 metadata/_edit_lock_ = true
 
+[node name="Castle" parent="." instance=ExtResource("15_om70m")]
+position = Vector2(704, 224)
+
+[node name="DemonCommander" parent="." instance=ExtResource("15_om70m")]
+position = Vector2(-1159, 154)
+stats = SubResource("Resource_vsx6f")
+enemy_layer = 2
+friendly_layer = 4
+
+[node name="Sprite2D" parent="DemonCommander" index="0"]
+scale = Vector2(0.843754, 0.843754)
+texture = ExtResource("17_hjoo1")
+flip_h = true
+
+[node name="CollisionShape2D" parent="DemonCommander" index="1"]
+position = Vector2(-0.00012207, 5.99998)
+
+[node name="HPBar" parent="DemonCommander" index="3"]
+offset_left = -64.0001
+offset_top = -36.0
+offset_right = -32.0001
+offset_bottom = -24.0
+
+[node name="GameOverUI" type="CanvasLayer" parent="."]
+process_mode = 3
+visible = false
+script = ExtResource("15_opoo2")
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverUI"]
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="GameOverUI/MarginContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="GameOverUI/MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="MatchGameoverTitle" type="Label" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "Defeat!"
+script = SubResource("GDScript_k4be7")
+
+[node name="HSeparator" type="HSeparator" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_lfc6u")
+
+[node name="StartButton" type="Button" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
+size_flags_horizontal = 4
+button_group = SubResource("ButtonGroup_lek63")
+text = "Back to main menu"
+
+[connection signal="destroyed" from="Castle" to="." method="_on_castle_destroyed"]
+[connection signal="destroyed" from="DemonCommander" to="." method="_on_demon_commander_destroyed"]
+[connection signal="pressed" from="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="GameOverUI" method="_on_start_button_pressed"]
+
 [editable path="Spawner"]
 [editable path="EvilSpawner"]
+[editable path="EvilSpawner2"]
+[editable path="DemonCommander"]

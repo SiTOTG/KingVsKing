@@ -1,0 +1,36 @@
+[gd_scene load_steps=6 format=3 uid="uid://dmqrb2560hx2h"]
+
+[ext_resource type="Script" path="res://world/main_building.gd" id="1_f4ol2"]
+[ext_resource type="Texture2D" uid="uid://de316sriduh28" path="res://assets/placeholder/castle.png" id="2_01ukg"]
+[ext_resource type="PackedScene" uid="uid://ejgsk65v3pvj" path="res://ui/value_bar.tscn" id="3_qtlck"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_xe303"]
+size = Vector2(31.9998, 44)
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_k0cd5"]
+radius = 152.21
+
+[node name="MainBuilding" type="StaticBody2D"]
+script = ExtResource("1_f4ol2")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+scale = Vector2(0.382177, 0.382177)
+texture = ExtResource("2_01ukg")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_xe303")
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_k0cd5")
+
+[node name="HPBar" parent="." instance=ExtResource("3_qtlck")]
+offset_left = -60.0
+offset_top = -89.0
+offset_right = -28.0
+offset_bottom = -77.0
+scale = Vector2(3.8, 1)

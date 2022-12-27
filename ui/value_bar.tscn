@@ -11,7 +11,6 @@ texture = ExtResource("1_7ofwl")
 script = ExtResource("2_wb16j")
 
 [node name="Decrease" type="TextureProgressBar" parent="."]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
 anchor_top = 0.5
@@ -27,7 +26,6 @@ nine_patch_stretch = true
 texture_progress = ExtResource("2_gd1wm")
 
 [node name="Increase" type="TextureProgressBar" parent="."]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
 anchor_top = 0.5
@@ -42,7 +40,6 @@ nine_patch_stretch = true
 texture_progress = ExtResource("3_tj6do")
 
 [node name="Actual" type="TextureProgressBar" parent="."]
-layout_mode = 1
 anchors_preset = -1
 anchor_left = 0.125
 anchor_top = 0.5

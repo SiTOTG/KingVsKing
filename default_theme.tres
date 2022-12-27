@@ -86,7 +86,6 @@ ProgressBar/colors/font_color = Color(0, 0.94902, 0.666667, 1)
 ProgressBar/colors/font_outline_color = Color(0.223529, 0.137255, 1, 1)
 ProgressBar/constants/outline_size = 5
 ProgressBar/styles/background = SubResource("StyleBoxFlat_qjcog")
-TitleLabel/base_type = &"Label"
 TitleLabel/colors/font_color = Color(0.870588, 0.443137, 0.45098, 1)
 TitleLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 TitleLabel/constants/outline_size = 3

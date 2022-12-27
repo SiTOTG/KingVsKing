@@ -30,6 +30,7 @@ enum {
 }
 
 func update_layer():
+	if not enemy_detector: return
 	enemy_detector.collision_mask = enemy_layer
 	enemy_detector.collision_layer = friendly_layer
 
@@ -82,7 +83,7 @@ func _on_enemy_detector_area_entered(area):
 func retarget(new_target):
 	if not is_instance_valid(new_target): return
 	target = new_target
-	
+
 	agent.target_location = target.global_position
 	attack_timer.start()
 
@@ -114,6 +115,6 @@ func _update_direction():
 
 func damage_target():
 	if is_instance_valid(target) and "stats" in target.get_parent():
-		var target_stats = target.get_parent().stats as CreatureStats
-		if not target_stats: return
-		target_stats.hp -= 5
+		var target_stats = target.get_parent().stats
+		if "hp" in target_stats:
+			target_stats.hp -= 5

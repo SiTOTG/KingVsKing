@@ -64,6 +64,7 @@ theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_nal6i")
 
 [node name="StartButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 offset_left = 54.0
 offset_top = 96.0

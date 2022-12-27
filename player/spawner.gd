@@ -3,7 +3,7 @@ extends Area2D
 
 @export var creature_scene: PackedScene
 @export var spawn_capacity := 100
-
+@export var stats: SpawnerStats = preload("res://player/spawner_stats.tres")
 
 @export_flags_2d_physics var enemy_layer = 0
 @export_flags_2d_physics var friendly_layer = 0
@@ -13,6 +13,7 @@ extends Area2D
 @onready var spawn_timer = $SpawnTimer
 @onready var move_position = $MovePosition
 @onready var collision_shape = $CollisionShape2D
+@onready var hp_bar: ValueBar = $HPBar
 
 var starting_move_position: Vector2
 var spawned = 0
@@ -20,6 +21,15 @@ var spawned = 0
 func _ready():
 	if starting_move_position:
 		move_position.global_position = starting_move_position
+	stats = stats.duplicate()
+
+	stats.hp_updated.connect(
+		func(previous_hp: int, new_hp: int, max_hp: int):
+			hp_bar.animate_bar(new_hp, max_hp)
+			if new_hp == 0:
+				queue_free()
+	)
+	hp_bar.set_bar.call_deferred(stats.hp, stats.max_hp)
 
 func _process(_delta):
 	progress_bar.value = (1 - (spawn_timer.time_left / spawn_timer.wait_time))*100

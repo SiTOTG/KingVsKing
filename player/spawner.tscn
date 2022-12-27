@@ -1,13 +1,17 @@
-[gd_scene load_steps=5 format=3 uid="uid://c3q6txdt1k5m8"]
+[gd_scene load_steps=7 format=3 uid="uid://c3q6txdt1k5m8"]
 
 [ext_resource type="Texture2D" uid="uid://c3bjjubcocilf" path="res://assets/placeholder/sprites/medieval-tavern_10000.png" id="1_3vc4b"]
 [ext_resource type="Script" path="res://player/spawner.gd" id="1_li363"]
 [ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="2_jd72l"]
+[ext_resource type="PackedScene" uid="uid://ejgsk65v3pvj" path="res://ui/value_bar.tscn" id="4_58srp"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2w1w"]
 size = Vector2(128, 96)
 
-[node name="Spawner" type="Area2D"]
+[sub_resource type="CircleShape2D" id="CircleShape2D_8fwrb"]
+radius = 54.7449
+
+[node name="Spawner" type="Area2D" groups=["Building"]]
 script = ExtResource("1_li363")
 creature_scene = ExtResource("2_jd72l")
 enemy_layer = 4
@@ -28,17 +32,31 @@ position = Vector2(-56, 48)
 wait_time = 3.0
 autostart = true
 
-[node name="ProgressBar" type="ProgressBar" parent="."]
-custom_minimum_size = Vector2(0, 16)
-offset_left = -60.0
-offset_top = -74.0
-offset_right = 182.0
-offset_bottom = -43.0
-scale = Vector2(0.5, 0.5)
-
 [node name="MovePosition" type="Marker2D" parent="."]
 position = Vector2(-360, 16)
 
 [node name="NavigationObstacle2D" type="NavigationObstacle2D" parent="."]
+
+[node name="Area2D" type="Area2D" parent="."]
+collision_layer = 2
+collision_mask = 0
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("CircleShape2D_8fwrb")
+
+[node name="HPBar" parent="." instance=ExtResource("4_58srp")]
+offset_left = -60.0
+offset_top = -89.0
+offset_right = -28.0
+offset_bottom = -77.0
+scale = Vector2(3.8, 1)
+
+[node name="ProgressBar" type="ProgressBar" parent="."]
+custom_minimum_size = Vector2(0, 16)
+offset_left = -60.0
+offset_top = -70.0
+offset_right = 182.0
+offset_bottom = -39.0
+scale = Vector2(0.5, 0.5)
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

@@ -22,32 +22,39 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="CardsPanel"]
-layout_mode = 2
+offset_left = 8.0
+offset_top = 8.0
+offset_right = 188.0
+offset_bottom = 78.0
 
 [node name="Cards" type="HBoxContainer" parent="CardsPanel/CenterContainer"]
 unique_name_in_owner = true
-layout_mode = 2
+offset_left = 3.0
+offset_right = 177.0
+offset_bottom = 70.0
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
 
 [node name="CardButton" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton2" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
+offset_left = 46.0
+offset_right = 82.0
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton3" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
+offset_left = 92.0
+offset_right = 128.0
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
 [node name="CardButton4" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-layout_mode = 2
+offset_left = 138.0
+offset_right = 174.0
 texture_disabled = ExtResource("3_eqh1w")
 card = ExtResource("3_a18du")
 
