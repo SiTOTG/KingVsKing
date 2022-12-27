@@ -22,12 +22,6 @@ func _ready():
 func _process(delta):
 	var building_units: Array[Node] = get_tree().get_nodes_in_group("Building")
 
-	# TODO: Remove temporary code
-	if Input.is_action_just_pressed("ui_accept"):
-		for building in building_units:
-			if building.is_in_group("Enemy"):
-				building.stats.hp -= 50
-
 func _on_card_confirm_activation():
 	if active_card.ctx == Card.SPAWNER and tilemap_master.can_build_there():
 		tilemap_master.set_tiles_as_blocked()
