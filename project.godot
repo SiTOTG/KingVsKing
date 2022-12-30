@@ -24,6 +24,11 @@ _global_script_classes=[{
 "language": &"GDScript",
 "path": "res://player/cards/card_button.gd"
 }, {
+"base": "Resource",
+"class": &"CardManager",
+"language": &"GDScript",
+"path": "res://player/cards/card_manager.gd"
+}, {
 "base": "CharacterBody2D",
 "class": &"Creature",
 "language": &"GDScript",
@@ -78,6 +83,7 @@ _global_script_class_icons={
 "BuildingStats": "",
 "Card": "",
 "CardButton": "",
+"CardManager": "",
 "Creature": "",
 "CreatureStats": "",
 "CustomTileMap": "",

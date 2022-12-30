@@ -48,7 +48,7 @@ func _on_card_confirm_activation():
 #		)
 		add_child(spawner)
 		active_card.active = false
-
+		active_card.use()
 
 func _on_castle_destroyed():
 	$GameOverUI.visible = true

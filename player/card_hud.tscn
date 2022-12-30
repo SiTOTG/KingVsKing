@@ -1,12 +1,18 @@
 [gd_scene load_steps=5 format=3 uid="uid://du2jyiqvrkm1d"]
 
 [ext_resource type="Script" path="res://player/card_hud.gd" id="1_6rk6x"]
-[ext_resource type="PackedScene" uid="uid://dap54pgtkssa4" path="res://player/cards/card_button.tscn" id="2_6ftqy"]
+[ext_resource type="Script" path="res://player/cards/card_manager.gd" id="2_dm7bh"]
 [ext_resource type="Resource" uid="uid://ddebe0gk76ugu" path="res://player/cards/placeholder_card.tres" id="3_a18du"]
-[ext_resource type="Texture2D" uid="uid://b8seri4nvbc8s" path="res://assets/placeholder/CardPlaceholder2.jpg" id="3_eqh1w"]
+
+[sub_resource type="Resource" id="Resource_sq06o"]
+script = ExtResource("2_dm7bh")
+hand = []
+deck = [ExtResource("3_a18du")]
+max_hand_size = 2
 
 [node name="CardHUD" type="CanvasLayer"]
 script = ExtResource("1_6rk6x")
+card_manager = SubResource("Resource_sq06o")
 
 [node name="CardsPanel" type="PanelContainer" parent="."]
 anchors_preset = 7
@@ -29,34 +35,13 @@ offset_bottom = 78.0
 
 [node name="Cards" type="HBoxContainer" parent="CardsPanel/CenterContainer"]
 unique_name_in_owner = true
-offset_left = 3.0
-offset_right = 177.0
-offset_bottom = 70.0
+offset_left = 90.0
+offset_top = 35.0
+offset_right = 90.0
+offset_bottom = 35.0
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1
-
-[node name="CardButton" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-texture_disabled = ExtResource("3_eqh1w")
-card = ExtResource("3_a18du")
-
-[node name="CardButton2" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-offset_left = 46.0
-offset_right = 82.0
-texture_disabled = ExtResource("3_eqh1w")
-card = ExtResource("3_a18du")
-
-[node name="CardButton3" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-offset_left = 92.0
-offset_right = 128.0
-texture_disabled = ExtResource("3_eqh1w")
-card = ExtResource("3_a18du")
-
-[node name="CardButton4" parent="CardsPanel/CenterContainer/Cards" instance=ExtResource("2_6ftqy")]
-offset_left = 138.0
-offset_right = 174.0
-texture_disabled = ExtResource("3_eqh1w")
-card = ExtResource("3_a18du")
 
 [node name="Expand" type="Button" parent="."]
 visible = false
@@ -84,5 +69,26 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 1
 
+[node name="CardProgress" type="ProgressBar" parent="."]
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -87.0
+offset_top = 280.0
+offset_right = 33.0
+offset_bottom = -88.0
+grow_horizontal = 0
+grow_vertical = 2
+rotation = -1.5708
+pivot_offset = Vector2(60, 16)
+theme_type_variation = &"CardLoadProgressBar"
+value = 80.0
+
+[node name="CardProgressChargeRate" type="Timer" parent="CardProgress"]
+wait_time = 0.1
+autostart = true
+
 [connection signal="mouse_entered" from="Expand" to="." method="_on_expand_mouse_entered"]
 [connection signal="mouse_entered" from="Close" to="." method="_on_close_mouse_entered"]
+[connection signal="timeout" from="CardProgress/CardProgressChargeRate" to="." method="_on_card_progress_charge_rate_timeout"]

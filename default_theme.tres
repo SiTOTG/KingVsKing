@@ -1,7 +1,20 @@
-[gd_resource type="Theme" load_steps=9 format=3 uid="uid://cp4mrnacmhcin"]
+[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cp4mrnacmhcin"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jelt"]
 bg_color = Color(0.243137, 0.396078, 0.6, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7lhp"]
+bg_color = Color(0.180392, 0.14902, 0.6, 1)
+border_width_left = 4
+border_width_top = 4
+border_width_right = 4
+border_width_bottom = 4
+border_color = Color(0.376471, 0.231373, 0.8, 1)
+border_blend = true
+corner_radius_top_left = 6
+corner_radius_top_right = 6
+corner_radius_bottom_right = 6
+corner_radius_bottom_left = 6
 
 [sub_resource type="Gradient" id="Gradient_1p77c"]
 offsets = PackedFloat32Array(0.0745921, 0.400932, 0.748252)
@@ -77,6 +90,12 @@ expand_margin_bottom = 4.0
 
 [resource]
 Button/styles/normal = SubResource("StyleBoxFlat_1jelt")
+CardLoadProgressBar/base_type = &"ProgressBar"
+CardLoadProgressBar/colors/font_color = Color(0, 0, 0, 0)
+CardLoadProgressBar/colors/font_outline_color = Color(0, 0, 0, 0)
+CardLoadProgressBar/colors/font_shadow_color = Color(0, 0, 0, 0)
+CardLoadProgressBar/constants/outline_size = 0
+CardLoadProgressBar/styles/background = SubResource("StyleBoxFlat_y7lhp")
 HSlider/icons/tick = SubResource("GradientTexture1D_byftc")
 HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ph441")
 HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_d6xwd")

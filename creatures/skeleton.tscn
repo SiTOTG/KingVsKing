@@ -345,7 +345,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_pqeee")
 blend_point_1/pos = -1.0
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xavfb"]
-graph_offset = Vector2(-510.372, 169.147)
+graph_offset = Vector2(-747.68, -25.4)
 nodes/AttackDirection/node = SubResource("AnimationNodeBlendSpace1D_6ocwi")
 nodes/AttackDirection/position = Vector2(60, 380)
 nodes/AttackTrigger/node = SubResource("AnimationNodeOneShot_sle6k")
@@ -380,7 +380,7 @@ libraries = {
 tree_root = SubResource("AnimationNodeBlendTree_xavfb")
 anim_player = NodePath("../AnimationPlayer")
 active = true
-parameters/AttackDirection/blend_position = -1.0
+parameters/AttackDirection/blend_position = 1.0
 parameters/AttackTrigger/active = false
 parameters/IdleDirection/blend_position = 1.0
 parameters/MoveState/current = 0

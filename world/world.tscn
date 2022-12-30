@@ -172,30 +172,28 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="GameOverUI/MarginContainer"]
-layout_mode = 2
+offset_right = 360.0
+offset_bottom = 240.0
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOverUI/MarginContainer/PanelContainer"]
-layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer"]
-layout_mode = 2
+offset_right = 150.0
+offset_bottom = 119.0
 
 [node name="MatchGameoverTitle" type="Label" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
-layout_mode = 2
 theme_type_variation = &"TitleLabel"
 text = "Defeat!"
 script = SubResource("GDScript_k4be7")
 
 [node name="HSeparator" type="HSeparator" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-layout_mode = 2
 theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_lfc6u")
 
 [node name="StartButton" type="Button" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
-layout_mode = 2
 size_flags_horizontal = 4
 button_group = SubResource("ButtonGroup_lek63")
 text = "Back to main menu"

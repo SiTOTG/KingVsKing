@@ -16,6 +16,8 @@ extends Resource
 @export_file("*.tscn") var spawner_scene
 @export var spawner_size: Vector2i
 
+var _used = false
+
 # Context variables, relevant when active
 enum {
 	RESET,
@@ -24,6 +26,7 @@ enum {
 }
 
 signal context_changed(old_context: int, new_context: int)
+signal used
 
 func calculate_spawner_size():
 	if spawner_scene == null: return
@@ -64,3 +67,7 @@ func update_ctx():
 	if ctx != new_ctx:
 		context_changed.emit(ctx, new_ctx)
 		ctx = new_ctx
+
+func use():
+	_used = true
+	used.emit()
