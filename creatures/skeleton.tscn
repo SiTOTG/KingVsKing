@@ -1,9 +1,10 @@
-[gd_scene load_steps=25 format=3 uid="uid://b77yrfd22bqbp"]
+[gd_scene load_steps=26 format=3 uid="uid://b77yrfd22bqbp"]
 
 [ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="1_w8qxl"]
 [ext_resource type="Texture2D" uid="uid://bjnxiu7eutrg3" path="res://assets/placeholder/sprites/characters/skeleton.png" id="2_qirmw"]
 [ext_resource type="Script" path="res://creatures/skeleton.gd" id="2_v6mvk"]
 [ext_resource type="Resource" uid="uid://biumvnw48htm3" path="res://creatures/skeleton_stats.tres" id="3_frlx6"]
+[ext_resource type="PackedScene" uid="uid://dg4ccg2xvb2ef" path="res://creatures/sfx/attack/sword_sfx.tscn" id="5_0tsuv"]
 
 [sub_resource type="Animation" id="Animation_k0s5x"]
 resource_name = "AttackLeft"
@@ -385,3 +386,5 @@ parameters/AttackTrigger/active = false
 parameters/IdleDirection/blend_position = 1.0
 parameters/MoveState/current = 0
 parameters/WalkDirection/blend_position = 1.0
+
+[node name="SwordSFX" parent="." index="8" instance=ExtResource("5_0tsuv")]

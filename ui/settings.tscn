@@ -1,0 +1,168 @@
+[gd_scene load_steps=7 format=3 uid="uid://cx6j2qyk8kg43"]
+
+[ext_resource type="Script" path="res://ui/settings.gd" id="1_3qus1"]
+[ext_resource type="AudioStream" uid="uid://6yyoggwfuehw" path="res://assets/sfx/attack/sword/sword1.wav" id="2_a8no0"]
+[ext_resource type="AudioStream" uid="uid://cxfuj160a6bdo" path="res://assets/sfx/attack/sword/sword2.wav" id="3_3dig6"]
+[ext_resource type="AudioStream" uid="uid://2ly7pt56i85l" path="res://assets/sfx/attack/sword/sword3.wav" id="4_jog2s"]
+
+[sub_resource type="GDScript" id="GDScript_sivvx"]
+script/source = "class_name TitleLabel
+extends Label
+
+"
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_jjahm"]
+streams_count = 3
+random_pitch = 1.0
+random_volume_offset_db = 0.0
+stream_0/stream = ExtResource("2_a8no0")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("3_3dig6")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("4_jog2s")
+stream_2/weight = 1.0
+
+[node name="Settings" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3qus1")
+
+[node name="Camera2D" type="Camera2D" parent="."]
+anchor_mode = 0
+current = true
+
+[node name="MarginContainer" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = 0.2
+anchor_top = 0.2
+anchor_right = 0.8
+anchor_bottom = 0.8
+offset_left = -72.0
+offset_top = -48.0
+offset_right = 72.0
+offset_bottom = 48.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="MarginContainer"]
+layout_mode = 2
+
+[node name="CenterContainer" type="CenterContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 0
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/CenterContainer"]
+layout_mode = 2
+theme_type_variation = &"TitleLabel"
+text = "Settings"
+script = SubResource("GDScript_sivvx")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer"]
+layout_mode = 2
+size_flags_vertical = 4
+
+[node name="VolumeField" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/VolumeField"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Volume"
+
+[node name="VolumeValue" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/VolumeField"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.5
+
+[node name="MuteMaster" type="CheckButton" parent="MarginContainer/PanelContainer/VBoxContainer/VolumeField"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mute"
+
+[node name="SFXVolumeField" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVolumeField"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "SFX Volume"
+
+[node name="SFXVolumeValue" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVolumeField"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.5
+
+[node name="MuteSFX" type="CheckButton" parent="MarginContainer/PanelContainer/VBoxContainer/SFXVolumeField"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mute"
+
+[node name="BGMVolumeField2" type="HBoxContainer" parent="MarginContainer/PanelContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="MarginContainer/PanelContainer/VBoxContainer/BGMVolumeField2"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "BGM Volume"
+
+[node name="BGMVolumeValue" type="HSlider" parent="MarginContainer/PanelContainer/VBoxContainer/BGMVolumeField2"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.5
+
+[node name="MuteBGM" type="CheckButton" parent="MarginContainer/PanelContainer/VBoxContainer/BGMVolumeField2"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Mute"
+
+[node name="ButtonsMarginContainer" type="MarginContainer" parent="MarginContainer"]
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_constants/margin_right = 19
+theme_override_constants/margin_bottom = 13
+
+[node name="HBoxContainer" type="HBoxContainer" parent="MarginContainer/ButtonsMarginContainer"]
+layout_mode = 2
+theme_override_constants/separation = 11
+
+[node name="ApplyButton" type="Button" parent="MarginContainer/ButtonsMarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Apply"
+
+[node name="CloseButton" type="Button" parent="MarginContainer/ButtonsMarginContainer/HBoxContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+text = "Close"
+
+[node name="ResetButton" type="Button" parent="MarginContainer/ButtonsMarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Restore"
+
+[node name="Button" type="Button" parent="MarginContainer/ButtonsMarginContainer/HBoxContainer"]
+layout_mode = 2
+text = "Default"
+
+[node name="TestSFX" type="AudioStreamPlayer" parent="."]
+stream = SubResource("AudioStreamRandomizer_jjahm")
+bus = &"SFX"
+
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/VolumeField/VolumeValue" to="." method="_on_volume_value_value_changed"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/VolumeField/MuteMaster" to="." method="_on_mute_master_toggled"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/SFXVolumeField/SFXVolumeValue" to="." method="_on_sfx_volume_value_value_changed"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/SFXVolumeField/MuteSFX" to="." method="_on_mute_sfx_toggled"]
+[connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/BGMVolumeField2/BGMVolumeValue" to="." method="_on_bgm_volume_value_value_changed"]
+[connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/BGMVolumeField2/MuteBGM" to="." method="_on_mute_bgm_toggled"]
+[connection signal="pressed" from="MarginContainer/ButtonsMarginContainer/HBoxContainer/ApplyButton" to="." method="_on_apply_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonsMarginContainer/HBoxContainer/CloseButton" to="." method="_on_close_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonsMarginContainer/HBoxContainer/ResetButton" to="." method="_on_reset_button_pressed"]
+[connection signal="pressed" from="MarginContainer/ButtonsMarginContainer/HBoxContainer/Button" to="." method="_on_button_pressed"]

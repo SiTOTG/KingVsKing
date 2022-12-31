@@ -1,9 +1,13 @@
-[gd_resource type="Theme" load_steps=10 format=3 uid="uid://cp4mrnacmhcin"]
+[gd_resource type="Theme" load_steps=5 format=3 uid="uid://cp4mrnacmhcin"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1jelt"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_1xbkg"]
 bg_color = Color(0.243137, 0.396078, 0.6, 1)
+expand_margin_left = 3.0
+expand_margin_top = 3.0
+expand_margin_right = 3.0
+expand_margin_bottom = 3.0
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_y7lhp"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_u1h45"]
 bg_color = Color(0.180392, 0.14902, 0.6, 1)
 border_width_left = 4
 border_width_top = 4
@@ -16,46 +20,7 @@ corner_radius_top_right = 6
 corner_radius_bottom_right = 6
 corner_radius_bottom_left = 6
 
-[sub_resource type="Gradient" id="Gradient_1p77c"]
-offsets = PackedFloat32Array(0.0745921, 0.400932, 0.748252)
-colors = PackedColorArray(0, 0, 0, 1, 0.246094, 0.246094, 0.246094, 1, 1, 1, 1, 1)
-
-[sub_resource type="GradientTexture1D" id="GradientTexture1D_byftc"]
-gradient = SubResource("Gradient_1p77c")
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_ph441"]
-bg_color = Color(0.14902, 0.305882, 0.6, 1)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 2
-border_width_bottom = 3
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-corner_detail = 12
-expand_margin_top = 9.0
-expand_margin_bottom = 9.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_d6xwd"]
-bg_color = Color(0.25098, 0.501961, 0.721569, 0.960784)
-border_width_left = 3
-border_width_top = 3
-border_width_right = 2
-border_width_bottom = 3
-corner_radius_top_left = 7
-corner_radius_top_right = 7
-corner_radius_bottom_right = 7
-corner_radius_bottom_left = 7
-corner_detail = 12
-expand_margin_top = 9.0
-expand_margin_bottom = 9.0
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_32u78"]
-bg_color = Color(0.6, 0.0509804, 0.0980392, 1)
-border_color = Color(0.8, 0.333333, 0.435294, 1)
-
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g8i6a"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_wcedd"]
 bg_color = Color(0.254902, 0.490196, 0.619608, 1)
 border_width_left = 8
 border_width_top = 8
@@ -73,7 +38,7 @@ expand_margin_bottom = 10.0
 shadow_color = Color(0, 0, 0, 1)
 shadow_size = 8
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_qjcog"]
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_i1xqi"]
 bg_color = Color(0.0352941, 0.0705882, 0.6, 1)
 border_width_left = 4
 border_width_top = 4
@@ -89,22 +54,21 @@ expand_margin_right = 4.0
 expand_margin_bottom = 4.0
 
 [resource]
-Button/styles/normal = SubResource("StyleBoxFlat_1jelt")
+Button/styles/focus = SubResource("StyleBoxFlat_1xbkg")
+Button/styles/hover = SubResource("StyleBoxFlat_1xbkg")
+Button/styles/normal = SubResource("StyleBoxFlat_1xbkg")
+Button/styles/pressed = SubResource("StyleBoxFlat_1xbkg")
 CardLoadProgressBar/base_type = &"ProgressBar"
 CardLoadProgressBar/colors/font_color = Color(0, 0, 0, 0)
 CardLoadProgressBar/colors/font_outline_color = Color(0, 0, 0, 0)
 CardLoadProgressBar/colors/font_shadow_color = Color(0, 0, 0, 0)
 CardLoadProgressBar/constants/outline_size = 0
-CardLoadProgressBar/styles/background = SubResource("StyleBoxFlat_y7lhp")
-HSlider/icons/tick = SubResource("GradientTexture1D_byftc")
-HSlider/styles/grabber_area = SubResource("StyleBoxFlat_ph441")
-HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_d6xwd")
-HSlider/styles/slider = SubResource("StyleBoxFlat_32u78")
-PanelContainer/styles/panel = SubResource("StyleBoxFlat_g8i6a")
+CardLoadProgressBar/styles/background = SubResource("StyleBoxFlat_u1h45")
+PanelContainer/styles/panel = SubResource("StyleBoxFlat_wcedd")
 ProgressBar/colors/font_color = Color(0, 0.94902, 0.666667, 1)
 ProgressBar/colors/font_outline_color = Color(0.223529, 0.137255, 1, 1)
 ProgressBar/constants/outline_size = 5
-ProgressBar/styles/background = SubResource("StyleBoxFlat_qjcog")
+ProgressBar/styles/background = SubResource("StyleBoxFlat_i1xqi")
 TitleLabel/colors/font_color = Color(0.870588, 0.443137, 0.45098, 1)
 TitleLabel/colors/font_outline_color = Color(0, 0, 0, 1)
 TitleLabel/constants/outline_size = 3

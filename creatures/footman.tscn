@@ -1,7 +1,8 @@
-[gd_scene load_steps=35 format=3 uid="uid://ywlcclxvc1hc"]
+[gd_scene load_steps=36 format=3 uid="uid://ywlcclxvc1hc"]
 
 [ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="1_l3fq6"]
 [ext_resource type="Script" path="res://creatures/footman.gd" id="2_rsvk1"]
+[ext_resource type="PackedScene" uid="uid://dg4ccg2xvb2ef" path="res://creatures/sfx/attack/sword_sfx.tscn" id="3_mc2m3"]
 
 [sub_resource type="Animation" id="Animation_0p0mc"]
 resource_name = "AttackDown"
@@ -530,3 +531,5 @@ parameters/AttackDirection/blend_position = Vector2(0.00857282, 0.823928)
 parameters/IdleDirection/blend_position = Vector2(0.5, -1)
 parameters/MoveDirection/blend_position = Vector2(0.5, -1)
 parameters/Movement/current = 0
+
+[node name="SwordSFX" parent="." index="8" instance=ExtResource("3_mc2m3")]

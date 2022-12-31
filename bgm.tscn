@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://bwt5ejv6ukm7b"]
+
+[ext_resource type="AudioStream" uid="uid://wsc00huixfwh" path="res://assets/bgm/One-Bard-Band.mp3" id="1_20dqj"]
+
+[node name="BGM" type="AudioStreamPlayer"]
+stream = ExtResource("1_20dqj")
+autoplay = true
+bus = &"BGM"

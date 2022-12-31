@@ -4,6 +4,7 @@ signal start_card_activation_event(card: Card)
 signal finish_card_activation_event()
 signal cancel_card_activation_event()
 signal confirm_card_activation_event()
+signal settings_changed_event(old_settings: Dictionary, new_settings: Dictionary)
 
 signal hover_tile_event(center_position: Vector2)
 

@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://dbcfx1n6p5h0m"]
+[gd_scene load_steps=6 format=3 uid="uid://dbcfx1n6p5h0m"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_m7y3b"]
+[ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="2_0kdql"]
 
 [sub_resource type="GDScript" id="GDScript_epg62"]
 script/source = "class_name TitleLabel
@@ -23,7 +24,6 @@ script = ExtResource("1_m7y3b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
-current = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
@@ -74,4 +74,18 @@ size_flags_horizontal = 4
 button_group = SubResource("ButtonGroup_0t8qw")
 text = "Start"
 
+[node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+custom_minimum_size = Vector2(120, 0)
+offset_left = 54.0
+offset_top = 123.0
+offset_right = 174.0
+offset_bottom = 146.0
+size_flags_horizontal = 4
+button_group = SubResource("ButtonGroup_0t8qw")
+text = "Settings"
+
+[node name="Settings" parent="." instance=ExtResource("2_0kdql")]
+visible = false
+
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
+[connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]

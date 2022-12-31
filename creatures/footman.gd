@@ -1,6 +1,7 @@
 extends Creature
 
 @onready var animation_tree: AnimationTree = $AnimationTree
+@onready var sfx = $SwordSFX
 
 func _idle():
 	animation_tree.set("parameters/Movement/current", IDLE)
@@ -10,6 +11,7 @@ func _move():
 
 func _attack():
 	animation_tree.set("parameters/Attack/active", true)
+	sfx.play()
 
 func _update_direction():
 	animation_tree.set("parameters/IdleDirection/blend_position", direction)

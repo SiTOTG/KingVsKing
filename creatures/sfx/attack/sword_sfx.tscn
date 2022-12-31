@@ -1,0 +1,19 @@
+[gd_scene load_steps=5 format=3 uid="uid://dg4ccg2xvb2ef"]
+
+[ext_resource type="AudioStream" uid="uid://6yyoggwfuehw" path="res://assets/sfx/attack/sword/sword1.wav" id="1_mdpu3"]
+[ext_resource type="AudioStream" uid="uid://cxfuj160a6bdo" path="res://assets/sfx/attack/sword/sword2.wav" id="2_ey2mi"]
+[ext_resource type="AudioStream" uid="uid://2ly7pt56i85l" path="res://assets/sfx/attack/sword/sword3.wav" id="3_eceiv"]
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_oxsld"]
+streams_count = 3
+stream_0/stream = ExtResource("1_mdpu3")
+stream_0/weight = 1.0
+stream_1/stream = ExtResource("2_ey2mi")
+stream_1/weight = 1.0
+stream_2/stream = ExtResource("3_eceiv")
+stream_2/weight = 1.0
+
+[node name="SwordSFX" type="AudioStreamPlayer2D"]
+stream = SubResource("AudioStreamRandomizer_oxsld")
+volume_db = -16.877
+bus = &"SFX"

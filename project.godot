@@ -110,6 +110,7 @@ GlobalSettings="*res://global_settings.gd"
 DebugCamera="*res://debug/debug_camera.tscn"
 Events="*res://events.gd"
 ReferenceStash="*res://reference_stash.gd"
+Bgm="*res://bgm.tscn"
 
 [debug]
 

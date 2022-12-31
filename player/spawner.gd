@@ -48,7 +48,7 @@ func spawn():
 	creature.enemy_layer = enemy_layer
 	creature.friendly_layer = friendly_layer
 	creature.tree_exited.connect(decrease_spawned)
-	get_tree().root.add_child(creature)
+	get_parent().add_child(creature)
 	spawned += 1
 
 func get_polygon() -> PackedVector2Array:
