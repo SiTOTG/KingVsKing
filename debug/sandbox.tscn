@@ -1,31 +1,27 @@
 [gd_scene load_steps=5 format=3 uid="uid://tmovgpwal56o"]
 
 [ext_resource type="Script" path="res://debug/sandbox.gd" id="1_74ugs"]
-[ext_resource type="PackedScene" uid="uid://c3q6txdt1k5m8" path="res://player/spawner.tscn" id="9_waj4f"]
+[ext_resource type="PackedScene" uid="uid://b77yrfd22bqbp" path="res://creatures/skeleton.tscn" id="1_nsjvi"]
+[ext_resource type="PackedScene" uid="uid://cjy5jplt1c6bx" path="res://player/tower/tower.tscn" id="3_biuhq"]
 
-[sub_resource type="NavigationPolygon" id="NavigationPolygon_rhv7q"]
-vertices = PackedVector2Array(-128, -128, 256, -128, 256, 192, -128, 192)
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_dy548"]
+vertices = PackedVector2Array(240, -200, 272, 272, -216, 272, -224, -176)
 polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(-128, 192, 256, 192, 256, -128, -128, -128)]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_whc7a"]
-size = Vector2(32, 32)
+outlines = [PackedVector2Array(-224, -176, -216, 272, 272, 272, 240, -200)]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_74ugs")
 
+[node name="Skeleton" parent="." instance=ExtResource("1_nsjvi")]
+position = Vector2(104, 72)
+metadata/_edit_group_ = true
+
+[node name="EnemyDetector" parent="Skeleton" index="2"]
+collision_layer = 4
+
+[node name="Tower" parent="." instance=ExtResource("3_biuhq")]
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource("NavigationPolygon_rhv7q")
+navpoly = SubResource("NavigationPolygon_dy548")
 
-[node name="DestinationLane1" type="Marker2D" parent="."]
-position = Vector2(-64, -32)
-
-[node name="BuildingRegion2" type="CharacterBody2D" parent="."]
-visible = false
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="BuildingRegion2"]
-shape = SubResource("RectangleShape2D_whc7a")
-
-[node name="BuildingRegion" parent="." instance=ExtResource("9_waj4f")]
-position = Vector2(80, 56)
-spawn_capacity = 0
+[editable path="Skeleton"]

@@ -22,7 +22,7 @@ var direction := Vector2.DOWN:
 	set(value):
 		direction = value
 		_update_direction()
-			
+
 var target = null
 
 enum {
