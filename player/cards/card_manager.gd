@@ -34,3 +34,6 @@ func pick_card() -> String:
 func _on_card_used(card):
 	hand.erase(card)
 	hand_updated.emit()
+
+func clear_hand():
+	hand.clear()

@@ -32,6 +32,7 @@ func _ready():
 		card_manager = CardManager.new()
 
 	ReferenceStash.card_manager = card_manager
+	card_manager.clear_hand()
 
 	connect_signals()
 

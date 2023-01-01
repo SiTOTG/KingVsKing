@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=27 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -18,6 +18,7 @@
 [ext_resource type="Script" path="res://world/game_over_ui.gd" id="15_opoo2"]
 [ext_resource type="Script" path="res://player/building_stats.gd" id="16_3kfl1"]
 [ext_resource type="Texture2D" uid="uid://cgh2uhiknjo1m" path="res://assets/placeholder/sprites/FlameDemon Evolved.png" id="17_hjoo1"]
+[ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="19_p7ml3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nujo8"]
 texture = ExtResource("2_b5ipp")
@@ -136,6 +137,7 @@ metadata/_edit_lock_ = true
 
 [node name="Castle" parent="." instance=ExtResource("15_om70m")]
 position = Vector2(704, 224)
+friendly_layer = 2
 
 [node name="DemonCommander" parent="." instance=ExtResource("15_om70m")]
 position = Vector2(-1159, 154)
@@ -172,35 +174,71 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="GameOverUI/MarginContainer"]
-offset_right = 360.0
-offset_bottom = 240.0
+layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="GameOverUI/MarginContainer/PanelContainer"]
+layout_mode = 2
 size_flags_horizontal = 4
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer"]
-offset_right = 150.0
-offset_bottom = 119.0
+layout_mode = 2
 
 [node name="MatchGameoverTitle" type="Label" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 unique_name_in_owner = true
+layout_mode = 2
 theme_type_variation = &"TitleLabel"
 text = "Defeat!"
 script = SubResource("GDScript_k4be7")
 
 [node name="HSeparator" type="HSeparator" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
 theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_lfc6u")
 
 [node name="StartButton" type="Button" parent="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
+layout_mode = 2
 size_flags_horizontal = 4
 button_group = SubResource("ButtonGroup_lek63")
 text = "Back to main menu"
 
+[node name="SettingsUI" type="CanvasLayer" parent="."]
+
+[node name="Settings" parent="SettingsUI" instance=ExtResource("19_p7ml3")]
+unique_name_in_owner = true
+visible = false
+
+[node name="Panel" type="Control" parent="SettingsUI"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="SettingsUI/Panel"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -62.0
+offset_bottom = 40.0
+grow_horizontal = 0
+theme_override_constants/margin_top = 20
+theme_override_constants/margin_right = 21
+
+[node name="SettingsButton" type="Button" parent="SettingsUI/Panel/MarginContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+text = "Settings"
+
 [connection signal="destroyed" from="Castle" to="." method="_on_castle_destroyed"]
 [connection signal="destroyed" from="DemonCommander" to="." method="_on_demon_commander_destroyed"]
 [connection signal="pressed" from="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="GameOverUI" method="_on_start_button_pressed"]
+[connection signal="pressed" from="SettingsUI/Panel/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 
 [editable path="Spawner"]
 [editable path="EvilSpawner"]

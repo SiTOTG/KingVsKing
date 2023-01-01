@@ -24,6 +24,7 @@ script = ExtResource("1_m7y3b")
 
 [node name="Camera2D" type="Camera2D" parent="."]
 anchor_mode = 0
+current = true
 
 [node name="MarginContainer" type="MarginContainer" parent="."]
 anchors_preset = -1
@@ -48,6 +49,7 @@ size_flags_horizontal = 4
 [node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer/PanelContainer/MarginContainer"]
 offset_right = 228.0
 offset_bottom = 216.0
+theme_override_constants/separation = 10
 
 [node name="Label" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 offset_right = 228.0
@@ -57,9 +59,9 @@ text = "King vs King"
 script = SubResource("GDScript_epg62")
 
 [node name="HSeparator" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
-offset_top = 62.0
+offset_top = 68.0
 offset_right = 228.0
-offset_bottom = 92.0
+offset_bottom = 98.0
 theme_override_constants/separation = 30
 theme_override_styles/separator = SubResource("StyleBoxEmpty_nal6i")
 
@@ -67,9 +69,9 @@ theme_override_styles/separator = SubResource("StyleBoxEmpty_nal6i")
 unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 offset_left = 54.0
-offset_top = 96.0
+offset_top = 108.0
 offset_right = 174.0
-offset_bottom = 119.0
+offset_bottom = 131.0
 size_flags_horizontal = 4
 button_group = SubResource("ButtonGroup_0t8qw")
 text = "Start"
@@ -77,9 +79,9 @@ text = "Start"
 [node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
 offset_left = 54.0
-offset_top = 123.0
+offset_top = 141.0
 offset_right = 174.0
-offset_bottom = 146.0
+offset_bottom = 164.0
 size_flags_horizontal = 4
 button_group = SubResource("ButtonGroup_0t8qw")
 text = "Settings"

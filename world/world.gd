@@ -4,6 +4,8 @@ extends Node2D
 @onready var destination_lane_1 = $DestinationLane1
 @onready var tilemap_master: TilemapMaster = $TilemapMaster
 @onready var navigation_region_2d = $NavigationRegion2D
+@onready var settings = %Settings
+@onready var settings_button = %SettingsButton
 
 var active_card: Card
 
@@ -17,6 +19,7 @@ func _ready():
 	Events.confirm_card_activation_event.connect(_on_card_confirm_activation)
 	var navpoly: NavigationPolygon = navigation_region_2d.navpoly
 	navpoly.get_mesh().agent_radius = 32
+	settings.visibility_changed.connect(_on_settings_visibility_changed)
 	
 
 func _process(delta):
@@ -64,3 +67,9 @@ func _on_demon_commander_destroyed():
 	match_stats.victory = true
 	$GameOverUI.match_stats = match_stats
 	get_tree().paused = true
+
+func _on_settings_button_pressed():
+	settings.visible = true
+
+func _on_settings_visibility_changed():
+	settings_button.visible = not settings.visible
