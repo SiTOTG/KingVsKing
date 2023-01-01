@@ -15,8 +15,13 @@ var target: Creature:
 @export var samples: int = 20
 @export var height: float = 30.0
 
+var projectile_scene: PackedScene = load("res://projectiles/projectile.tscn")
+
 func _on_attack_timer_timeout():
-	pass
+	var projectile = projectile_scene.instantiate()
+	projectile.path = attack_path.points.duplicate()
+	add_child(projectile)
+	projectile.fly()
 
 func find_target() -> bool:
 	var possible_targets: Array = enemy_detector.get_overlapping_areas()

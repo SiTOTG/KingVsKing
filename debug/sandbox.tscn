@@ -21,7 +21,11 @@ collision_layer = 4
 
 [node name="Tower" parent="." instance=ExtResource("3_biuhq")]
 
+[node name="AttackTimer" parent="Tower" index="3"]
+wait_time = 1.3
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navpoly = SubResource("NavigationPolygon_dy548")
 
 [editable path="Skeleton"]
+[editable path="Tower"]
