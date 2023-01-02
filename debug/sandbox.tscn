@@ -24,6 +24,9 @@ collision_layer = 4
 [node name="AttackTimer" parent="Tower" index="3"]
 wait_time = 1.3
 
+[node name="AttackPath" parent="Tower" index="5"]
+visible = false
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navpoly = SubResource("NavigationPolygon_dy548")
 

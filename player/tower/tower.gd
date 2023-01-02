@@ -6,6 +6,8 @@ var target: Creature:
 		if is_instance_valid(target):
 			update_target()
 
+var deltas: PackedVector2Array = PackedVector2Array()
+
 @onready var enemy_detector = $EnemyDetector
 @onready var attack_timer = $AttackTimer
 @onready var attack_path = $AttackPath
@@ -17,9 +19,22 @@ var target: Creature:
 
 var projectile_scene: PackedScene = load("res://projectiles/projectile.tscn")
 
+func _ready():
+	if ProjectSettings.get("debug/settings/events/show_trajectories"):
+		attack_path.visible = true
+	
+	for i in range(samples):
+		var progress = 1.0*i/samples
+		var delta = curve.sample(progress)
+		deltas.append(Vector2(0, -delta*height))
+
 func _on_attack_timer_timeout():
 	var projectile = projectile_scene.instantiate()
 	projectile.path = attack_path.points.duplicate()
+	projectile.deltas = deltas
+	projectile.target = target
+	projectile.height = height
+	projectile.global_position = projectile_origin.global_position
 	add_child(projectile)
 	projectile.fly()
 

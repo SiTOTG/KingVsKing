@@ -87,3 +87,11 @@ script = ExtResource("1_66qnk")
 frames = SubResource("SpriteFrames_skltp")
 animation = &"travel"
 playing = true
+
+[node name="Node" type="Node" parent="."]
+
+[node name="Trajectile" type="Line2D" parent="Node"]
+unique_name_in_owner = true
+visible = false
+width = 2.0
+default_color = Color(1, 0.247059, 0.372549, 1)

@@ -115,6 +115,7 @@ Bgm="*res://bgm.tscn"
 [debug]
 
 settings/events/log_events=false
+settings/events/show_trajectories=false
 
 [display]
 
