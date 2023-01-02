@@ -60,6 +60,7 @@ func calculate_trajectile(current, total_samples):
 	trajectile.add_point(target.global_position)
 
 func impact():
+	trajectile.clear_points()
 	target.stats.hp -= damage
 	animated_sprite_2d.play("impact")
 	await animated_sprite_2d.animation_finished
