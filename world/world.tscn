@@ -1,4 +1,4 @@
-[gd_scene load_steps=27 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=28 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -17,6 +17,7 @@
 [ext_resource type="PackedScene" uid="uid://dmqrb2560hx2h" path="res://world/base.tscn" id="15_om70m"]
 [ext_resource type="Script" path="res://world/game_over_ui.gd" id="15_opoo2"]
 [ext_resource type="Script" path="res://player/building_stats.gd" id="16_3kfl1"]
+[ext_resource type="PackedScene" uid="uid://cjy5jplt1c6bx" path="res://player/tower/tower.tscn" id="16_o3cry"]
 [ext_resource type="Texture2D" uid="uid://cgh2uhiknjo1m" path="res://assets/placeholder/sprites/FlameDemon Evolved.png" id="17_hjoo1"]
 [ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="19_p7ml3"]
 
@@ -127,6 +128,7 @@ offset_top = -74.0
 offset_bottom = -43.0
 
 [node name="card_hud" parent="." instance=ExtResource("4_j856n")]
+visible = false
 tilemap_master = NodePath("../TilemapMaster")
 
 [node name="HeldCard" parent="." instance=ExtResource("13_1776e")]
@@ -158,6 +160,9 @@ offset_left = -64.0001
 offset_top = -36.0
 offset_right = -32.0001
 offset_bottom = -24.0
+
+[node name="Tower" parent="." instance=ExtResource("16_o3cry")]
+position = Vector2(56, 326)
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
 process_mode = 3

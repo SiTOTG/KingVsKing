@@ -5,6 +5,8 @@ var target: Creature:
 		target = value
 		if is_instance_valid(target):
 			update_target()
+		else:
+			attack_path.clear_points()
 
 var deltas: PackedVector2Array = PackedVector2Array()
 
@@ -22,19 +24,27 @@ var projectile_scene: PackedScene = load("res://projectiles/projectile.tscn")
 func _ready():
 	if ProjectSettings.get("debug/settings/events/show_trajectories"):
 		attack_path.visible = true
-	
+
 	for i in range(samples):
 		var progress = 1.0*i/samples
 		var delta = curve.sample(progress)
 		deltas.append(Vector2(0, -delta*height))
 
 func _on_attack_timer_timeout():
+	attack()
+
+func attack():
+	if not is_instance_valid(target):
+		target = null
+		attack_timer.stop()
+		return
 	var projectile = projectile_scene.instantiate()
 	projectile.path = attack_path.points.duplicate()
 	projectile.deltas = deltas
 	projectile.target = target
 	projectile.height = height
 	projectile.global_position = projectile_origin.global_position
+	projectile.translate(-position)
 	add_child(projectile)
 	projectile.fly()
 
@@ -48,6 +58,8 @@ func find_target() -> bool:
 func _physics_process(delta):
 	if is_instance_valid(target):
 		update_path()
+	else:
+		find_target()
 
 func _on_enemy_detector_area_entered(area):
 	if not is_instance_valid(target):
@@ -55,16 +67,22 @@ func _on_enemy_detector_area_entered(area):
 
 func update_target():
 	if attack_timer.is_stopped():
+		attack()
 		attack_timer.start()
 
 func update_path():
 	attack_path.clear_points()
-	attack_path.add_point(projectile_origin.global_position)
+	attack_path.add_point(projectile_origin.global_position - position)
 	var vector_to_target = target.global_position - projectile_origin.global_position
 
 	for i in range(samples):
 		var progress = 1.0*i/samples
 		var delta = curve.sample(progress)
 		var progress_vector = projectile_origin.global_position + vector_to_target*progress
-		attack_path.add_point(Vector2(progress_vector.x, progress_vector.y - delta*height))
-	attack_path.add_point(target.global_position)
+		attack_path.add_point(Vector2(progress_vector.x, progress_vector.y - delta*height) - position)
+	attack_path.add_point(target.global_position - position)
+
+func _on_enemy_detector_area_exited(area):
+	if area.get_parent() == target:
+		if not find_target():
+			target = null

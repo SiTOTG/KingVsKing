@@ -19,7 +19,18 @@ metadata/_edit_group_ = true
 [node name="EnemyDetector" parent="Skeleton" index="2"]
 collision_layer = 4
 
+[node name="Skeleton2" parent="." instance=ExtResource("1_nsjvi")]
+position = Vector2(0, 104)
+metadata/_edit_group_ = true
+
+[node name="EnemyDetector" parent="Skeleton2" index="2"]
+collision_layer = 4
+
+[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
+navpoly = SubResource("NavigationPolygon_dy548")
+
 [node name="Tower" parent="." instance=ExtResource("3_biuhq")]
+position = Vector2(73, -64)
 
 [node name="AttackTimer" parent="Tower" index="3"]
 wait_time = 1.3
@@ -27,8 +38,6 @@ wait_time = 1.3
 [node name="AttackPath" parent="Tower" index="5"]
 visible = false
 
-[node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource("NavigationPolygon_dy548")
-
 [editable path="Skeleton"]
+[editable path="Skeleton2"]
 [editable path="Tower"]
