@@ -1,4 +1,4 @@
-[gd_scene load_steps=28 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=29 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -20,6 +20,7 @@
 [ext_resource type="PackedScene" uid="uid://cjy5jplt1c6bx" path="res://player/tower/tower.tscn" id="16_o3cry"]
 [ext_resource type="Texture2D" uid="uid://cgh2uhiknjo1m" path="res://assets/placeholder/sprites/FlameDemon Evolved.png" id="17_hjoo1"]
 [ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="19_p7ml3"]
+[ext_resource type="PackedScene" uid="uid://ukgcb2xp5abs" path="res://player/tower/patrol_tower.tscn" id="21_ch6ct"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nujo8"]
 texture = ExtResource("2_b5ipp")
@@ -239,6 +240,9 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Settings"
+
+[node name="PatrolTower" parent="." instance=ExtResource("21_ch6ct")]
+position = Vector2(-212, 130)
 
 [connection signal="destroyed" from="Castle" to="." method="_on_castle_destroyed"]
 [connection signal="destroyed" from="DemonCommander" to="." method="_on_demon_commander_destroyed"]
