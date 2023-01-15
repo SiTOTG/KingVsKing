@@ -1,16 +1,14 @@
-[gd_resource type="Resource" load_steps=6 format=3 uid="uid://ddebe0gk76ugu"]
+[gd_resource type="Resource" load_steps=5 format=3 uid="uid://ddebe0gk76ugu"]
 
 [ext_resource type="Texture2D" uid="uid://cpvhr8ji6tuvm" path="res://assets/placeholder/CardPlaceholder1.jpg" id="1_g7mx8"]
 [ext_resource type="Script" path="res://player/cards/card.gd" id="1_rf1ya"]
 [ext_resource type="Texture2D" uid="uid://b8seri4nvbc8s" path="res://assets/placeholder/CardPlaceholder2.jpg" id="2_6f1kc"]
 [ext_resource type="Texture2D" uid="uid://huaw01fnc003" path="res://assets/placeholder/CardPlaceholder3.jpg" id="3_4tcfl"]
-[ext_resource type="Texture2D" uid="uid://c3bjjubcocilf" path="res://assets/placeholder/sprites/medieval-tavern_10000.png" id="3_56kvu"]
 
 [resource]
 script = ExtResource("1_rf1ya")
 hud_normal = ExtResource("1_g7mx8")
 hud_select = ExtResource("2_6f1kc")
-mouse_build = ExtResource("3_56kvu")
 mouse_empty = ExtResource("3_4tcfl")
 title = "Placeholder"
 spawner_scene = "res://player/footman_spawner.tscn"

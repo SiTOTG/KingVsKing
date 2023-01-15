@@ -1,4 +1,4 @@
-[gd_scene load_steps=29 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=30 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -17,10 +17,11 @@
 [ext_resource type="PackedScene" uid="uid://dmqrb2560hx2h" path="res://world/base.tscn" id="15_om70m"]
 [ext_resource type="Script" path="res://world/game_over_ui.gd" id="15_opoo2"]
 [ext_resource type="Script" path="res://player/building_stats.gd" id="16_3kfl1"]
-[ext_resource type="PackedScene" uid="uid://cjy5jplt1c6bx" path="res://player/tower/tower.tscn" id="16_o3cry"]
+[ext_resource type="PackedScene" uid="uid://ca46u8v1wkatd" path="res://player/tower/tower.tscn" id="16_o3cry"]
 [ext_resource type="Texture2D" uid="uid://cgh2uhiknjo1m" path="res://assets/placeholder/sprites/FlameDemon Evolved.png" id="17_hjoo1"]
 [ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="19_p7ml3"]
 [ext_resource type="PackedScene" uid="uid://ukgcb2xp5abs" path="res://player/tower/patrol_tower.tscn" id="21_ch6ct"]
+[ext_resource type="PackedScene" uid="uid://caneigmsa7iin" path="res://player/tower/tower_slot.tscn" id="22_rui1r"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nujo8"]
 texture = ExtResource("2_b5ipp")
@@ -132,10 +133,13 @@ offset_bottom = -43.0
 visible = false
 tilemap_master = NodePath("../TilemapMaster")
 
+[node name="TowerSlot" parent="." instance=ExtResource("22_rui1r")]
+position = Vector2(-120, 320)
+
 [node name="HeldCard" parent="." instance=ExtResource("13_1776e")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource("NavigationPolygon_hpv21")
+navigation_polygon = SubResource("NavigationPolygon_hpv21")
 metadata/_edit_lock_ = true
 
 [node name="Castle" parent="." instance=ExtResource("15_om70m")]
@@ -163,7 +167,10 @@ offset_right = -32.0001
 offset_bottom = -24.0
 
 [node name="Tower" parent="." instance=ExtResource("16_o3cry")]
-position = Vector2(56, 326)
+position = Vector2(-40, 312)
+
+[node name="PatrolTower" parent="." instance=ExtResource("21_ch6ct")]
+position = Vector2(-256, 160)
 
 [node name="GameOverUI" type="CanvasLayer" parent="."]
 process_mode = 3
@@ -211,6 +218,7 @@ text = "Back to main menu"
 [node name="Settings" parent="SettingsUI" instance=ExtResource("19_p7ml3")]
 unique_name_in_owner = true
 visible = false
+metadata/_edit_lock_ = true
 
 [node name="Panel" type="Control" parent="SettingsUI"]
 layout_mode = 3
@@ -220,6 +228,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
+metadata/_edit_lock_ = true
 
 [node name="MarginContainer" type="MarginContainer" parent="SettingsUI/Panel"]
 anchors_preset = 1
@@ -240,9 +249,6 @@ grow_horizontal = 0
 size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Settings"
-
-[node name="PatrolTower" parent="." instance=ExtResource("21_ch6ct")]
-position = Vector2(-212, 130)
 
 [connection signal="destroyed" from="Castle" to="." method="_on_castle_destroyed"]
 [connection signal="destroyed" from="DemonCommander" to="." method="_on_demon_commander_destroyed"]

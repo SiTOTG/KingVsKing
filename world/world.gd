@@ -17,10 +17,7 @@ func _unhandled_input(event):
 func _ready():
 	Events.start_card_activation_event.connect(func(card: Card): active_card = card)
 	Events.confirm_card_activation_event.connect(_on_card_confirm_activation)
-	var navpoly: NavigationPolygon = navigation_region_2d.navpoly
-	navpoly.get_mesh().agent_radius = 32
 	settings.visibility_changed.connect(_on_settings_visibility_changed)
-	
 
 func _process(delta):
 	var building_units: Array[Node] = get_tree().get_nodes_in_group("Building")
