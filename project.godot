@@ -8,94 +8,6 @@
 
 config_version=5
 
-_global_script_classes=[{
-"base": "Resource",
-"class": &"BuildingStats",
-"language": &"GDScript",
-"path": "res://player/building_stats.gd"
-}, {
-"base": "Resource",
-"class": &"Card",
-"language": &"GDScript",
-"path": "res://player/cards/card.gd"
-}, {
-"base": "TextureButton",
-"class": &"CardButton",
-"language": &"GDScript",
-"path": "res://player/cards/card_button.gd"
-}, {
-"base": "Resource",
-"class": &"CardManager",
-"language": &"GDScript",
-"path": "res://player/cards/card_manager.gd"
-}, {
-"base": "CharacterBody2D",
-"class": &"Creature",
-"language": &"GDScript",
-"path": "res://creatures/creature.gd"
-}, {
-"base": "Resource",
-"class": &"CreatureStats",
-"language": &"GDScript",
-"path": "res://creatures/creature_stats.gd"
-}, {
-"base": "TileMapBase",
-"class": &"CustomTileMap",
-"language": &"GDScript",
-"path": "res://world/tiles/custom_tile_map.gd"
-}, {
-"base": "Object",
-"class": &"MatchStats",
-"language": &"GDScript",
-"path": "res://lib/match_stats.gd"
-}, {
-"base": "Area2D",
-"class": &"Spawner",
-"language": &"GDScript",
-"path": "res://player/spawner.gd"
-}, {
-"base": "BuildingStats",
-"class": &"SpawnerStats",
-"language": &"GDScript",
-"path": "res://player/spawner_stats.gd"
-}, {
-"base": "TileMap",
-"class": &"TileMapBase",
-"language": &"GDScript",
-"path": "res://world/tile_map_base.gd"
-}, {
-"base": "TileMapBase",
-"class": &"TilemapMaster",
-"language": &"GDScript",
-"path": "res://world/tilemap_master.gd"
-}, {
-"base": "TextureRect",
-"class": &"ValueBar",
-"language": &"GDScript",
-"path": "res://ui/value_bar.gd"
-}, {
-"base": "Node2D",
-"class": &"World",
-"language": &"GDScript",
-"path": "res://world/world.gd"
-}]
-_global_script_class_icons={
-"BuildingStats": "",
-"Card": "",
-"CardButton": "",
-"CardManager": "",
-"Creature": "",
-"CreatureStats": "",
-"CustomTileMap": "",
-"MatchStats": "",
-"Spawner": "",
-"SpawnerStats": "",
-"TileMapBase": "",
-"TilemapMaster": "",
-"ValueBar": "",
-"World": ""
-}
-
 [application]
 
 config/name="King Vs King"
@@ -125,6 +37,10 @@ window/size/window_width_override=1200
 window/size/window_height_override=800
 window/stretch/mode="canvas_items"
 window/stretch/aspect="keep_width"
+
+[editor]
+
+export/convert_text_resources_to_binary=true
 
 [gui]
 

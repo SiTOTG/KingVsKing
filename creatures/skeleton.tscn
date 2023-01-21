@@ -346,7 +346,7 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_pqeee")
 blend_point_1/pos = -1.0
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_xavfb"]
-graph_offset = Vector2(-747.68, -25.4)
+graph_offset = Vector2(-394.267, 67.7467)
 nodes/AttackDirection/node = SubResource("AnimationNodeBlendSpace1D_6ocwi")
 nodes/AttackDirection/position = Vector2(60, 380)
 nodes/AttackTrigger/node = SubResource("AnimationNodeOneShot_sle6k")
@@ -383,8 +383,11 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/AttackDirection/blend_position = 1.0
 parameters/AttackTrigger/active = false
+parameters/AttackTrigger/request = 0
 parameters/IdleDirection/blend_position = 1.0
-parameters/MoveState/current = 0
+parameters/MoveState/current_state = "Idling"
+parameters/MoveState/transition_request = ""
+parameters/MoveState/current_index = 0
 parameters/WalkDirection/blend_position = 1.0
 
 [node name="SwordSFX" parent="." index="8" instance=ExtResource("5_0tsuv")]

@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://ca46u8v1wkatd"]
 
 [ext_resource type="Script" path="res://player/tower/tower.gd" id="1_emqql"]
-[ext_resource type="PackedScene" uid="uid://u7jg1guhlli3" path="res://player/tower/tower_preview.tscn" id="2_vtntc"]
+[ext_resource type="PackedScene" uid="uid://u7jg1guhlli3" path="res://player/tower/tower_sprite.tscn" id="2_1t7ol"]
 
 [sub_resource type="Curve" id="Curve_r3cq6"]
 _data = [Vector2(0.00221239, 0.0090909), 0.0, 6.84848, 0, 0, Vector2(0.314159, 0.990909), -0.308182, -0.308182, 0, 0, Vector2(0.993363, 0), -1.68578, 0.0, 0, 0]
@@ -17,7 +17,7 @@ radius = 152.84
 script = ExtResource("1_emqql")
 curve = SubResource("Curve_r3cq6")
 
-[node name="TowerSprite" parent="." instance=ExtResource("2_vtntc")]
+[node name="TowerSprite" parent="." instance=ExtResource("2_1t7ol")]
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_osj0w")
