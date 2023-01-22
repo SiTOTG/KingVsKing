@@ -98,7 +98,7 @@ func _on_card_deactivate():
 	active_card = null
 	hide_buildable_tiles()
 
-func _on_card_context_changed(old_context: int, new_context: int):
+func _on_card_context_changed(_old_context: int, new_context: int):
 	if new_context == Card.SPAWNER:
 		show_buildable_tiles(active_card.spawner_size)
 	else:

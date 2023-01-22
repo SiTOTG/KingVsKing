@@ -24,7 +24,7 @@ func _ready():
 	stats = stats.duplicate()
 
 	stats.hp_updated.connect(
-		func(previous_hp: int, new_hp: int, max_hp: int):
+		func(_previous_hp: int, new_hp: int, max_hp: int):
 			hp_bar.animate_bar(new_hp, max_hp)
 			if new_hp == 0:
 				queue_free()

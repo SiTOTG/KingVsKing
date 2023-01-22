@@ -39,7 +39,7 @@ func _ready():
 	agent.velocity_computed.connect(on_velocity_computed)
 	agent.target_location = destination
 	stats.hp_updated.connect(
-		func(previous_hp: int, new_hp: int, max_hp: int):
+		func(_previous_hp: int, new_hp: int, max_hp: int):
 			value_bar.animate_bar(new_hp, max_hp)
 			if new_hp == 0:
 				queue_free()
