@@ -26,12 +26,12 @@ func animate_bar(value: float, max_value: float, duration: float = 1.0) -> void:
 	if bar_value > previous_bar_value:
 		decrease.value = bar_value
 		increase.value = bar_value
-		tween.tween_property(actual, "value", bar_value, duration).from_current()
+		var _tween = tween.tween_property(actual, "value", bar_value, duration).from_current()
 		await tween.finished
 	elif bar_value < previous_bar_value:
 		actual.value = bar_value
 		increase.value = bar_value
-		tween.tween_property(decrease, "value", bar_value, duration).from_current()
+		var _tween = tween.tween_property(decrease, "value", bar_value, duration).from_current()
 		await tween.finished
 	else:
 		tween.kill()

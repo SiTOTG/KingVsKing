@@ -36,9 +36,9 @@ func update_layer():
 
 func _ready():
 	stats = stats.duplicate()
-	agent.velocity_computed.connect(on_velocity_computed)
+	var _error = agent.velocity_computed.connect(on_velocity_computed)
 	agent.target_location = destination
-	stats.hp_updated.connect(
+	_error = stats.hp_updated.connect(
 		func(_previous_hp: int, new_hp: int, max_hp: int):
 			value_bar.animate_bar(new_hp, max_hp)
 			if new_hp == 0:
@@ -46,7 +46,7 @@ func _ready():
 	)
 	value_bar.set_bar(stats.hp, stats.max_hp)
 	value_bar.visible = GlobalSettings.show_creature_ui
-	GlobalSettings.creature_ui_visibility_changed.connect(
+	_error = GlobalSettings.creature_ui_visibility_changed.connect(
 		func(value):
 			value_bar.visible = value
 	)
@@ -74,7 +74,7 @@ func _move():
 func on_velocity_computed(safe_velocity: Vector2):
 	direction = safe_velocity.normalized()
 	velocity = direction * stats.speed
-	move_and_slide()
+	var _collided = move_and_slide()
 
 func _on_enemy_detector_area_entered(area):
 	if is_instance_valid(target): return

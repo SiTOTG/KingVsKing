@@ -26,6 +26,7 @@ Bgm="*res://bgm.tscn"
 
 [debug]
 
+gdscript/warnings/return_value_discarded=1
 settings/events/log_events=false
 settings/events/show_trajectories=true
 
