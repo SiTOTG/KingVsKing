@@ -6,7 +6,7 @@ extends Resource
 @export var hud_select: Texture2D
 @export_group("Mouse follow icons")
 @export var mouse_spawner: Texture2D
-@export var mouse_tower: Texture2D
+@export var mouse_tower_preview: PackedScene
 @export var mouse_empty: Texture2D
 @export var mouse_cast: Texture2D
 @export var mouse_upgrade: Texture2D
@@ -23,7 +23,8 @@ var _used = false
 enum {
 	RESET,
 	NO_TARGET,
-	SPAWNER
+	SPAWNER,
+	TOWER,
 }
 
 signal context_changed(old_context: int, new_context: int)
@@ -54,12 +55,19 @@ var hovering_tiles = false:
 		hovering_tiles = value
 		update_ctx()
 
+var hovering_tower_slot:
+	set(value):
+		hovering_tiles = value
+		update_ctx()
+
 var ctx: int = RESET
 
 func update_ctx():
 	var new_ctx
 	if active:
 		# Decide on the context
+		if is_instance_valid(hovering_tower_slot):
+			print("Hovering tower")
 		if hovering_tiles:
 			calculate_spawner_size()
 			new_ctx = SPAWNER

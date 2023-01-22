@@ -3,6 +3,7 @@ extends Sprite2D
 var active_card: Card
 
 var tile_position = Vector2.ZERO
+var tower_position
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
