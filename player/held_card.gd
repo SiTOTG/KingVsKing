@@ -61,3 +61,7 @@ func update_texture(context: int):
 			texture = active_card.mouse_spawner
 			scale = Vector2(0.232, 0.232)
 			self_modulate.a = 0.4
+		Card.TOWER:
+			texture = null
+			scale = Vector2(0.35, 0.35)
+			modulate.a = 1

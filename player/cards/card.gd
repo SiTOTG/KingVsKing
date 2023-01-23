@@ -57,7 +57,7 @@ var hovering_tiles = false:
 
 var hovering_tower_slot:
 	set(value):
-		hovering_tiles = value
+		hovering_tower_slot = value
 		update_ctx()
 
 var ctx: int = RESET
@@ -67,8 +67,8 @@ func update_ctx():
 	if active:
 		# Decide on the context
 		if is_instance_valid(hovering_tower_slot):
-			print("Hovering tower")
-		if hovering_tiles:
+			new_ctx = TOWER
+		elif hovering_tiles:
 			calculate_spawner_size()
 			new_ctx = SPAWNER
 		else:

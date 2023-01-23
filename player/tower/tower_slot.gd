@@ -11,7 +11,8 @@ func _ready():
 	Events.finish_card_activation_event.connect(_hide_tower)
 
 func _show_tower(card: Card):
-	print("Show card")
+	if not is_instance_valid(card):
+		return
 	self.card = card
 	if hovering:
 		card.hovering_tower_slot = self
@@ -23,17 +24,9 @@ func _show_tower(card: Card):
 		$AnimationPlayer.play("show_preview")
 
 func _hide_tower():
-	#if card.hovering_tower_slot == self:
-	#	card.hovering_tower_slot = null
-	#self.card = null
-	if preview != null:
+	if is_instance_valid(preview):
 		preview.queue_free()
 		$AnimationPlayer.stop()
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta):
-	#$CollisionShape2D.polygon = $Polygon2D.polygon
-	pass
 
 func _on_mouse_entered():
 	if card:
@@ -42,7 +35,6 @@ func _on_mouse_entered():
 	_show_tower(card)
 
 func _on_mouse_exited():
-	#if card and card.hovering_tower_slot == self:
-	#	card.hovering_tower_slot = null
+	card.hovering_tower_slot = null
 	hovering = false
 	_hide_tower()
