@@ -35,6 +35,7 @@ func _on_mouse_entered():
 	_show_tower(card)
 
 func _on_mouse_exited():
-	card.hovering_tower_slot = null
+	if is_instance_valid(card):
+		card.hovering_tower_slot = null
 	hovering = false
 	_hide_tower()
