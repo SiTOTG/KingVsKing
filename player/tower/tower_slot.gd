@@ -3,7 +3,7 @@ extends Area2D
 var card: Card
 
 var preview: Node2D
-var hovering = true
+var hovering = false
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
@@ -15,31 +15,34 @@ func _show_tower(card: Card):
 	self.card = card
 	if hovering:
 		card.hovering_tower_slot = self
-	preview = card.mouse_tower_preview.instantiate()
-	preview.name = "Preview"
-	add_child(preview)
-	var animation: Animation = $AnimationPlayer.get_animation("show_preview")
-	animation.track_set_path(0, "Preview:modulate")
-	$AnimationPlayer.play("show_preview")
+		preview = card.mouse_tower_preview.instantiate()
+		preview.name = "Preview"
+		add_child(preview)
+		var animation: Animation = $AnimationPlayer.get_animation("show_preview")
+		animation.track_set_path(0, "Preview:modulate")
+		$AnimationPlayer.play("show_preview")
 
 func _hide_tower():
-	self.card = null
-	if card.hovering_tower_slot == self:
-		card.hovering_tower_slot = null
-	preview.queue_free()
-	$AnimationPlayer.stop()
+	#if card.hovering_tower_slot == self:
+	#	card.hovering_tower_slot = null
+	#self.card = null
+	if preview != null:
+		preview.queue_free()
+		$AnimationPlayer.stop()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta):
-	$CollisionPolygon2D.polygon = $Polygon2D.polygon
+	#$CollisionShape2D.polygon = $Polygon2D.polygon
+	pass
 
 func _on_mouse_entered():
-	# Not being called
 	if card:
 		card.hovering_tower_slot = self
 	hovering = true
+	_show_tower(card)
 
 func _on_mouse_exited():
-	if card and card.hovering_tower_slot == self:
-		card.hovering_tower_slot = null
+	#if card and card.hovering_tower_slot == self:
+	#	card.hovering_tower_slot = null
 	hovering = false
+	_hide_tower()
