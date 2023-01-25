@@ -1,20 +1,19 @@
 extends Area2D
 
 var card: Card
-var tower
-var world: World
 
 var preview: Node2D
 var hovering = false
+
+@onready var tower = $Tower
 
 signal tower_created
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.start_card_activation_event.connect(_show_tower)
-	Events.finish_card_activation_event.connect(_hide_tower)
-	world =  self.get_parent()
-	tower_created.connect(world._on_tower_created)
+	Events.finish_card_activation_event.connect(_on_finish_card_activation)
+	Events.confirm_card_activation_event.connect(_on_card_activation)
 
 func _show_tower(card: Card):
 	if not is_instance_valid(card):
@@ -28,16 +27,16 @@ func _show_tower(card: Card):
 		var animation: Animation = $AnimationPlayer.get_animation("show_preview")
 		animation.track_set_path(0, "Preview:modulate")
 		$AnimationPlayer.play("show_preview")
-		
+
 func _build_tower(card: Card):
 	if is_instance_valid(card):
 		if "tower_scene" in card:
 			if not is_instance_valid(tower):
 				tower = load(card.tower_scene)
 				var t = tower.instantiate()
+				t.name = "Tower"
 				self.add_child(t)
 				emit_signal("tower_created")
-		
 
 func _hide_tower():
 	if is_instance_valid(preview):
@@ -56,9 +55,10 @@ func _on_mouse_exited():
 	hovering = false
 	_hide_tower()
 
-func _unhandled_input(event):
-	if event is InputEventMouseButton:
-		if event.button_index == 1:
-			if hovering == true:
-				_build_tower(card)
+func _on_finish_card_activation():
+	card = null
+	_hide_tower()
 
+func _on_card_activation():
+	if hovering == true:
+		_build_tower(card)

@@ -71,10 +71,13 @@ func _on_demon_commander_destroyed():
 	
 func _on_tower_created():	
 	_consume_card()
-	
 
 func _on_settings_button_pressed():
 	settings.visible = true
 
 func _on_settings_visibility_changed():
 	settings_button.visible = not settings.visible
+
+
+func _on_tower_slot_tower_created():
+	_consume_card()

@@ -139,6 +139,11 @@ tilemap_master = NodePath("../TilemapMaster")
 [node name="TowerSlot" parent="." instance=ExtResource("22_rui1r")]
 position = Vector2(-120, 320)
 
+[node name="Tower" parent="TowerSlot" instance=ExtResource("16_o3cry")]
+
+[node name="TowerSlot2" parent="." instance=ExtResource("22_rui1r")]
+position = Vector2(-264, 320)
+
 [node name="HeldCard" parent="." instance=ExtResource("13_1776e")]
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
@@ -169,9 +174,6 @@ offset_left = -64.0001
 offset_top = -36.0
 offset_right = -32.0001
 offset_bottom = -24.0
-
-[node name="Tower" parent="." instance=ExtResource("16_o3cry")]
-position = Vector2(-40, 312)
 
 [node name="PatrolTower" parent="." instance=ExtResource("21_ch6ct")]
 position = Vector2(-256, 160)
@@ -254,6 +256,8 @@ size_flags_horizontal = 8
 size_flags_vertical = 0
 text = "Settings"
 
+[connection signal="tower_created" from="TowerSlot" to="." method="_on_tower_slot_tower_created"]
+[connection signal="tower_created" from="TowerSlot2" to="." method="_on_tower_slot_tower_created"]
 [connection signal="pressed" from="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="GameOverUI" method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsUI/Panel/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 
