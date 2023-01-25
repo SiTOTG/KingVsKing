@@ -1,3 +1,4 @@
+class_name Tower
 extends StaticBody2D
 
 var target: Creature:

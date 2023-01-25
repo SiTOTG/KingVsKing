@@ -1,25 +1,20 @@
-[gd_resource type="Resource" load_steps=9 format=3 uid="uid://ddebe0gk76ugu"]
+[gd_resource type="Resource" load_steps=7 format=3 uid="uid://ddebe0gk76ugu"]
 
 [ext_resource type="Texture2D" uid="uid://cpvhr8ji6tuvm" path="res://assets/placeholder/CardPlaceholder1.jpg" id="1_g7mx8"]
 [ext_resource type="Script" path="res://player/cards/card.gd" id="1_rf1ya"]
 [ext_resource type="Texture2D" uid="uid://b8seri4nvbc8s" path="res://assets/placeholder/CardPlaceholder2.jpg" id="2_6f1kc"]
 [ext_resource type="Texture2D" uid="uid://huaw01fnc003" path="res://assets/placeholder/CardPlaceholder3.jpg" id="3_4tcfl"]
 [ext_resource type="Texture2D" uid="uid://c3bjjubcocilf" path="res://assets/placeholder/sprites/medieval-tavern_10000.png" id="4_vv6n1"]
-[ext_resource type="Texture2D" uid="uid://devvfw2vsa653" path="res://assets/placeholder/RedMoonTower_free_idle_animation..png" id="5_g3yel"]
 [ext_resource type="PackedScene" uid="uid://u7jg1guhlli3" path="res://player/tower/tower_sprite.tscn" id="6_hu034"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_mbd8p"]
-atlas = ExtResource("5_g3yel")
-region = Rect2(16, 46, 68, 89)
 
 [resource]
 script = ExtResource("1_rf1ya")
 hud_normal = ExtResource("1_g7mx8")
 hud_select = ExtResource("2_6f1kc")
 mouse_spawner = ExtResource("4_vv6n1")
-mouse_tower = SubResource("AtlasTexture_mbd8p")
 mouse_tower_preview = ExtResource("6_hu034")
 mouse_empty = ExtResource("3_4tcfl")
 title = "Placeholder"
 spawner_scene = "res://player/footman_spawner.tscn"
+tower_scene = "res://player/tower/tower.tscn"
 spawner_size = Vector2i(3, 2)

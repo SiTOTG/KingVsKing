@@ -1,6 +1,7 @@
 extends Area2D
 
 var card: Card
+var tower#: Tower
 
 var preview: Node2D
 var hovering = false
@@ -22,6 +23,12 @@ func _show_tower(card: Card):
 		var animation: Animation = $AnimationPlayer.get_animation("show_preview")
 		animation.track_set_path(0, "Preview:modulate")
 		$AnimationPlayer.play("show_preview")
+		
+func _build_tower(card: Card):
+	if "tower_scene" in card:
+		tower = load(card.tower_scene)
+		var t = tower.instantiate()
+		self.add_child(t)
 
 func _hide_tower():
 	if is_instance_valid(preview):
@@ -39,3 +46,9 @@ func _on_mouse_exited():
 		card.hovering_tower_slot = null
 	hovering = false
 	_hide_tower()
+
+func _unhandled_input(event):
+	if event is InputEventMouseButton:
+		if event.button_index == 1:
+			if hovering == true:
+				_build_tower(card)

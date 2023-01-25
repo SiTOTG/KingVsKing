@@ -15,6 +15,7 @@ extends Resource
 
 @export_group("Effect")
 @export_file("*.tscn") var spawner_scene
+@export_file("*tscn") var tower_scene
 @export var spawner_size: Vector2i
 
 var _used = false
