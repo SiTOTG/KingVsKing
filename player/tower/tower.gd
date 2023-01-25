@@ -44,7 +44,7 @@ func attack():
 	projectile.deltas = deltas
 	projectile.target = target
 	projectile.height = height
-	projectile.global_position = projectile_origin.global_position
+	projectile.transform = projectile_origin.transform
 	projectile.translate(-position)
 	add_child(projectile)
 	projectile.fly()

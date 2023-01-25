@@ -36,9 +36,6 @@ func _build_tower(card: Card):
 				tower = load(card.tower_scene)
 				var t = tower.instantiate()
 				self.add_child(t)
-				#print(t.projectile_origin.transform)
-				#t.projectile_origin.transform.x = Vector2(0,0)
-				#t.projectile_origin.transform.y = Vector2(0,0)
 				emit_signal("tower_created")
 		
 
