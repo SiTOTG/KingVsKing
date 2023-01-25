@@ -47,6 +47,10 @@ func _on_card_confirm_activation():
 #				navpoly.make_polygons_from_outlines()
 #		)
 		add_child(spawner)
+		_consume_card()
+
+func _consume_card():
+	if is_instance_valid(active_card):
 		active_card.active = false
 		active_card.use()
 
@@ -64,6 +68,10 @@ func _on_demon_commander_destroyed():
 	match_stats.victory = true
 	$GameOverUI.match_stats = match_stats
 	get_tree().paused = true
+	
+func _on_tower_created():	
+	_consume_card()
+	
 
 func _on_settings_button_pressed():
 	settings.visible = true
