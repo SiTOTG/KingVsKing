@@ -72,4 +72,6 @@ position = Vector2(0, 25)
 [node name="AttackPoint" type="Marker2D" parent="."]
 position = Vector2(0, 25)
 
+[node name="PatrolPath" type="Line2D" parent="."]
+
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

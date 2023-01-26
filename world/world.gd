@@ -68,9 +68,6 @@ func _on_demon_commander_destroyed():
 	match_stats.victory = true
 	$GameOverUI.match_stats = match_stats
 	get_tree().paused = true
-	
-func _on_tower_created():	
-	_consume_card()
 
 func _on_settings_button_pressed():
 	settings.visible = true

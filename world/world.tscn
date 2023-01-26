@@ -178,6 +178,12 @@ offset_bottom = -24.0
 [node name="PatrolTower" parent="." instance=ExtResource("21_ch6ct")]
 position = Vector2(-256, 160)
 
+[node name="PatrolPath" parent="PatrolTower" index="6"]
+visible = false
+points = PackedVector2Array(72, 15, 72, -62, -65, -61, -65, 79, 73, 79)
+begin_cap_mode = 2
+end_cap_mode = 2
+
 [node name="GameOverUI" type="CanvasLayer" parent="."]
 process_mode = 3
 visible = false
@@ -258,6 +264,8 @@ text = "Settings"
 
 [connection signal="tower_created" from="TowerSlot" to="." method="_on_tower_slot_tower_created"]
 [connection signal="tower_created" from="TowerSlot2" to="." method="_on_tower_slot_tower_created"]
+[connection signal="destroyed" from="Castle" to="." method="_on_castle_destroyed"]
+[connection signal="destroyed" from="DemonCommander" to="." method="_on_demon_commander_destroyed"]
 [connection signal="pressed" from="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="GameOverUI" method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsUI/Panel/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
 
@@ -265,3 +273,4 @@ text = "Settings"
 [editable path="EvilSpawner"]
 [editable path="EvilSpawner2"]
 [editable path="DemonCommander"]
+[editable path="PatrolTower"]

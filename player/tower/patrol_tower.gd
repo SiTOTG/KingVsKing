@@ -16,6 +16,7 @@ var target: Creature:
 @onready var spawn_timer = $SpawnTimer
 @onready var rally_point = $RallyPoint
 @onready var attack_point = $AttackPoint
+@onready var patrol_path = $PatrolPath
 
 var spawned : int = 0
 @export var spawn_capacity : int = 3
@@ -41,6 +42,9 @@ func spawn():
 	creature.friendly_layer = friendly_layer
 	creature.tree_exiting.connect(decrease_spawned)
 	creature.collision_layer = 0
+	creature.patrol_path = patrol_path.points
+	creature.nav_mode = 1
+	creature.patrol_point = 0
 	get_parent().add_child(creature)
 	spawned += 1
 
