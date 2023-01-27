@@ -6,7 +6,7 @@ extends CharacterBody2D
 @export var patrol_path: Array
 
 @export var stats: CreatureStats
-@export var nav_mode = RALLY
+@export_enum("Rally", "Patrol") var nav_mode: int = RALLY
 @export_flags_2d_physics var enemy_layer = 0:
 	set(value):
 		enemy_layer = value
@@ -68,15 +68,13 @@ func _physics_process(_delta):
 		else:
 			_idle()
 	if nav_mode == PATROL:
-		if not is_instance_valid(target) and agent.target_location != destination:
-			agent.target_location = destination
-		if global_position.distance_to(agent.target_location) > 5:
+		if not is_instance_valid(target):
+			# Check if we reached a waypoint
+			if global_position.distance_to(agent.target_location) < 5:
+				patrol_point = (patrol_point + 1) % patrol_path.size()
+				destination = patrol_path[patrol_point]
+				agent.target_location = destination
 			move()
-		else:
-			patrol_point += 1
-			if patrol_point >= patrol_path.size():
-				patrol_point = 0
-			agent.target_location = patrol_path[patrol_point]
 
 func _idle():
 	pass

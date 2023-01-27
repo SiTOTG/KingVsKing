@@ -42,9 +42,13 @@ func spawn():
 	creature.friendly_layer = friendly_layer
 	creature.tree_exiting.connect(decrease_spawned)
 	creature.collision_layer = 0
-	creature.patrol_path = patrol_path.points
+	var points = []
+	for point in patrol_path.points:
+		points.append(point + global_position)
+	creature.patrol_path = points
 	creature.nav_mode = 1
 	creature.patrol_point = 0
+	creature.destination = points[0]
 	get_parent().add_child(creature)
 	spawned += 1
 
