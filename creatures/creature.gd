@@ -71,9 +71,13 @@ func _physics_process(_delta):
 		if not is_instance_valid(target):
 			# Check if we reached a waypoint
 			if global_position.distance_to(agent.target_location) < 5:
-				patrol_point = (patrol_point + 1) % patrol_path.size()
-				destination = patrol_path[patrol_point]
-				agent.target_location = destination
+				if (agent.target_location == patrol_path[patrol_point]):
+					patrol_point = (patrol_point + 1) % patrol_path.size()
+					destination = patrol_path[patrol_point]
+					agent.target_location = destination
+				else:
+					destination = patrol_path[patrol_point]
+					agent.target_location = destination
 			move()
 
 func _idle():
