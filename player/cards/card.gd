@@ -7,15 +7,18 @@ extends Resource
 @export_group("Mouse follow icons")
 @export var mouse_spawner: Texture2D
 @export var mouse_tower_preview: PackedScene
+@export var mouse_path_preview: PackedScene
 @export var mouse_empty: Texture2D
 @export var mouse_cast: Texture2D
 @export var mouse_upgrade: Texture2D
 @export_group("Stats")
 @export var title: String = ""
+@export_enum("Patrol Tower", "Trap") var path_type: int = PATROLTOWER
 
 @export_group("Effect")
 @export_file("*.tscn") var spawner_scene
 @export_file("*tscn") var tower_scene
+@export_file("*tscn") var path_scene
 @export var spawner_size: Vector2i
 
 var _used = false
@@ -26,6 +29,12 @@ enum {
 	NO_TARGET,
 	SPAWNER,
 	TOWER,
+	PATH,
+}
+
+enum {
+	PATROLTOWER,
+	TRAP,
 }
 
 signal context_changed(old_context: int, new_context: int)
@@ -60,6 +69,11 @@ var hovering_tower_slot:
 	set(value):
 		hovering_tower_slot = value
 		update_ctx()
+		
+var hovering_path_slot:
+	set(value):
+		hovering_path_slot = value
+		update_ctx()
 
 var ctx: int = RESET
 
@@ -69,6 +83,8 @@ func update_ctx():
 		# Decide on the context
 		if is_instance_valid(hovering_tower_slot):
 			new_ctx = TOWER
+		elif is_instance_valid(hovering_path_slot):
+			new_ctx = PATH
 		elif hovering_tiles:
 			calculate_spawner_size()
 			new_ctx = SPAWNER

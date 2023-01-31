@@ -1,4 +1,4 @@
-[gd_scene load_steps=32 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=33 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -54,6 +54,10 @@ extends Label
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_lfc6u"]
 
 [sub_resource type="ButtonGroup" id="ButtonGroup_lek63"]
+
+[sub_resource type="Gradient" id="Gradient_nl8vq"]
+offsets = PackedFloat32Array(0, 0.267717, 0.996063, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.929134, 0.929134, 0.929134, 1, 0, 0, 0, 1, 0.0314961, 0.0314961, 0.0314961, 1)
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_61105")
@@ -183,7 +187,7 @@ offset_bottom = -24.0
 [node name="PatrolTower" parent="." instance=ExtResource("21_ch6ct")]
 position = Vector2(-256, 160)
 
-[node name="PatrolPath" parent="PatrolTower" index="6"]
+[node name="PatrolPath" parent="PatrolTower" index="4"]
 points = PackedVector2Array(72, 15, 72, -62, -65, -61, -65, 79, 73, 79)
 width = 4.0
 gradient = SubResource("Gradient_w0xl2")
@@ -271,15 +275,22 @@ text = "Settings"
 [node name="path_slot" parent="." instance=ExtResource("23_w7jom")]
 position = Vector2(-463, 135)
 
+[node name="PatrolPath" parent="path_slot" index="4"]
+visible = false
+points = PackedVector2Array(48, 0, 48, -46, -51, -46, -51, 63, 50, 63)
+gradient = SubResource("Gradient_nl8vq")
+
 [connection signal="tower_created" from="TowerSlot" to="." method="_on_tower_slot_tower_created"]
 [connection signal="tower_created" from="TowerSlot2" to="." method="_on_tower_slot_tower_created"]
 [connection signal="destroyed" from="Castle" to="." method="_on_castle_destroyed"]
 [connection signal="destroyed" from="DemonCommander" to="." method="_on_demon_commander_destroyed"]
 [connection signal="pressed" from="GameOverUI/MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="GameOverUI" method="_on_start_button_pressed"]
 [connection signal="pressed" from="SettingsUI/Panel/MarginContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="pathbuild_created" from="path_slot" to="." method="_on_path_slot_pathbuild_created"]
 
 [editable path="Spawner"]
 [editable path="EvilSpawner"]
 [editable path="EvilSpawner2"]
 [editable path="DemonCommander"]
 [editable path="PatrolTower"]
+[editable path="path_slot"]

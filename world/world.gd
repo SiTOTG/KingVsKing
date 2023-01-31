@@ -78,3 +78,6 @@ func _on_settings_visibility_changed():
 
 func _on_tower_slot_tower_created():
 	_consume_card()
+
+func _on_path_slot_pathbuild_created():
+	_consume_card()

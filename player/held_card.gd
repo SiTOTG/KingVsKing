@@ -26,7 +26,7 @@ func _process(delta):
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if active_card and active_card.ctx in [Card.SPAWNER, Card.TOWER]:
+			if active_card and active_card.ctx in [Card.SPAWNER, Card.TOWER, Card.PATH]:
 				Events.confirm_card_activation_event.emit()
 				get_viewport().set_input_as_handled()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and active_card:
@@ -62,6 +62,10 @@ func update_texture(context: int):
 			scale = Vector2(0.232, 0.232)
 			self_modulate.a = 0.4
 		Card.TOWER:
+			texture = null
+			scale = Vector2(0.35, 0.35)
+			modulate.a = 1
+		Card.PATH:
 			texture = null
 			scale = Vector2(0.35, 0.35)
 			modulate.a = 1
