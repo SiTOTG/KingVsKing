@@ -1,4 +1,4 @@
-[gd_scene load_steps=33 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=31 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -20,7 +20,6 @@
 [ext_resource type="PackedScene" uid="uid://ca46u8v1wkatd" path="res://player/tower/tower.tscn" id="16_o3cry"]
 [ext_resource type="Texture2D" uid="uid://cgh2uhiknjo1m" path="res://assets/placeholder/sprites/FlameDemon Evolved.png" id="17_hjoo1"]
 [ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="19_p7ml3"]
-[ext_resource type="PackedScene" uid="uid://ukgcb2xp5abs" path="res://player/tower/patrol_tower.tscn" id="21_ch6ct"]
 [ext_resource type="PackedScene" uid="uid://caneigmsa7iin" path="res://player/tower/tower_slot.tscn" id="22_rui1r"]
 [ext_resource type="PackedScene" uid="uid://bvn67somjpdef" path="res://player/tower/path_slot.tscn" id="23_w7jom"]
 
@@ -41,10 +40,6 @@ outlines = [PackedVector2Array(-1192, 280, -1192, 40, -808, 40, -808, 24, -648, 
 script = ExtResource("16_3kfl1")
 max_hp = 400
 hp = 400
-
-[sub_resource type="Gradient" id="Gradient_w0xl2"]
-offsets = PackedFloat32Array(0.00959233, 1)
-colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
 
 [sub_resource type="GDScript" id="GDScript_k4be7"]
 script/source = "class_name TitleLabel
@@ -184,16 +179,6 @@ offset_top = -36.0
 offset_right = -32.0001
 offset_bottom = -24.0
 
-[node name="PatrolTower" parent="." instance=ExtResource("21_ch6ct")]
-position = Vector2(-256, 160)
-
-[node name="PatrolPath" parent="PatrolTower" index="4"]
-points = PackedVector2Array(72, 15, 72, -62, -65, -61, -65, 79, 73, 79)
-width = 4.0
-gradient = SubResource("Gradient_w0xl2")
-begin_cap_mode = 2
-end_cap_mode = 2
-
 [node name="GameOverUI" type="CanvasLayer" parent="."]
 process_mode = 3
 visible = false
@@ -273,10 +258,9 @@ size_flags_vertical = 0
 text = "Settings"
 
 [node name="path_slot" parent="." instance=ExtResource("23_w7jom")]
-position = Vector2(-463, 135)
+position = Vector2(-121, 133)
 
 [node name="PatrolPath" parent="path_slot" index="4"]
-visible = false
 points = PackedVector2Array(48, 0, 48, -46, -51, -46, -51, 63, 50, 63)
 gradient = SubResource("Gradient_nl8vq")
 
@@ -292,5 +276,4 @@ gradient = SubResource("Gradient_nl8vq")
 [editable path="EvilSpawner"]
 [editable path="EvilSpawner2"]
 [editable path="DemonCommander"]
-[editable path="PatrolTower"]
 [editable path="path_slot"]

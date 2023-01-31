@@ -6,7 +6,7 @@ extends StaticBody2D
 @export var creature_scene: PackedScene
 @onready var spawn_timer = $SpawnTimer
 @onready var rally_point = $RallyPoint
-@onready var patrol_path = $PatrolPath
+@export var patrol_path: Array
 
 var spawned : int = 0
 @export var spawn_capacity : int = 3
@@ -32,13 +32,10 @@ func spawn():
 	creature.friendly_layer = friendly_layer
 	creature.tree_exiting.connect(decrease_spawned)
 	creature.collision_layer = 0
-	var points = []
-	for point in patrol_path.points:
-		points.append(point + global_position)
-	creature.patrol_path = points
+	creature.patrol_path = patrol_path
 	creature.nav_mode = 1
 	creature.patrol_point = 0
-	creature.destination = points[0]
+	creature.destination = patrol_path[0]
 	get_parent().add_child(creature)
 	spawned += 1
 
