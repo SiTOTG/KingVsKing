@@ -264,6 +264,22 @@ position = Vector2(-121, 133)
 points = PackedVector2Array(48, 0, 48, -46, -51, -46, -51, 63, 50, 63)
 gradient = SubResource("Gradient_nl8vq")
 
+[node name="TowerSlot3" parent="." instance=ExtResource("22_rui1r")]
+visible = false
+position = Vector2(704, 237)
+
+[node name="Tower" parent="TowerSlot3" instance=ExtResource("16_o3cry")]
+visible = false
+
+[node name="TowerSlot4" parent="." instance=ExtResource("22_rui1r")]
+visible = false
+position = Vector2(-1159, 210)
+
+[node name="Tower" parent="TowerSlot4" instance=ExtResource("16_o3cry")]
+
+[node name="EnemyDetector" parent="TowerSlot4/Tower" index="2"]
+collision_mask = 2
+
 [connection signal="tower_created" from="TowerSlot" to="." method="_on_tower_slot_tower_created"]
 [connection signal="tower_created" from="TowerSlot2" to="." method="_on_tower_slot_tower_created"]
 [connection signal="destroyed" from="Castle" to="." method="_on_castle_destroyed"]
@@ -277,3 +293,4 @@ gradient = SubResource("Gradient_nl8vq")
 [editable path="EvilSpawner2"]
 [editable path="DemonCommander"]
 [editable path="path_slot"]
+[editable path="TowerSlot4/Tower"]
