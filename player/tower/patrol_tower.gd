@@ -26,8 +26,7 @@ func spawn():
 	var creature: Creature = creature_scene.instantiate() as Creature
 	if not creature:
 		return
-	creature.destination = rally_point.global_position #maybe remove
-	creature.global_position = rally_point.global_position + Vector2(randi_range(1,10), randi_range(1,10))
+	creature.global_position = rally_point + Vector2(randi_range(1,10), randi_range(1,10))
 	creature.enemy_layer = enemy_layer
 	creature.friendly_layer = friendly_layer
 	creature.tree_exiting.connect(decrease_spawned)

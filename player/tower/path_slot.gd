@@ -40,8 +40,9 @@ func _build_path(card: Card):
 					for point in patrol_path.points:
 						points.append(point + global_position)
 					b.patrol_path = points
-					b.rally_point.position = self.global_position + Vector2(0, 10)
 				self.add_child(b)
+				if b.has_node("RallyPoint"):
+					b.rally_point = $RallyPoint.position
 				emit_signal("pathbuild_created")
 
 func _hide_tower():

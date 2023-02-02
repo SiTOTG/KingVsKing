@@ -7,6 +7,9 @@
 [sub_resource type="GradientTexture1D" id="GradientTexture1D_axyfj"]
 gradient = SubResource("Gradient_54ige")
 
+[sub_resource type="Animation" id="Animation_n4dcu"]
+resource_name = "RESET"
+
 [sub_resource type="Animation" id="Animation_c4bn7"]
 resource_name = "show_preview"
 loop_mode = 2
@@ -22,9 +25,6 @@ tracks/0/keys = {
 "update": 0,
 "values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0.203922)]
 }
-
-[sub_resource type="Animation" id="Animation_n4dcu"]
-resource_name = "RESET"
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_ptgg6"]
 _data = {
@@ -57,10 +57,14 @@ modulate = Color(1, 1, 1, 0.203922)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
-position = Vector2(26, 18)
+position = Vector2(-1, 0)
 shape = SubResource("RectangleShape2D_spaj5")
 
 [node name="PatrolPath" type="Line2D" parent="."]
+visible = false
+
+[node name="RallyPoint" type="Marker2D" parent="."]
+visible = false
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
