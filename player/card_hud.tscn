@@ -28,17 +28,11 @@ grow_horizontal = 2
 grow_vertical = 0
 
 [node name="CenterContainer" type="CenterContainer" parent="CardsPanel"]
-offset_left = 8.0
-offset_top = 8.0
-offset_right = 188.0
-offset_bottom = 78.0
+layout_mode = 2
 
 [node name="Cards" type="HBoxContainer" parent="CardsPanel/CenterContainer"]
 unique_name_in_owner = true
-offset_left = 90.0
-offset_top = 35.0
-offset_right = 90.0
-offset_bottom = 35.0
+layout_mode = 2
 size_flags_vertical = 4
 theme_override_constants/separation = 10
 alignment = 1

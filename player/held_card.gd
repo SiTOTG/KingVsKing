@@ -2,20 +2,31 @@ extends Sprite2D
 
 var active_card: Card
 
+var tile_position = Vector2.ZERO
+var tower_position
+
 # Called when the node enters the scene tree for the first time.
 func _ready():
 	Events.start_card_activation_event.connect(_on_card_activation_started)
 	Events.finish_card_activation_event.connect(_on_card_activation_finished)
 	Events.hover_tile_event.connect(
 		func(hovered_tile_position: Vector2):
-			global_position = hovered_tile_position
+			tile_position = hovered_tile_position
 	)
 	hide()
+
+func _process(delta):
+	if active_card:
+		if active_card.ctx == Card.SPAWNER:
+			# Snap to tile position
+			global_position = tile_position
+		else:
+			global_position = get_global_mouse_position()
 
 func _unhandled_input(event):
 	if event is InputEventMouseButton and event.pressed:
 		if event.button_index == MOUSE_BUTTON_LEFT:
-			if active_card and active_card.ctx == Card.SPAWNER:
+			if active_card and active_card.ctx in [Card.SPAWNER, Card.TOWER, Card.PATH]:
 				Events.confirm_card_activation_event.emit()
 				get_viewport().set_input_as_handled()
 		elif event.button_index == MOUSE_BUTTON_RIGHT and active_card:
@@ -47,6 +58,14 @@ func update_texture(context: int):
 			scale = Vector2(0.35, 0.35)
 			modulate.a = 1
 		Card.SPAWNER:
-			texture = active_card.mouse_build
+			texture = active_card.mouse_spawner
 			scale = Vector2(0.232, 0.232)
 			self_modulate.a = 0.4
+		Card.TOWER:
+			texture = null
+			scale = Vector2(0.35, 0.35)
+			modulate.a = 1
+		Card.PATH:
+			texture = null
+			scale = Vector2(0.35, 0.35)
+			modulate.a = 1

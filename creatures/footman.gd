@@ -4,13 +4,16 @@ extends Creature
 @onready var sfx = $SwordSFX
 
 func _idle():
-	animation_tree.set("parameters/Movement/current", IDLE)
+	if animation_tree.get("parameters/Movement/current_state") != "Idling":
+		animation_tree.set("parameters/Movement/transition_request", "Idling")
 
 func _move():
-	animation_tree.set("parameters/Movement/current", MOVING)
+	if animation_tree.get("parameters/Movement/current_state") != "Moving":
+		animation_tree.set("parameters/Movement/current", "Moving")
 
 func _attack():
-	animation_tree.set("parameters/Attack/active", true)
+	if not animation_tree.get("parameters/Attack/active"):
+		animation_tree.set("parameters/Attack/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 	sfx.play()
 
 func _update_direction():

@@ -17,10 +17,7 @@ func _unhandled_input(event):
 func _ready():
 	Events.start_card_activation_event.connect(func(card: Card): active_card = card)
 	Events.confirm_card_activation_event.connect(_on_card_confirm_activation)
-	var navpoly: NavigationPolygon = navigation_region_2d.navpoly
-	navpoly.get_mesh().agent_radius = 32
 	settings.visibility_changed.connect(_on_settings_visibility_changed)
-	
 
 func _process(delta):
 	var building_units: Array[Node] = get_tree().get_nodes_in_group("Building")
@@ -50,6 +47,10 @@ func _on_card_confirm_activation():
 #				navpoly.make_polygons_from_outlines()
 #		)
 		add_child(spawner)
+		_consume_card()
+
+func _consume_card():
+	if is_instance_valid(active_card):
 		active_card.active = false
 		active_card.use()
 
@@ -73,3 +74,10 @@ func _on_settings_button_pressed():
 
 func _on_settings_visibility_changed():
 	settings_button.visible = not settings.visible
+
+
+func _on_tower_slot_tower_created():
+	_consume_card()
+
+func _on_path_slot_pathbuild_created():
+	_consume_card()

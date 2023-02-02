@@ -3,13 +3,16 @@ extends Creature
 @onready var animation_tree: AnimationTree = $AnimationTree
 
 func _idle():
-	animation_tree.set("parameters/MoveState/current", IDLE)
+	if animation_tree.get("parameters/Movement/current_state") != "Idling":
+		animation_tree.set("parameters/Movement/transition_request", "Idling")
 
 func _move():
-	animation_tree.set("parameters/MoveState/current", MOVING)
+	if animation_tree.get("parameters/Movement/current_state") != "Walking":
+		animation_tree.set("parameters/Movement/current", "Walking")
 
 func _attack():
-	animation_tree.set("parameters/AttackTrigger/active", true)
+	if not animation_tree.get("parameters/AttackTrigger/active"):
+		animation_tree.set("parameters/AttackTrigger/request", AnimationNodeOneShot.ONE_SHOT_REQUEST_FIRE)
 
 func _update_direction():
 	var animation_direction = 1

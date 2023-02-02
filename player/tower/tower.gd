@@ -1,3 +1,4 @@
+class_name Tower
 extends StaticBody2D
 
 var target: Creature:
@@ -43,7 +44,7 @@ func attack():
 	projectile.deltas = deltas
 	projectile.target = target
 	projectile.height = height
-	projectile.global_position = projectile_origin.global_position
+	projectile.position = projectile_origin.position
 	projectile.translate(-position)
 	add_child(projectile)
 	projectile.fly()
@@ -72,15 +73,14 @@ func update_target():
 
 func update_path():
 	attack_path.clear_points()
-	attack_path.add_point(projectile_origin.global_position - position)
+	attack_path.add_point(projectile_origin.position)
 	var vector_to_target = target.global_position - projectile_origin.global_position
 
 	for i in range(samples):
 		var progress = 1.0*i/samples
 		var delta = curve.sample(progress)
-		var progress_vector = projectile_origin.global_position + vector_to_target*progress
-		attack_path.add_point(Vector2(progress_vector.x, progress_vector.y - delta*height) - position)
-	attack_path.add_point(target.global_position - position)
+		var progress_vector = projectile_origin.position + vector_to_target*progress
+		attack_path.add_point(Vector2(progress_vector.x, progress_vector.y - delta*height))
 
 func _on_enemy_detector_area_exited(area):
 	if area.get_parent() == target:

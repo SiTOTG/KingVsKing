@@ -23,8 +23,8 @@ func _ready():
 		move_position.global_position = starting_move_position
 	stats = stats.duplicate()
 
-	stats.hp_updated.connect(
-		func(previous_hp: int, new_hp: int, max_hp: int):
+	var _error = stats.hp_updated.connect(
+		func(_previous_hp: int, new_hp: int, max_hp: int):
 			hp_bar.animate_bar(new_hp, max_hp)
 			if new_hp == 0:
 				queue_free()
@@ -47,7 +47,7 @@ func spawn():
 	creature.global_position = spawn_position.global_position
 	creature.enemy_layer = enemy_layer
 	creature.friendly_layer = friendly_layer
-	creature.tree_exited.connect(decrease_spawned)
+	var _error = creature.tree_exited.connect(decrease_spawned)
 	get_parent().add_child(creature)
 	spawned += 1
 

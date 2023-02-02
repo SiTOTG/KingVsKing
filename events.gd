@@ -13,7 +13,7 @@ func _ready():
 		var signals = get_signal_list()
 		for s in signals:
 			if s.name.ends_with("_event"):
-				self.connect(s.name, log_event.bind(s))
+				var _error = self.connect(s.name, log_event.bind(s))
 
 # Log up to 5 arguments
 func log_event(event, a1="no_arg", a2="no_arg", a3="no_arg", a4="no_arg", a5="no_arg"):

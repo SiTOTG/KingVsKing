@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://ukgcb2xp5abs"]
+[gd_scene load_steps=10 format=3 uid="uid://ukgcb2xp5abs"]
 
 [ext_resource type="Texture2D" uid="uid://b84uo0kq18foh" path="res://assets/placeholder/sprites/objects/chest_02.png" id="1_5bfhs"]
 [ext_resource type="Script" path="res://player/tower/patrol_tower.gd" id="1_pv08v"]
@@ -22,16 +22,25 @@ region = Rect2(48, 0, 16, 16)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_0m4l5"]
 animations = [{
-"frames": [SubResource("AtlasTexture_as4cq"), SubResource("AtlasTexture_e01mf"), SubResource("AtlasTexture_2mn3e"), SubResource("AtlasTexture_er3bp")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_as4cq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_e01mf")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_2mn3e")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_er3bp")
+}],
 "loop": false,
 "name": &"default",
 "speed": 5.0
 }]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_77co4"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_0kt8o"]
-radius = 100.0
 
 [node name="PatrolTower" type="StaticBody2D"]
 script = ExtResource("1_pv08v")
@@ -45,11 +54,6 @@ frames = SubResource("SpriteFrames_0m4l5")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_77co4")
 
-[node name="EnemyDetector" type="Area2D" parent="."]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyDetector"]
-shape = SubResource("CircleShape2D_0kt8o")
-
 [node name="SpawnTimer" type="Timer" parent="."]
 wait_time = 2.0
 autostart = true
@@ -57,7 +61,6 @@ autostart = true
 [node name="RallyPoint" type="Marker2D" parent="."]
 position = Vector2(0, 25)
 
-[node name="AttackPoint" type="Marker2D" parent="."]
-position = Vector2(0, 25)
+[node name="PatrolPath" type="Line2D" parent="."]
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

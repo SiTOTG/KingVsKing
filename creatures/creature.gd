@@ -2,8 +2,11 @@ class_name Creature
 extends CharacterBody2D
 
 @export var destination: Vector2
+@export var patrol_point: int = 0
+@export var patrol_path: Array
 
 @export var stats: CreatureStats
+@export_enum("Rally", "Patrol") var nav_mode: int = RALLY
 @export_flags_2d_physics var enemy_layer = 0:
 	set(value):
 		enemy_layer = value
@@ -29,6 +32,10 @@ enum {
 	IDLE, MOVING
 }
 
+enum {
+	RALLY, PATROL
+}
+
 func update_layer():
 	if not enemy_detector: return
 	enemy_detector.collision_mask = enemy_layer
@@ -36,28 +43,42 @@ func update_layer():
 
 func _ready():
 	stats = stats.duplicate()
-	agent.velocity_computed.connect(on_velocity_computed)
+	var _error = agent.velocity_computed.connect(on_velocity_computed)
 	agent.target_location = destination
-	stats.hp_updated.connect(
-		func(previous_hp: int, new_hp: int, max_hp: int):
+	_error = stats.hp_updated.connect(
+		func(_previous_hp: int, new_hp: int, max_hp: int):
 			value_bar.animate_bar(new_hp, max_hp)
 			if new_hp == 0:
 				queue_free()
 	)
 	value_bar.set_bar(stats.hp, stats.max_hp)
 	value_bar.visible = GlobalSettings.show_creature_ui
-	GlobalSettings.creature_ui_visibility_changed.connect(
+	_error = GlobalSettings.creature_ui_visibility_changed.connect(
 		func(value):
 			value_bar.visible = value
 	)
+	
 
 func _physics_process(_delta):
-	if not is_instance_valid(target) and agent.target_location != destination:
-		agent.target_location = destination
-	if global_position.distance_to(agent.target_location) > 10:
-		move()
-	else:
-		_idle()
+	if nav_mode == RALLY:
+		if not is_instance_valid(target) and agent.target_location != destination:
+			agent.target_location = destination
+		if global_position.distance_to(agent.target_location) > 10:
+			move()
+		else:
+			_idle()
+	if nav_mode == PATROL:
+		if not is_instance_valid(target):
+			# Check if we reached a waypoint
+			if global_position.distance_to(agent.target_location) < 5:
+				if (agent.target_location == patrol_path[patrol_point]):
+					patrol_point = (patrol_point + 1) % patrol_path.size()
+					destination = patrol_path[patrol_point]
+					agent.target_location = destination
+				else:
+					destination = patrol_path[patrol_point]
+					agent.target_location = destination
+			move()
 
 func _idle():
 	pass
@@ -67,6 +88,9 @@ func move():
 	direction = global_position.direction_to(agent.get_next_location())
 #	agent.set_velocity(direction * stats.speed)
 	on_velocity_computed(direction * stats.speed)
+	
+func patrol():
+	pass
 
 func _move():
 	pass
@@ -74,7 +98,7 @@ func _move():
 func on_velocity_computed(safe_velocity: Vector2):
 	direction = safe_velocity.normalized()
 	velocity = direction * stats.speed
-	move_and_slide()
+	var _collided = move_and_slide()
 
 func _on_enemy_detector_area_entered(area):
 	if is_instance_valid(target): return
