@@ -45,8 +45,8 @@ func attack():
 	projectile.target = target
 	projectile.height = height
 	projectile.position = projectile_origin.position
-	projectile.translate(-position)
-	add_child(projectile)
+	projectile.translate(global_position)
+	get_tree().current_scene.add_child(projectile)
 	projectile.fly()
 
 func find_target() -> bool:
