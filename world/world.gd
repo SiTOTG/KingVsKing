@@ -19,17 +19,14 @@ func _ready():
 	Events.confirm_card_activation_event.connect(_on_card_confirm_activation)
 	settings.visibility_changed.connect(_on_settings_visibility_changed)
 
-func _process(delta):
-	var building_units: Array[Node] = get_tree().get_nodes_in_group("Building")
-
 func _on_card_confirm_activation():
 	if active_card.ctx == Card.SPAWNER and tilemap_master.can_build_there():
 		tilemap_master.set_tiles_as_blocked()
-		var position: Vector2 = tilemap_master.get_origin_position() + tilemap_master.HALF_TILE_SIZE
+		var spawner_position: Vector2 = tilemap_master.get_origin_position() + tilemap_master.HALF_TILE_SIZE
 		var spawner_scene: PackedScene = load(active_card.spawner_scene)
 		var spawner = spawner_scene.instantiate() as Spawner
 		spawner.add_to_group("Ally")
-		spawner.global_position = position
+		spawner.global_position = spawner_position
 		spawner.starting_move_position = destination_lane_1.global_position
 		# Provisional code, might be necessary for future navigation changes
 #		spawner.ready.connect(

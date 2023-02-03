@@ -15,7 +15,7 @@ func _ready():
 	)
 	hide()
 
-func _process(delta):
+func _process(_delta):
 	if active_card:
 		if active_card.ctx == Card.SPAWNER:
 			# Snap to tile position
@@ -44,7 +44,7 @@ func _on_card_activation_finished():
 	active_card.context_changed.disconnect(_on_card_context_changed)
 	hide()
 
-func _on_card_context_changed(old_context: int, new_context: int):
+func _on_card_context_changed(_old_context: int, new_context: int):
 	update_texture(new_context)
 
 func update_texture(context: int):

@@ -69,12 +69,60 @@ region = Rect2(320, 0, 64, 64)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_skltp"]
 animations = [{
-"frames": [SubResource("AtlasTexture_xjfk1"), SubResource("AtlasTexture_tcjpd"), SubResource("AtlasTexture_hbbq0"), SubResource("AtlasTexture_8pvd1"), SubResource("AtlasTexture_hx3n4"), SubResource("AtlasTexture_a08qn"), SubResource("AtlasTexture_o84yn"), SubResource("AtlasTexture_5e446"), SubResource("AtlasTexture_3svnw"), SubResource("AtlasTexture_ehpnl")],
-"loop": true,
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xjfk1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_tcjpd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hbbq0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8pvd1")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_hx3n4")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_a08qn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_o84yn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5e446")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_3svnw")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ehpnl")
+}],
+"loop": false,
 "name": &"impact",
 "speed": 15.0
 }, {
-"frames": [SubResource("AtlasTexture_5a2tn"), SubResource("AtlasTexture_ejahk"), SubResource("AtlasTexture_i8dfm"), SubResource("AtlasTexture_03rh5"), SubResource("AtlasTexture_n1781"), SubResource("AtlasTexture_p1uii")],
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5a2tn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ejahk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i8dfm")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_03rh5")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_n1781")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_p1uii")
+}],
 "loop": true,
 "name": &"travel",
 "speed": 5.0
@@ -86,9 +134,8 @@ script = ExtResource("1_66qnk")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(-8, 0)
 scale = Vector2(0.5, 0.5)
-frames = SubResource("SpriteFrames_skltp")
-animation = &"travel"
-playing = true
+sprite_frames = SubResource("SpriteFrames_skltp")
+animation = &"impact"
 
 [node name="Node" type="Node" parent="."]
 

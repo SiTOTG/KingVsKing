@@ -52,6 +52,7 @@ unique_name_in_owner = true
 neighbor_distance = 100.0
 max_neighbors = 4
 max_speed = 110.0
+debug_enabled = true
 
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
 [connection signal="area_exited" from="EnemyDetector" to="." method="_on_enemy_detector_area_exited"]

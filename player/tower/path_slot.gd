@@ -5,20 +5,21 @@ var card: Card
 var preview: Node2D
 var hovering = false
 
-@onready var building = $Building
+var building
 @onready var patrol_path = $PatrolPath
 
 signal pathbuild_created
 
 func _ready():
+	building = get_node_or_null("Building")
 	Events.start_card_activation_event.connect(_show_tower)
 	Events.finish_card_activation_event.connect(_on_finish_card_activation)
 	Events.confirm_card_activation_event.connect(_on_card_activation)
 
-func _show_tower(card: Card):
-	if not is_instance_valid(card):
+func _show_tower(new_card: Card):
+	if not is_instance_valid(new_card):
 		return
-	self.card = card
+	self.card = new_card
 	if hovering:
 		card.hovering_path_slot = self
 		preview = card.mouse_path_preview.instantiate()
@@ -28,14 +29,14 @@ func _show_tower(card: Card):
 		animation.track_set_path(0, "Preview:modulate")
 		$AnimationPlayer.play("show_preview")
 
-func _build_path(card: Card):
-	if is_instance_valid(card):
-		if "path_scene" in card:
+func _build_path(build_card: Card):
+	if is_instance_valid(build_card):
+		if "path_scene" in build_card:
 			if not is_instance_valid(building):
-				building = load(card.path_scene)
+				building = load(build_card.path_scene)
 				var b = building.instantiate()
 				b.name = "PathBuilding"
-				if card.path_type == Card.PATROLTOWER:
+				if build_card.path_type == Card.PATROLTOWER:
 					var points = []
 					for point in patrol_path.points:
 						points.append(point + global_position)

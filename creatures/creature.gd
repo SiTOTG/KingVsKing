@@ -44,7 +44,7 @@ func update_layer():
 func _ready():
 	stats = stats.duplicate()
 	var _error = agent.velocity_computed.connect(on_velocity_computed)
-	agent.target_location = destination
+	agent.target_position = destination
 	_error = stats.hp_updated.connect(
 		func(_previous_hp: int, new_hp: int, max_hp: int):
 			value_bar.animate_bar(new_hp, max_hp)
@@ -61,23 +61,23 @@ func _ready():
 
 func _physics_process(_delta):
 	if nav_mode == RALLY:
-		if not is_instance_valid(target) and agent.target_location != destination:
-			agent.target_location = destination
-		if global_position.distance_to(agent.target_location) > 10:
+		if not is_instance_valid(target) and agent.target_position != destination:
+			agent.target_position = destination
+		if global_position.distance_to(agent.target_position) > 10:
 			move()
 		else:
 			_idle()
 	if nav_mode == PATROL:
 		if not is_instance_valid(target):
 			# Check if we reached a waypoint
-			if global_position.distance_to(agent.target_location) < 5:
-				if (agent.target_location == patrol_path[patrol_point]):
+			if global_position.distance_to(agent.target_position) < 5:
+				if (agent.target_position == patrol_path[patrol_point]):
 					patrol_point = (patrol_point + 1) % patrol_path.size()
 					destination = patrol_path[patrol_point]
-					agent.target_location = destination
+					agent.target_position = destination
 				else:
 					destination = patrol_path[patrol_point]
-					agent.target_location = destination
+					agent.target_position = destination
 			move()
 
 func _idle():
@@ -85,7 +85,7 @@ func _idle():
 
 func move():
 	_move()
-	direction = global_position.direction_to(agent.get_next_location())
+	direction = global_position.direction_to(agent.get_next_path_position())
 #	agent.set_velocity(direction * stats.speed)
 	on_velocity_computed(direction * stats.speed)
 	
@@ -108,7 +108,7 @@ func retarget(new_target):
 	if not is_instance_valid(new_target): return
 	target = new_target
 
-	agent.target_location = target.global_position
+	agent.target_position = target.global_position
 	attack_timer.start()
 
 func _on_enemy_detector_area_exited(area):

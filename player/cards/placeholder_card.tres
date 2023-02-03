@@ -1,4 +1,4 @@
-[gd_resource type="Resource" load_steps=8 format=3 uid="uid://ddebe0gk76ugu"]
+[gd_resource type="Resource" script_class="Card" load_steps=8 format=3 uid="uid://ddebe0gk76ugu"]
 
 [ext_resource type="Texture2D" uid="uid://cpvhr8ji6tuvm" path="res://assets/placeholder/CardPlaceholder1.jpg" id="1_g7mx8"]
 [ext_resource type="Script" path="res://player/cards/card.gd" id="1_rf1ya"]

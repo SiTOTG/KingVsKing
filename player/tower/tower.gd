@@ -56,7 +56,7 @@ func find_target() -> bool:
 	target = possible_targets[0].get_parent()
 	return true
 
-func _physics_process(delta):
+func _physics_process(_delta):
 	if is_instance_valid(target):
 		update_path()
 	else:
