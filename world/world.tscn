@@ -269,7 +269,6 @@ visible = false
 position = Vector2(704, 237)
 
 [node name="Tower" parent="TowerSlot3" instance=ExtResource("16_o3cry")]
-visible = false
 
 [node name="TowerSlot4" parent="." instance=ExtResource("22_rui1r")]
 visible = false
