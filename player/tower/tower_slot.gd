@@ -5,20 +5,21 @@ var card: Card
 var preview: Node2D
 var hovering = false
 
-@onready var tower = $Tower
+var tower
 
 signal tower_created
 
 # Called when the node enters the scene tree for the first time.
 func _ready():
+	tower = get_node_or_null("Tower")
 	Events.start_card_activation_event.connect(_show_tower)
 	Events.finish_card_activation_event.connect(_on_finish_card_activation)
 	Events.confirm_card_activation_event.connect(_on_card_activation)
 
-func _show_tower(card: Card):
-	if not is_instance_valid(card):
+func _show_tower(new_card: Card):
+	if not is_instance_valid(new_card):
 		return
-	self.card = card
+	self.card = new_card
 	if hovering:
 		card.hovering_tower_slot = self
 		preview = card.mouse_tower_preview.instantiate()
@@ -28,11 +29,11 @@ func _show_tower(card: Card):
 		animation.track_set_path(0, "Preview:modulate")
 		$AnimationPlayer.play("show_preview")
 
-func _build_tower(card: Card):
-	if is_instance_valid(card):
-		if "tower_scene" in card:
+func _build_tower(build_card: Card):
+	if is_instance_valid(build_card):
+		if "tower_scene" in build_card:
 			if not is_instance_valid(tower):
-				tower = load(card.tower_scene)
+				tower = load(build_card.tower_scene)
 				var t = tower.instantiate()
 				t.name = "Tower"
 				self.add_child(t)

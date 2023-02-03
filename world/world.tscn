@@ -1,4 +1,4 @@
-[gd_scene load_steps=31 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=44 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://cgh2uhiknjo1m" path="res://assets/placeholder/sprites/FlameDemon Evolved.png" id="17_hjoo1"]
 [ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="19_p7ml3"]
 [ext_resource type="PackedScene" uid="uid://caneigmsa7iin" path="res://player/tower/tower_slot.tscn" id="22_rui1r"]
+[ext_resource type="Texture2D" uid="uid://devvfw2vsa653" path="res://assets/placeholder/RedMoonTower_free_idle_animation..png" id="23_mf6kb"]
 [ext_resource type="PackedScene" uid="uid://bvn67somjpdef" path="res://player/tower/path_slot.tscn" id="23_w7jom"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nujo8"]
@@ -33,8 +34,8 @@ sources/0 = SubResource("TileSetAtlasSource_nujo8")
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_hpv21"]
 vertices = PackedVector2Array(-600, 280, -1192, 280, -1192, 40, -808, 40, -600, 264, -808, 24, -648, 24, -648, 8, -408, 8, 24, 264, -408, -8, -120, -8, 8, 24, -120, -24, 8, -24, 184, 24, 168, 88, 184, 88, 168, 152, 200, 152, 200, 120, 216, 120, 792, 440, 216, 24, 792, 24, 24, 440)
-polygons = [PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(4, 6, 7, 8, 9), PackedInt32Array(9, 8, 10, 11, 12), PackedInt32Array(11, 13, 14, 12), PackedInt32Array(9, 12, 15, 16), PackedInt32Array(15, 17, 16), PackedInt32Array(9, 16, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(21, 23, 24, 22), PackedInt32Array(19, 22, 25, 9, 18)]
-outlines = [PackedVector2Array(-1192, 280, -1192, 40, -808, 40, -808, 24, -648, 24, -648, 8, -408, 8, -408, -8, -120, -8, -120, -24, 8, -24, 8, 24, 184, 24, 184, 88, 168, 88, 168, 152, 200, 152, 200, 120, 216, 120, 216, 24, 792, 24, 792, 440, 24, 440, 24, 264, -600, 264, -600, 280)]
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3, 4), PackedInt32Array(3, 5, 6, 4), PackedInt32Array(4, 6, 7, 8, 9), PackedInt32Array(9, 8, 10, 11, 12), PackedInt32Array(11, 13, 14, 12), PackedInt32Array(9, 12, 15, 16), PackedInt32Array(15, 17, 16), PackedInt32Array(9, 16, 18), PackedInt32Array(19, 20, 21, 22), PackedInt32Array(21, 23, 24, 22), PackedInt32Array(19, 22, 25, 9, 18)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-1192, 280, -1192, 40, -808, 40, -808, 24, -648, 24, -648, 8, -408, 8, -408, -8, -120, -8, -120, -24, 8, -24, 8, 24, 184, 24, 184, 88, 168, 88, 168, 152, 200, 152, 200, 120, 216, 120, 216, 24, 792, 24, 792, 440, 24, 440, 24, 264, -600, 264, -600, 280)])
 
 [sub_resource type="Resource" id="Resource_vsx6f"]
 script = ExtResource("16_3kfl1")
@@ -53,6 +54,91 @@ extends Label
 [sub_resource type="Gradient" id="Gradient_nl8vq"]
 offsets = PackedFloat32Array(0, 0.267717, 0.996063, 1)
 colors = PackedColorArray(1, 1, 1, 1, 0.929134, 0.929134, 0.929134, 1, 0, 0, 0, 1, 0.0314961, 0.0314961, 0.0314961, 1)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq0tl"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(0, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_531rn"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(100, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h0oq"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(200, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iby7g"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(300, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgwnd"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(400, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guqul"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(500, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xe7q"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(600, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j40jo"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(700, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfe22"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(800, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhqxi"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(900, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32e3o"]
+atlas = ExtResource("23_mf6kb")
+region = Rect2(1000, 0, 100, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq0tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_531rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h0oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iby7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgwnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guqul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xe7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j40jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfe22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhqxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32e3o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_61105")
@@ -75,7 +161,6 @@ script = ExtResource("5_ahjhf")
 
 [node name="PlayerCamera" type="Camera2D" parent="."]
 position = Vector2(496, 232)
-current = true
 limit_smoothed = true
 editor_draw_limits = true
 editor_draw_drag_margin = true
@@ -275,6 +360,9 @@ visible = false
 position = Vector2(-1159, 210)
 
 [node name="Tower" parent="TowerSlot4" instance=ExtResource("16_o3cry")]
+
+[node name="TowerSprite" parent="TowerSlot4/Tower" index="0"]
+sprite_frames = SubResource("SpriteFrames_jhrme")
 
 [node name="EnemyDetector" parent="TowerSlot4/Tower" index="2"]
 collision_mask = 2

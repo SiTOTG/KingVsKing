@@ -46,9 +46,9 @@ func set_tiles_as_blocked():
 	var buildable_tiles = get_buildable_cells()
 	occupied_cells.append_array(buildable_tiles)
 
-func show_buildable_tiles(size: Vector2i):
+func show_buildable_tiles(new_size: Vector2i):
 	self.origin = local_to_map(get_local_mouse_position())
-	self.size = size
+	self.size = new_size
 	is_showing_buidable_tiles = true
 
 func hide_buildable_tiles():
@@ -78,7 +78,7 @@ func color_cells(buildable_cells: Array[Vector2i]):
 			set_cell(0, cell, 0, BLOCKED_ATLAS_COORDS)
 
 func get_buildable_cells() -> Array[Vector2i]:
-	var buildable_cells = []
+	var buildable_cells: Array[Vector2i] = []
 	for custom_tile_map in get_children():
 		custom_tile_map = custom_tile_map as CustomTileMap
 		if not custom_tile_map:
