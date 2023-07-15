@@ -49,6 +49,7 @@ metadata/_edit_use_anchors_ = true
 
 [node name="NavigationAgent2D" type="NavigationAgent2D" parent="."]
 unique_name_in_owner = true
+path_desired_distance = 6.0
 neighbor_distance = 100.0
 max_neighbors = 4
 max_speed = 110.0
