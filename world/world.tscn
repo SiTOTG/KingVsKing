@@ -237,6 +237,7 @@ position = Vector2(-264, 320)
 
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
 navigation_polygon = SubResource("NavigationPolygon_hpv21")
+enabled = false
 metadata/_edit_lock_ = true
 
 [node name="Castle" parent="." instance=ExtResource("15_om70m")]

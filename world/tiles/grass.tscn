@@ -1,8 +1,13 @@
-[gd_scene load_steps=8 format=3 uid="uid://bft27p6lrpn8r"]
+[gd_scene load_steps=9 format=3 uid="uid://bft27p6lrpn8r"]
 
 [ext_resource type="Texture2D" uid="uid://dyugrdbf0nb1d" path="res://assets/placeholder/sprites/tilesets/grass.png" id="1_tlwaq"]
 [ext_resource type="Texture2D" uid="uid://dtbe11lynwg4e" path="res://assets/placeholder/sprites/tilesets/plains.png" id="2_wj1o1"]
 [ext_resource type="Texture2D" uid="uid://cempp725x4xmw" path="res://assets/placeholder/sprites/tilesets/fences.png" id="3_arrcy"]
+
+[sub_resource type="NavigationPolygon" id="NavigationPolygon_nr1y6"]
+vertices = PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-4, -4, 4, -4, 4, 4, -4, 4)])
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_rwv7h"]
 resource_name = "simple"
@@ -11,6 +16,7 @@ texture = ExtResource("1_tlwaq")
 0:0/0/terrain_set = 0
 0:0/0/physics_layer_0/linear_velocity = Vector2(0, 0)
 0:0/0/physics_layer_0/angular_velocity = 0.0
+0:0/0/navigation_layer_0/polygon = SubResource("NavigationPolygon_nr1y6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kl18q"]
 resource_name = "plains"
@@ -485,6 +491,7 @@ terrain_set_0/terrain_0/name = "PlainsDirt"
 terrain_set_0/terrain_0/color = Color(0.376471, 0.172549, 0.501961, 1)
 terrain_set_0/terrain_1/name = "Fences 1"
 terrain_set_0/terrain_1/color = Color(0.5, 0.4375, 0.25, 1)
+navigation_layer_0/layers = 1
 custom_data_layer_0/name = "Buildable"
 custom_data_layer_0/type = 1
 sources/0 = SubResource("TileSetAtlasSource_rwv7h")
