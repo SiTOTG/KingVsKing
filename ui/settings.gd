@@ -101,7 +101,7 @@ func _on_mute_sfx_toggled(button_pressed):
 	AudioServer.set_bus_mute(AudioServer.get_bus_index("SFX"), button_pressed)
 
 func _on_mute_bgm_toggled(button_pressed):
-	AudioServer.set_bus_mute(AudioServer.get_bus_index("Master"), button_pressed)
+	AudioServer.set_bus_mute(AudioServer.get_bus_index("BGM"), button_pressed)
 
 
 func _on_close_button_pressed():
