@@ -3,7 +3,6 @@ extends Node2D
 
 @onready var destination_lane_1 = $DestinationLane1
 @onready var tilemap_master: TilemapMaster = $TilemapMaster
-@onready var navigation_region_2d = $NavigationRegion2D
 @onready var settings = %Settings
 @onready var settings_button = %SettingsButton
 
@@ -28,21 +27,6 @@ func _on_card_confirm_activation():
 		spawner.add_to_group("Ally")
 		spawner.global_position = spawner_position
 		spawner.starting_move_position = destination_lane_1.global_position
-		# Provisional code, might be necessary for future navigation changes
-#		spawner.ready.connect(
-#			func():
-#				var polygon = spawner.get_polygon()
-#				var navpoly: NavigationPolygon = navigation_region_2d.navpoly
-#				var new_cut_out_poly : PackedVector2Array = PackedVector2Array()
-#				print(polygon)
-#				for vertex in polygon:
-#					var current_vertex : Vector2 = vertex
-#					new_cut_out_poly.append(spawner.global_transform.basis_xform(current_vertex))
-#				print(navpoly.get_outline(0))
-#				print(Geometry2D.exclude_polygons(navpoly.get_outline(0), polygon))
-#				navpoly.add_outline(new_cut_out_poly)
-#				navpoly.make_polygons_from_outlines()
-#		)
 		add_child(spawner)
 		_consume_card()
 

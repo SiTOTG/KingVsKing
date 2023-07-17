@@ -1,4 +1,4 @@
-[gd_scene load_steps=6 format=3 uid="uid://dbcfx1n6p5h0m"]
+[gd_scene load_steps=5 format=3 uid="uid://dbcfx1n6p5h0m"]
 
 [ext_resource type="Script" path="res://main_menu/main_menu.gd" id="1_m7y3b"]
 [ext_resource type="PackedScene" uid="uid://cx6j2qyk8kg43" path="res://ui/settings.tscn" id="2_0kdql"]
@@ -10,8 +10,6 @@ extends Label
 "
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_nal6i"]
-
-[sub_resource type="ButtonGroup" id="ButtonGroup_0t8qw"]
 
 [node name="MainMenu" type="Control"]
 layout_mode = 3
@@ -58,19 +56,35 @@ unique_name_in_owner = true
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-button_group = SubResource("ButtonGroup_0t8qw")
 text = "Start"
 
 [node name="SettingsButton" type="Button" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
 custom_minimum_size = Vector2(120, 0)
 layout_mode = 2
 size_flags_horizontal = 4
-button_group = SubResource("ButtonGroup_0t8qw")
 text = "Settings"
+
+[node name="HSeparator2" type="HSeparator" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_constants/separation = 30
+theme_override_styles/separator = SubResource("StyleBoxEmpty_nal6i")
+
+[node name="LoadingLabel" type="Label" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "Preparing to load..."
+
+[node name="LoadingProgressBar" type="ProgressBar" parent="MarginContainer/PanelContainer/MarginContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
 
 [node name="Settings" parent="." instance=ExtResource("2_0kdql")]
 visible = false
 layout_mode = 1
 
+[node name="LoadingTimer" type="Timer" parent="."]
+wait_time = 0.1
+
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/StartButton" to="." method="_on_start_button_pressed"]
 [connection signal="pressed" from="MarginContainer/PanelContainer/MarginContainer/VBoxContainer/SettingsButton" to="." method="_on_settings_button_pressed"]
+[connection signal="timeout" from="LoadingTimer" to="." method="_on_loading_timer_timeout"]
