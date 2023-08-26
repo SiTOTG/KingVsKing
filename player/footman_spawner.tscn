@@ -5,3 +5,9 @@
 
 [node name="FootmanSpawner" instance=ExtResource("1_1awy2")]
 creature_scene = ExtResource("2_foqw2")
+
+[node name="HPBar" parent="." index="7"]
+metadata/_edit_use_anchors_ = true
+
+[node name="ProgressBar" parent="." index="8"]
+metadata/_edit_use_anchors_ = true

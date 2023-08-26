@@ -57,7 +57,6 @@ func _ready():
 		func(value):
 			value_bar.visible = value
 	)
-	
 
 func _physics_process(_delta):
 	if nav_mode == RALLY:

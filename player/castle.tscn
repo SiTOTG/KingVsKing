@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://dy3ardgrf3sj7"]
+[gd_scene load_steps=7 format=3 uid="uid://dy3ardgrf3sj7"]
 
 [ext_resource type="Script" path="res://world/main_building.gd" id="1_ly6nn"]
 [ext_resource type="Texture2D" uid="uid://de316sriduh28" path="res://assets/placeholder/castle.png" id="1_rm2nh"]
 [ext_resource type="PackedScene" uid="uid://ejgsk65v3pvj" path="res://ui/value_bar.tscn" id="3_jls7v"]
+[ext_resource type="PackedScene" uid="uid://opiuj7fs8gct" path="res://world/selectable_object.tscn" id="4_jc64u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xe303"]
 size = Vector2(160, 144)
@@ -34,3 +35,9 @@ offset_top = -89.0
 offset_right = -28.0
 offset_bottom = -77.0
 scale = Vector2(3.8, 1)
+
+[node name="SelectableObject" parent="." instance=ExtResource("4_jc64u")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableObject"]
+position = Vector2(8, 0)
+shape = SubResource("RectangleShape2D_xe303")

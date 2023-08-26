@@ -1,13 +1,14 @@
-[gd_scene load_steps=5 format=3 uid="uid://tmovgpwal56o"]
+[gd_scene load_steps=6 format=3 uid="uid://tmovgpwal56o"]
 
 [ext_resource type="Script" path="res://debug/sandbox.gd" id="1_74ugs"]
 [ext_resource type="PackedScene" uid="uid://b77yrfd22bqbp" path="res://creatures/skeleton.tscn" id="1_nsjvi"]
-[ext_resource type="PackedScene" uid="uid://cjy5jplt1c6bx" path="res://player/tower/tower.tscn" id="3_biuhq"]
+[ext_resource type="PackedScene" uid="uid://ca46u8v1wkatd" path="res://player/tower/tower.tscn" id="3_biuhq"]
+[ext_resource type="PackedScene" uid="uid://drsb5lb2ceqb8" path="res://debug/debug_camera.tscn" id="4_n4m0c"]
 
 [sub_resource type="NavigationPolygon" id="NavigationPolygon_dy548"]
 vertices = PackedVector2Array(240, -200, 272, 272, -216, 272, -224, -176)
-polygons = [PackedInt32Array(0, 1, 2, 3)]
-outlines = [PackedVector2Array(-224, -176, -216, 272, 272, 272, 240, -200)]
+polygons = Array[PackedInt32Array]([PackedInt32Array(0, 1, 2, 3)])
+outlines = Array[PackedVector2Array]([PackedVector2Array(-224, -176, -216, 272, 272, 272, 240, -200)])
 
 [node name="World" type="Node2D"]
 script = ExtResource("1_74ugs")
@@ -19,6 +20,9 @@ metadata/_edit_group_ = true
 [node name="EnemyDetector" parent="Skeleton" index="2"]
 collision_layer = 4
 
+[node name="AnimationTree" parent="Skeleton" index="7"]
+parameters/AttackTrigger/internal_active = false
+
 [node name="Skeleton2" parent="." instance=ExtResource("1_nsjvi")]
 position = Vector2(0, 104)
 metadata/_edit_group_ = true
@@ -26,8 +30,11 @@ metadata/_edit_group_ = true
 [node name="EnemyDetector" parent="Skeleton2" index="2"]
 collision_layer = 4
 
+[node name="AnimationTree" parent="Skeleton2" index="7"]
+parameters/AttackTrigger/internal_active = false
+
 [node name="NavigationRegion2D" type="NavigationRegion2D" parent="."]
-navpoly = SubResource("NavigationPolygon_dy548")
+navigation_polygon = SubResource("NavigationPolygon_dy548")
 
 [node name="Tower" parent="." instance=ExtResource("3_biuhq")]
 position = Vector2(73, -64)
@@ -37,6 +44,8 @@ wait_time = 1.3
 
 [node name="AttackPath" parent="Tower" index="5"]
 visible = false
+
+[node name="DebugCamera" parent="." instance=ExtResource("4_n4m0c")]
 
 [editable path="Skeleton"]
 [editable path="Skeleton2"]

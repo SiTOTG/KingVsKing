@@ -1,11 +1,97 @@
-[gd_scene load_steps=6 format=3 uid="uid://ca46u8v1wkatd"]
+[gd_scene load_steps=19 format=3 uid="uid://ca46u8v1wkatd"]
 
 [ext_resource type="Script" path="res://player/tower/tower.gd" id="1_emqql"]
 [ext_resource type="PackedScene" uid="uid://u7jg1guhlli3" path="res://player/tower/tower_sprite.tscn" id="2_1t7ol"]
+[ext_resource type="Texture2D" uid="uid://devvfw2vsa653" path="res://assets/placeholder/RedMoonTower_free_idle_animation..png" id="3_fxhre"]
 
 [sub_resource type="Curve" id="Curve_r3cq6"]
 _data = [Vector2(0.00221239, 0.0090909), 0.0, 6.84848, 0, 0, Vector2(0.314159, 0.990909), -0.308182, -0.308182, 0, 0, Vector2(0.993363, 0), -1.68578, 0.0, 0, 0]
 point_count = 3
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_uq0tl"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(0, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_531rn"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(100, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5h0oq"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(200, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_iby7g"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(300, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_rgwnd"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(400, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_guqul"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(500, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_4xe7q"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(600, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_j40jo"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(700, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jfe22"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(800, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_xhqxi"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(900, 0, 100, 140)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_32e3o"]
+atlas = ExtResource("3_fxhre")
+region = Rect2(1000, 0, 100, 140)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_jhrme"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_uq0tl")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_531rn")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5h0oq")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_iby7g")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_rgwnd")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_guqul")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_4xe7q")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_j40jo")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jfe22")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_xhqxi")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_32e3o")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_osj0w"]
 radius = 16.0
@@ -14,10 +100,12 @@ radius = 16.0
 radius = 152.84
 
 [node name="Tower" type="StaticBody2D"]
+collision_layer = 9
 script = ExtResource("1_emqql")
 curve = SubResource("Curve_r3cq6")
 
 [node name="TowerSprite" parent="." instance=ExtResource("2_1t7ol")]
+sprite_frames = SubResource("SpriteFrames_jhrme")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_osj0w")

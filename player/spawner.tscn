@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c3q6txdt1k5m8"]
+[gd_scene load_steps=8 format=3 uid="uid://c3q6txdt1k5m8"]
 
 [ext_resource type="Texture2D" uid="uid://c3bjjubcocilf" path="res://assets/placeholder/sprites/medieval-tavern_10000.png" id="1_3vc4b"]
 [ext_resource type="Script" path="res://player/spawner.gd" id="1_li363"]
 [ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="2_jd72l"]
 [ext_resource type="PackedScene" uid="uid://ejgsk65v3pvj" path="res://ui/value_bar.tscn" id="4_58srp"]
+[ext_resource type="PackedScene" uid="uid://opiuj7fs8gct" path="res://world/selectable_object.tscn" id="5_22xdr"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_y2w1w"]
 size = Vector2(128, 96)
@@ -58,5 +59,10 @@ offset_top = -70.0
 offset_right = 182.0
 offset_bottom = -39.0
 scale = Vector2(0.5, 0.5)
+
+[node name="SelectableObject" parent="." instance=ExtResource("5_22xdr")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableObject"]
+shape = SubResource("RectangleShape2D_y2w1w")
 
 [connection signal="timeout" from="SpawnTimer" to="." method="_on_spawn_timer_timeout"]

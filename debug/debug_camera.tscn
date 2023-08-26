@@ -3,5 +3,4 @@
 [ext_resource type="Script" path="res://debug/debug_camera.gd" id="1_f054u"]
 
 [node name="DebugCamera" type="Camera2D"]
-current = true
 script = ExtResource("1_f054u")

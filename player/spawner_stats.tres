@@ -1,7 +1,8 @@
-[gd_resource type="Resource" load_steps=2 format=3 uid="uid://otop3q5d4llj"]
+[gd_resource type="Resource" script_class="SpawnerStats" load_steps=2 format=3 uid="uid://otop3q5d4llj"]
 
 [ext_resource type="Script" path="res://player/spawner_stats.gd" id="1_sw6on"]
 
 [resource]
 script = ExtResource("1_sw6on")
+max_hp = 400
 hp = 400

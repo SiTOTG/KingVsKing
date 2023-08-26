@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b77yrfd22bqbp"]
+[gd_scene load_steps=27 format=3 uid="uid://b77yrfd22bqbp"]
 
 [ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="1_w8qxl"]
 [ext_resource type="Texture2D" uid="uid://bjnxiu7eutrg3" path="res://assets/placeholder/sprites/characters/skeleton.png" id="2_qirmw"]
@@ -327,11 +327,12 @@ blend_point_1/node = SubResource("AnimationNodeAnimation_rphup")
 blend_point_1/pos = -1.0
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_rindi"]
-enabled_inputs = 2
 input_0/name = "Idling"
 input_0/auto_advance = false
+input_0/reset = true
 input_1/name = "Walking"
 input_1/auto_advance = false
+input_1/reset = true
 
 [sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_p6qj8"]
 animation = &"WalkRight"
@@ -360,6 +361,9 @@ nodes/WalkDirection/position = Vector2(-160, 260)
 nodes/output/position = Vector2(500, 220)
 node_connections = [&"output", 0, &"AttackTrigger", &"AttackTrigger", 0, &"MoveState", &"AttackTrigger", 1, &"AttackDirection", &"MoveState", 0, &"IdleDirection", &"MoveState", 1, &"WalkDirection"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2c3lm"]
+size = Vector2(19, 18)
+
 [node name="Skeleton" instance=ExtResource("1_w8qxl")]
 script = ExtResource("2_v6mvk")
 stats = ExtResource("3_frlx6")
@@ -383,6 +387,7 @@ anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/AttackDirection/blend_position = 1.0
 parameters/AttackTrigger/active = false
+parameters/AttackTrigger/internal_active = false
 parameters/AttackTrigger/request = 0
 parameters/IdleDirection/blend_position = 1.0
 parameters/MoveState/current_state = "Idling"
@@ -391,3 +396,7 @@ parameters/MoveState/current_index = 0
 parameters/WalkDirection/blend_position = 1.0
 
 [node name="SwordSFX" parent="." index="8" instance=ExtResource("5_0tsuv")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableObject" index="0"]
+position = Vector2(0.5, -5)
+shape = SubResource("RectangleShape2D_2c3lm")

@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://qs5c3y847vds"]
+
+[ext_resource type="Script" path="res://player/player.gd" id="1_qj282"]
+
+[node name="Player" type="Node" groups=["Players"]]
+script = ExtResource("1_qj282")
+
+[connection signal="changed_selection" from="." to="." method="_on_changed_selection"]

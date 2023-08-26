@@ -1,9 +1,10 @@
-[gd_scene load_steps=7 format=3 uid="uid://c88emyaqb8i1o"]
+[gd_scene load_steps=8 format=3 uid="uid://c88emyaqb8i1o"]
 
 [ext_resource type="Script" path="res://creatures/creature.gd" id="1_i3p8u"]
 [ext_resource type="Resource" uid="uid://uv8qy6cdvk4b" path="res://creatures/footman_stats.tres" id="2_2sbf0"]
 [ext_resource type="Texture2D" uid="uid://bs3xxoeb4j5ol" path="res://assets/placeholder/sprites/characters/player.png" id="3_dgooi"]
 [ext_resource type="PackedScene" uid="uid://ejgsk65v3pvj" path="res://ui/value_bar.tscn" id="4_4o7xg"]
+[ext_resource type="PackedScene" uid="uid://opiuj7fs8gct" path="res://world/selectable_object.tscn" id="5_d5s0o"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_5wtq7"]
 radius = 3.53553
@@ -54,6 +55,8 @@ neighbor_distance = 100.0
 max_neighbors = 4
 max_speed = 110.0
 debug_enabled = true
+
+[node name="SelectableObject" parent="." instance=ExtResource("5_d5s0o")]
 
 [connection signal="area_entered" from="EnemyDetector" to="." method="_on_enemy_detector_area_entered"]
 [connection signal="area_exited" from="EnemyDetector" to="." method="_on_enemy_detector_area_exited"]

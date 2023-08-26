@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://opiuj7fs8gct"]
+
+[ext_resource type="Script" path="res://world/selectable_object.gd" id="1_f0hal"]
+
+[node name="SelectableObject" type="Area2D"]
+script = ExtResource("1_f0hal")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

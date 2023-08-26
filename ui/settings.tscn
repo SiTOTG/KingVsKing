@@ -23,6 +23,7 @@ stream_2/stream = ExtResource("4_jog2s")
 stream_2/weight = 1.0
 
 [node name="Settings" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -151,6 +152,7 @@ text = "Default"
 stream = SubResource("AudioStreamRandomizer_jjahm")
 bus = &"SFX"
 
+[connection signal="visibility_changed" from="." to="." method="_on_visibility_changed"]
 [connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/VolumeField/VolumeValue" to="." method="_on_volume_value_value_changed"]
 [connection signal="toggled" from="MarginContainer/PanelContainer/VBoxContainer/VolumeField/MuteMaster" to="." method="_on_mute_master_toggled"]
 [connection signal="value_changed" from="MarginContainer/PanelContainer/VBoxContainer/SFXVolumeField/SFXVolumeValue" to="." method="_on_sfx_volume_value_value_changed"]

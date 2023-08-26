@@ -49,7 +49,7 @@ friendly_layer = 2
 creature_scene = ExtResource("2_ed7vb")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
-frames = SubResource("SpriteFrames_0m4l5")
+sprite_frames = SubResource("SpriteFrames_0m4l5")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("CircleShape2D_77co4")

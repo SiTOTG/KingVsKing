@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=3 uid="uid://ywlcclxvc1hc"]
+[gd_scene load_steps=37 format=3 uid="uid://ywlcclxvc1hc"]
 
 [ext_resource type="PackedScene" uid="uid://c88emyaqb8i1o" path="res://creatures/creature.tscn" id="1_l3fq6"]
 [ext_resource type="Script" path="res://creatures/footman.gd" id="2_rsvk1"]
@@ -488,11 +488,12 @@ blend_point_3/pos = Vector2(-1, 0)
 blend_mode = 1
 
 [sub_resource type="AnimationNodeTransition" id="AnimationNodeTransition_ky12f"]
-enabled_inputs = 2
 input_0/name = "Idling"
 input_0/auto_advance = false
+input_0/reset = true
 input_1/name = "Moving"
 input_1/auto_advance = false
+input_1/reset = true
 
 [sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_us4em"]
 graph_offset = Vector2(-506.881, -47.0981)
@@ -508,6 +509,9 @@ nodes/Movement/node = SubResource("AnimationNodeTransition_ky12f")
 nodes/Movement/position = Vector2(100, 60)
 nodes/output/position = Vector2(500, 140)
 node_connections = [&"output", 0, &"Attack", &"Attack", 0, &"Movement", &"Attack", 1, &"AttackDirection", &"Movement", 0, &"IdleDirection", &"Movement", 1, &"MoveDirection"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_54d86"]
+size = Vector2(16, 20)
 
 [node name="Footman" instance=ExtResource("1_l3fq6")]
 script = ExtResource("2_rsvk1")
@@ -526,6 +530,7 @@ tree_root = SubResource("AnimationNodeBlendTree_us4em")
 anim_player = NodePath("../AnimationPlayer")
 active = true
 parameters/Attack/active = false
+parameters/Attack/internal_active = false
 parameters/Attack/request = 0
 parameters/AttackDirection/blend_position = Vector2(0.00857282, 0.823928)
 parameters/IdleDirection/blend_position = Vector2(0.5, -1)
@@ -535,3 +540,7 @@ parameters/Movement/transition_request = ""
 parameters/Movement/current_index = 0
 
 [node name="SwordSFX" parent="." index="8" instance=ExtResource("3_mc2m3")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableObject" index="0"]
+position = Vector2(1, -7)
+shape = SubResource("RectangleShape2D_54d86")

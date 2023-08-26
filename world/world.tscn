@@ -1,4 +1,4 @@
-[gd_scene load_steps=43 format=3 uid="uid://dqj8qyj88cf8q"]
+[gd_scene load_steps=44 format=3 uid="uid://dqj8qyj88cf8q"]
 
 [ext_resource type="Script" path="res://world/world.gd" id="1_61105"]
 [ext_resource type="PackedScene" uid="uid://dyc8eldwe7waj" path="res://world/tiles/castle.tscn" id="1_fmk5q"]
@@ -23,6 +23,7 @@
 [ext_resource type="PackedScene" uid="uid://caneigmsa7iin" path="res://player/tower/tower_slot.tscn" id="22_rui1r"]
 [ext_resource type="Texture2D" uid="uid://devvfw2vsa653" path="res://assets/placeholder/RedMoonTower_free_idle_animation..png" id="23_mf6kb"]
 [ext_resource type="PackedScene" uid="uid://bvn67somjpdef" path="res://player/tower/path_slot.tscn" id="23_w7jom"]
+[ext_resource type="PackedScene" uid="uid://qs5c3y847vds" path="res://player/player.tscn" id="24_5o766"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_nujo8"]
 texture = ExtResource("2_b5ipp")
@@ -356,6 +357,8 @@ sprite_frames = SubResource("SpriteFrames_jhrme")
 
 [node name="EnemyDetector" parent="TowerSlot4/Tower" index="2"]
 collision_mask = 2
+
+[node name="Player" parent="." instance=ExtResource("24_5o766")]
 
 [connection signal="tower_created" from="TowerSlot" to="." method="_on_tower_slot_tower_created"]
 [connection signal="tower_created" from="TowerSlot2" to="." method="_on_tower_slot_tower_created"]

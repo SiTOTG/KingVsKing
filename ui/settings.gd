@@ -114,3 +114,8 @@ func _on_button_pressed():
 	settings = default_settings.duplicate(true)
 	full_load = true
 	reset_ui()
+
+
+func _on_visibility_changed():
+	if get_tree():
+		get_tree().paused = visible

@@ -1,6 +1,7 @@
-[gd_scene load_steps=8 format=3 uid="uid://caneigmsa7iin"]
+[gd_scene load_steps=10 format=3 uid="uid://caneigmsa7iin"]
 
 [ext_resource type="Script" path="res://player/tower/tower_slot.gd" id="1_ytctg"]
+[ext_resource type="PackedScene" uid="uid://opiuj7fs8gct" path="res://world/selectable_object.tscn" id="2_f4vx7"]
 
 [sub_resource type="Gradient" id="Gradient_3436u"]
 offsets = PackedFloat32Array(0, 0.984887)
@@ -49,6 +50,9 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_w1qfc"]
 size = Vector2(64, 64)
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_4i4tm"]
+size = Vector2(64, 64)
+
 [node name="TowerSlot" type="Area2D"]
 collision_layer = 8
 collision_mask = 0
@@ -70,6 +74,11 @@ modulate = Color(1, 1, 1, 0.894118)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 visible = false
 shape = SubResource("RectangleShape2D_w1qfc")
+
+[node name="SelectableObject" parent="." instance=ExtResource("2_f4vx7")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="SelectableObject"]
+shape = SubResource("RectangleShape2D_4i4tm")
 
 [connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
 [connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
